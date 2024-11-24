@@ -55,6 +55,7 @@ code {
 .mr1vw{margin-right: 1vw;}
 .ml1vw{margin-left: 1vw;}
 .ml10{margin-left: 10px;}
+.mr10{margin-right: 10px;}
 
 /*components*/
 .actionList a.active{color:#3C096C;position: relative;}

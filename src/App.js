@@ -6,6 +6,7 @@ import LoginLayout from './components/login/LoginLayout';
 import ViewContext from './context/ViewContext';
 import OperatorChatPage from './components/chat/operatorChat/OperatorChatPage';
 import { Toaster } from 'react-hot-toast';
+import OperatorSettings from './components/dashbord/content/chatSettings/operator/OperatorSettings';
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,7 @@ function App() {
             <Route path='products' element={<Products/>}/>
             <Route path='commands' element={<h1>commands</h1>}/>
             <Route path='profile' element={<h1>profile</h1>}/>
-            <Route path='managmentOperator' element={<h1>managmentOperator</h1>}/>
+            <Route path='managmentOperator' element={<OperatorSettings/>}/>
             <Route path='reportsChat' element={<h1>reportsChat</h1>}/>
             <Route path='msgReady' element={<h1>msgReady</h1>}/>
             <Route path='settings' element={<h1>settings</h1>}/>

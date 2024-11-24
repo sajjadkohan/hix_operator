@@ -16,12 +16,13 @@ import toast from 'react-hot-toast';
 
 const LoginComponent = () => {
 
-  const {hasLogin,setHasLogin} = useContext(ViewCtx);
+  const {hasLogin,setHasLogin,loading,setLoading,hasoperator,setHasOperator} = useContext(ViewCtx);
 
   const [showPassword, setShowPassword] = React.useState(false);
   const [dataState, setDataState] = React.useState({
     'userName' : '',
     'password' : '',
+    'hasOperator' : hasoperator
   });
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -49,14 +50,30 @@ const LoginComponent = () => {
 
   const createAcount = async() => {
     setHasLogin(false);
+    
     // console.log(dataState);
     const data = {
-      userName : 'rsst',
-      password : 'rsss12@4',
+      userName : dataState.userName,
+      password : dataState.password,
     }
+    if(!hasLogin){
+      setLoading({...loading,register : true});
+      try {
+        const res = await requestData('/user/addUser','POST',data);
+        console.log(res);
+        if(res.success){
+          toast.success(res.message);
+        } else {
+          toast.error(res.message);
     
-    const res = await requestData('/user/addUser','POST',data);
-    console.log(res);
+        }
+        setLoading({...loading,register : false});
+      } catch (error) {
+        toast.error('لطفا اینترنت خود را متصل نمایید')
+      }
+    }
+  
+
     
   };
 
@@ -69,17 +86,25 @@ const LoginComponent = () => {
       password : dataState.password,
     };
 
-    for (let key in data){
+    if(hasLogin){
+      try {
+        for (let key in data){
 
-      console.log(key,data[key]);
-      if(!data[key]){
-        toast.error(`Please Enter ${key}`);
-        break;
-      } else{
-          const res = await requestData('/user/login','POST',data);
-          console.log(res);
+          console.log(key,data[key]);
+          if(!data[key]){
+            toast.error(`Please Enter ${key}`);
+            break;
+          } else{
+              const res = await requestData('/user/login','POST',data);
+              console.log(res);
+          }
+        }
+    
+      } catch (error) {
+        toast.error('لطفا اینترنت خود را متصل نمایید')
       }
     }
+
 
     Object.keys(data).forEach((item) => {
       
@@ -333,7 +358,13 @@ const LoginComponent = () => {
             color: '#fff', // رنگ متن هنگام هاور
           },
         }}
-        >ایجاد حساب</Button>
+        >
+          {loading.register?
+        'loading . . .'
+        :
+        'ثبت نام'  
+        }
+        </Button>
         </Grid>
         <Grid item size={6}>
         <Button variant="outlined"
@@ -360,6 +391,10 @@ const LoginComponent = () => {
         </Grid>
 
 
+        </Grid>
+        <Grid onClick={() => setHasOperator(!hasoperator)} spacing={2} className={'dFlex algCenter'} size={12}>
+          <span className={`${styles.checkBox} ${hasoperator&&styles.active}`}></span>
+          <p className={`danaRegular mr10 textMuted ${styles.textCheckBox}`}>ورود به عنوان اپراتور</p>
         </Grid>
       </Grid>
     </div>

@@ -17,6 +17,13 @@ const ViewContext = ({children}) => {
     const handleCloseAdFea = () => setShowAddFeatureModal(false);
 
     const [hasLogin,setHasLogin] = useState(true);
+    const [hasoperator,setHasOperator] = useState(false);
+
+    const [loading,setLoading] = useState({
+      login:false,
+      register : false,
+    });
+
 
 
 
@@ -24,6 +31,7 @@ const ViewContext = ({children}) => {
     <ViewCtx.Provider value={{
         showAddProductModal,setShowAddProductModal,
         handleOpenAddPro,handleCloseAddPro,
+        loading,setLoading,
         
         showAddCategoryModal,setShowAddCategoryModal,
         handleOpenAddCat,handleCloseAdCat,
@@ -31,7 +39,8 @@ const ViewContext = ({children}) => {
         showAddFeatureModal,setShowAddFeatureModal,
         handleOpenAddFea,handleCloseAdFea,
 
-        hasLogin,setHasLogin
+        hasLogin,setHasLogin,
+        hasoperator,setHasOperator
     }}>
         {children}
     </ViewCtx.Provider>

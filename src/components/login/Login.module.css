@@ -5,12 +5,14 @@
     padding: 10vh 10vw;}
 .hixInput{border-radius: 20px;}
 .loginComponent{background: #c1c1c173;
-    padding: 1vw;
+    padding: 2vw 1vw;
     border-radius: 20px;
     backdrop-filter: blur(11px);}
 
 .btnMui{background: red;border: 18px;}
-
+.checkBox{display: inline-block;width: 15px;height: 15px;border: 2px solid #9f9f9f;border-radius: 4px;cursor: pointer;}
+.checkBox.active{background-color: rgb(0, 119, 255);border: 2px solid #1976d2;}
+.textCheckBox{margin: 0px 10px 0px 0px;}
 
 
 
