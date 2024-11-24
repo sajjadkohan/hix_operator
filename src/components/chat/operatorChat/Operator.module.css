@@ -1,0 +1,148 @@
+.userList{
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    height: 540px;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/*chatLayout*/
+.chatLayout{
+    position: relative;
+  height: 540px;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
+/*body*/
+.chatLayout .chatPage .body{height: 76%;}
+
+.chatLayout .chatPage .body .dateStart{
+    padding: 15px;
+    position: relative;
+    display: flex;align-items: center;justify-content: center;
+  }
+  .chatLayout .chatPage .body .dateStart::before {
+    content: '';
+    border-top: 1px solid #dcdcdc;
+    width: 30%;
+    position: absolute;
+    top: 23px;
+    right: 2%;
+    z-index: 0;
+  }
+  
+  .chatLayout .chatPage .body .dateStart::after {
+    content: '';
+    border-top: 1px solid #dcdcdc;
+    width: 28%;
+    position: absolute;
+    top: 23px;
+    left: 2%;
+    z-index: 0;
+  }
+  .chatLayout .chatPage .body .dateStart span{font-size: 12px;color: #a4a4a4;}
+  
+  .chatLayout .chatPage .body .chatBase{
+    overflow: scroll;
+    height: 100%;
+    overflow-x: hidden;
+    box-shadow: 0px 0px 50px #ababab0d inset;
+  }
+  .chatBase .leftMsgPack,.chatBase .rightMsgPack{
+    padding: 5px;
+  }
+  .chatBase .leftMsgPack .msg:first-child{
+    border-radius: 14px 14px 14px 0px;
+  }
+  
+  .chatBase .rightMsgPack .msg:first-child{
+    border-radius: 14px 14px 0px 14px ;
+  }
+  .chatBase .leftMsgPack .msg:last-child{
+    border-radius: 14px 14px 14px 0px;
+  }
+  .chatBase .rightMsgPack .msg:last-child{
+    border-radius: 14px 14px 0px 14px ;
+  }
+  /* .chatBase .leftMsgPack .text,.chatBase .rightMsgPack .text{
+  
+  }; */
+  .chatBase .leftMsgPack{text-align: right;float: left;width: 100%;}
+  .chatBase .rightMsgPack{text-align: right;direction: rtl;float: right;width: 100%;}
+  .chatBase .leftMsgPack .msg{
+    background: #f4eaff;
+    width: max-content;
+    padding: 15px;
+    border-radius: 14px;
+    margin: 10px 5px;
+    max-width: 80%;
+    font-size: 14px;
+    color: #262626;
+    font-size: 15px;
+  }
+  
+  .chatBase .rightMsgPack .msg{
+    background: #ffedc9;
+    width: max-content;
+    padding: 15px;
+    border-radius: 14px;
+    margin: 10px 5px;
+    max-width: 80%;
+    /* box-shadow: 0px 0px 9px #0000000d; */
+    font-size: 14px;
+    color: #262626;
+    font-size: 15px;
+  }
+  .statusMsg{
+    position: relative;
+    padding: 5px 20px;
+    color: #acacac;
+    font-size: 13px;
+    display: none;
+  }
+  .msgParent .rightMsgPack .statusMsg{text-align: right;}
+  .msgParent .rightMsgPack .statusMsg.active::after{
+    content: '';
+    position: absolute;
+    right: 10px;
+    width: 5px;
+    height: 5px;
+    background: #00b525;
+    border-radius: 100%;
+    bottom: 9px;
+  }
+
+  .msgParent .leftMsgPack .statusMsg.active::after{
+    content: '';
+    position: absolute;
+    left: 10px;
+    width: 5px;
+    height: 5px;
+    background: #00b525;
+    border-radius: 100%;
+    bottom: 9px;
+  }
+  .msgParent .leftMsgPack .statusMsg{text-align: left;}
+
+  .msgParent .leftMsgPack .statusMsg:last-child{display: block;}
+
+  .msgParent .rightMsgPack .statusMsg:last-child{display: block;}
+  
+  
+  @media (max-width:767px) {
+    .chatParent .chatLayout .chatPage{
+      width: 91%;
+      height: 96vh;
+  
+      bottom: 1vw;
+  
+    }
+  .chatLayout .chatPage .body{height: 74%;}
+  .chatLayout .chatPage .footer {height: 10%;}
+  
+  }

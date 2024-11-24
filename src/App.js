@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Dashbord from './pages/Dashbord/Dashbord';
+import DashbordContext from './context/DashbordContext';
+import Products from './components/dashbord/content/products/Products';
+import LoginLayout from './components/login/LoginLayout';
+import ViewContext from './context/ViewContext';
+import OperatorChatPage from './components/chat/operatorChat/OperatorChatPage';
+import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div><Toaster/></div>
+      <ViewContext>
+      <DashbordContext>
+        <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<h1>home page</h1>} />
+          <Route path='/login' element={<LoginLayout />} />
+          <Route path='/dashbord' element={<Dashbord/>}>
+            <Route path='home' element={<h1>dashbord</h1>}/>
+            <Route path='reports' element={<h1>reports</h1>}/>
+            <Route path='chat' element={<OperatorChatPage />}/>
+            <Route path='products' element={<Products/>}/>
+            <Route path='commands' element={<h1>commands</h1>}/>
+            <Route path='profile' element={<h1>profile</h1>}/>
+            <Route path='managmentOperator' element={<h1>managmentOperator</h1>}/>
+            <Route path='reportsChat' element={<h1>reportsChat</h1>}/>
+            <Route path='msgReady' element={<h1>msgReady</h1>}/>
+            <Route path='settings' element={<h1>settings</h1>}/>
+          </Route>
+        </Routes>
+        </BrowserRouter>
+      </DashbordContext>
+      </ViewContext>
+      {/* <script>
+{        window.addEventListener("load",(function()
+        {const t="673afc0b13162bc30a3eddc4";
+          window.chatina={bId:t};
+          var e=document.createElement("div");
+          e.id="chatina-root";
+          document.body.appendChild(e);
+          var n=document.createElement("link");
+          n.rel="stylesheet";
+          n.href="https://cdn.chatina.ai/static/widget.css";
+          n.crossOrigin="anonymous";
+          document.head.appendChild(n);
+          var a=document.createElement("script");
+          a.src="https://cdn.chatina.ai/static/widget.js";
+          a.crossOrigin="anonymous";
+          document.head.appendChild(a)
+        }))}
+        </script> */}
     </div>
   );
 }

@@ -1,0 +1,18 @@
+.actionList a{text-decoration: none;color: #191919;width: 100%;
+    direction: ltr;
+    justify-content: right;}
+    .dropDown{display: block!important;transition: 0.3s all;cursor: pointer;}
+     .dropDown.active{
+        margin: 10px 8px;
+        border-radius: 18px;
+        box-shadow: 0px 0px 14px #00000012;
+        padding: 10px 0.5vw;
+     }
+     .dropDown .chevron{position: relative;right: 7px;top: 2px;}
+    .actionsChat{margin-right: 10px;}
+    .actionsChat .item{
+        border-bottom: 1px solid #dedede80;
+        padding: 5px 0px;
+        font-size: 13px;
+    }
+    .actionsChat .item:last-child{border: none;}

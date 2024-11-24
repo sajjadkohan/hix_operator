@@ -1,0 +1,22 @@
+.actionBar{display: flex;justify-content: right;padding: 1vw;}
+.actionBar button{
+    border-radius: 2vw;
+  margin-left: 20px;
+  color: #3f3f3f;
+  padding: 0.8vw 1.7vw;
+  border: 1px solid #e8e8e8;
+  background: #fff8ee;
+}
+.actionBar button span{font-family: 'danaBold';}
+.actionBar button .icon{
+    width: 2vw;
+    height: 2vw;
+    display: block;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.content{padding-top: 60px;}

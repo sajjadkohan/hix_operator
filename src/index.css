@@ -5,9 +5,66 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.w100{width: 100%;}
+
+/*fonts*/
+@font-face {
+  font-family: 'danaRegular';
+  src: url(./assets/fonts/dana/eot/dana-fanum-regular.eot) format('eot');
+  src: url(./assets/fonts/dana/ttf/dana-fanum-regular.ttf) format('ttf');
+  src: url(./assets/fonts/dana/woff/dana-fanum-regular.woff) format('woff');
+  src: url(./assets/fonts/dana/woff2/dana-fanum-regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'danaBold';
+  src: url(./assets/fonts/dana/eot/dana-fanum-bold.eot) format('eot');
+  src: url(./assets/fonts/dana/ttf/dana-fanum-regular.ttf) format('ttf');
+  src: url(./assets/fonts/dana/woff/dana-fanum-bold.woff) format('woff');
+  src: url(./assets/fonts/dana/woff2/dana-fanum-bold.woff2) format('woff2');
+}
+.danaRegular{font-family: 'danaRegular';}
+.danaBold{font-family: 'danaBold';}
+
+/*padding*/
+.plr{
+  padding-left: 1.4vw!important;
+  padding-right: 1.4vw!important;
+}
+
+.plr2{
+  padding-left: 2.4vw!important;
+  padding-right: 2.4vw!important;
+}
+
+
+/*flex*/
+.dFlex{display: flex;}
+.algCenter{align-items: center;}
+.flexWrap{flex-wrap: wrap!important;}
+
+/*margin*/
+.mr1vw{margin-right: 1vw;}
+.ml1vw{margin-left: 1vw;}
+.ml10{margin-left: 10px;}
+
+/*components*/
+.actionList a.active{color:#3C096C;position: relative;}
+.actionList a.active::before{content : '';position: absolute;left: 0px;width: 7px;height: 7px;border-radius: 100%;background: #3c096cb8;}
+.actionList a.active svg path{stroke:#3C096C}
+
+/*colors*/
+.color1976d2{color :#1976d2 }
+.textMuted{color : #979797}
+
+/*fontSize*/
+.fn18{font-size: 18px;}
+.fn14{font-size: 14px;}

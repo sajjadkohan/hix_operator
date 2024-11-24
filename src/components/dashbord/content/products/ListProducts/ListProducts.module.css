@@ -1,0 +1,7 @@
+.listProducts{direction: rtl;}
+.ListParent{position: relative;}
+.listProducts .head{
+    color: #ed6a37;
+  padding-bottom: 15px;
+  border-bottom: 1px solid;
+}
