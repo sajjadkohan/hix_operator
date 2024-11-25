@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Dashbord from './pages/Dashbord/Dashbord';
 import DashbordContext from './context/DashbordContext';
@@ -7,7 +8,11 @@ import ViewContext from './context/ViewContext';
 import OperatorChatPage from './components/chat/operatorChat/OperatorChatPage';
 import { Toaster } from 'react-hot-toast';
 import OperatorSettings from './components/dashbord/content/chatSettings/operator/OperatorSettings';
+import  { AuthCtx } from './context/AuthContext';
 function App() {
+
+  const {isLogin} = useContext(AuthCtx);
+
   return (
     <div className="App">
       <div><Toaster/></div>

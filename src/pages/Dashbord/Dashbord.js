@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Dashbord.module.css'
 // import { DashBordCtx } from '../../context/DashbordContext';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid2';
 import Sidebar from '../../components/dashbord/Sidebar/Sidebar';
+import { AuthCtx } from '../../context/AuthContext';
 
 const Dashbord = () => {
+
+    const {isLogin,user,logout} = useContext(AuthCtx);
+    const[play,setPlay] = useState(false);
     // const {products} = useContext(DashBordCtx);
 
     // const Item = styled('div')(({ theme }) => ({
@@ -18,12 +22,27 @@ const Dashbord = () => {
     //       backgroundColor: '#1A2027',
     //     }),
     //   }));
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(user);
+        
+        setPlay(true);
+        if(play){
+    
+            if(!user?.userName){
+                navigate('/login',{replace : true}); 
+            }
+
+        }
+      },[user]);
 
   return (
     <div className={styles.dashbord}>
         <Grid container spacing={0}>
             <Grid size={2}>
                 size=2
+                <button onClick={async() => await logout()}>logout</button>
             </Grid>
             <Grid className={'plr2'} size={8}>
                 <Outlet />

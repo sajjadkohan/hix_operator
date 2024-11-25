@@ -10,43 +10,33 @@ import { MdVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 import { ViewCtx } from '../../../context/ViewContext';
 import toast from 'react-hot-toast';
-
+import { useNavigate} from 'react-router-dom';
+import { requestData } from '../../../utils/functions';
 
 
 
 const LoginComponent = () => {
-
+  
   const {hasLogin,setHasLogin,loading,setLoading,hasoperator,setHasOperator} = useContext(ViewCtx);
-
+  
   const [showPassword, setShowPassword] = React.useState(false);
   const [dataState, setDataState] = React.useState({
     'userName' : '',
     'password' : '',
-    'hasOperator' : hasoperator
+    'is_operator' : hasoperator
   });
-
+  
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+  const navigate = useNavigate();
+  
   const handleMouseUpPassword = (event) => {
     event.preventDefault();
   };
 
-  const requestData = async(api,method,data) => {
 
-    const res = await fetch(`https://hixnew.liara.run${api}`,{
-      method:method?method:'POST',
-      // mode: "cors",
-      // cache: "no-cache",
-      credentials: "include",
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-    
-    return await res.json()
-  }
 
   const createAcount = async() => {
     setHasLogin(false);
@@ -61,10 +51,10 @@ const LoginComponent = () => {
       try {
         const res = await requestData('/user/addUser','POST',data);
         console.log(res);
-        if(res.success){
-          toast.success(res.message);
+        if(res.data.success){
+          toast.success(res.data.message);
         } else {
-          toast.error(res.message);
+          toast.error(res.data.message);
     
         }
         setLoading({...loading,register : false});
@@ -84,23 +74,37 @@ const LoginComponent = () => {
     const data = {
       userName : dataState.userName,
       password : dataState.password,
+      is_operator : dataState.is_operator
     };
 
     if(hasLogin){
       try {
-        for (let key in data){
-
-          console.log(key,data[key]);
-          if(!data[key]){
-            toast.error(`Please Enter ${key}`);
-            break;
-          } else{
-              const res = await requestData('/user/login','POST',data);
-              console.log(res);
+        const res = await requestData('/user/login','POST',data);
+        console.log(res);
+        if(!res.data.success){
+          toast.error(res.data.message)
+        } else {
+          toast.success(res.data.message);
+          if(res.status == 200){
+            navigate('/dashbord');
           }
+
         }
+        // for (let key in data){
+
+        //   console.log(key,data[key]);
+        //   if(!data[key]){
+        //     toast.error(`Please Enter ${key}`);
+        //     break;
+        //   } else{
+        //       const res = await requestData('/user/login','POST',data);
+        //       console.log(res);
+        //   }
+        // }
     
       } catch (error) {
+        console.log(error);
+        
         toast.error('لطفا اینترنت خود را متصل نمایید')
       }
     }
