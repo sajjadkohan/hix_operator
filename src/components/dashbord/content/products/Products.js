@@ -44,7 +44,7 @@ const Products = () => {
             </Button>
         </div>
         <div className={styles.content}>
-            <ListProducts />
+            <ListProducts title={'لیست محصولات'} />
         </div>
     </div>
   )

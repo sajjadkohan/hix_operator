@@ -4,7 +4,7 @@ import styles from './ListProducts.module.css'
 import Grid  from '@mui/material/Grid2';
 import ProductItem from './ProductItem';
 
-const ListProducts = () => {
+const ListProducts = ({title}) => {
   const productsArr = [
     {
     name : 'محصول 1',
@@ -44,7 +44,7 @@ const ListProducts = () => {
 ];
   return (
     <div className={styles.listProducts}>
-      <TitleList title={'لیست محصولات'} lastUpdate={'5 دقیقه قبل'} />
+      <TitleList title={title} lastUpdate={'5 دقیقه قبل'} />
       <Grid className={`${styles.head} danaRegular`} spacing={1} container size={12}>
         <Grid item size={0.5}></Grid>
         <Grid item size={2.5}>محصول</Grid>

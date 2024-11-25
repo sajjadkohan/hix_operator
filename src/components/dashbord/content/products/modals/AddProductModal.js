@@ -39,7 +39,7 @@ const AddProductModal = ({handleOpen,handleClose}) => {
     <Fade in={showAddProductModal}>
       <Box sx={style}>
         <Typography id="transition-modal-title" variant="h6" component="h2">
-          Text in a modal
+          Text in a modalddd
         </Typography>
         <Typography id="transition-modal-description" sx={{ mt: 2 }}>
           Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
