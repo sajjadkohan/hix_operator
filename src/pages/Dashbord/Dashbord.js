@@ -41,7 +41,7 @@ const Dashbord = () => {
     <div className={styles.dashbord}>
         <Grid container spacing={0}>
             <Grid size={2}>
-                size=2
+                left
                 <button onClick={async() => await logout()}>logout</button>
             </Grid>
             <Grid className={'plr2'} size={8}>

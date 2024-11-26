@@ -109,7 +109,8 @@ const LoginComponent = () => {
       } catch (error) {
         console.log(error);
         
-        toast.error('لطفا اینترنت خود را متصل نمایید')
+        toast.error('لطفا اینترنت خود را متصل نمایید');
+      setLoading({...loading,login : false});
       }
     }
 

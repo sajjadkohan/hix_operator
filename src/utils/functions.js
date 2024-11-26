@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const requestData = async(api,method,data) => {
     try {
         let res = null;
@@ -26,6 +28,7 @@ const requestData = async(api,method,data) => {
       }
     } catch (error) {
       console.log(error);
+      toast.error('لطفا اتصال اینترنت خود را بررسی کنید')
       
     }
 

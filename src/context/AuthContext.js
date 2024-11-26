@@ -11,8 +11,8 @@ const AuthContext = ({children}) => {
 
     const isLogin = async () => {
         const res = await requestData('/user/checkLogin','GET','');
-        console.log(res);
-        if(res.status == 200){
+        // console.log(res);
+        if(res?.status == 200){
             setUser(res.data.data);
             return res.data.data
         } else {

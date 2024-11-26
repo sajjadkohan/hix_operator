@@ -1,6 +1,6 @@
 .sidebar{padding-top: 1vw;}
 
-.upgrade{padding: 0px 1vw;text-align: right;}
+.upgrade{padding: 0px 1vw;text-align: right;display: block;color: #454545;text-decoration: none;}
 div.upgradeParent{background: #fff8ee!important;border: 2px solid #ff9d62;}
 .upgrade .go{display: flex;justify-content: space-between;align-items: center;direction: rtl;}
 .upgrade .go span{width: 3vw;

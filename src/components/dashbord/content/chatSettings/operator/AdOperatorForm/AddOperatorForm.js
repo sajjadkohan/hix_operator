@@ -7,6 +7,7 @@ import { TbMailFilled } from 'react-icons/tb';
 import { ViewCtx } from '../../../../../../context/ViewContext';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { requestData } from '../../../../../../utils/functions';
+import toast from 'react-hot-toast';
 const AddOperatorForm = () => {
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -43,7 +44,12 @@ const AddOperatorForm = () => {
         const res = await requestData('/operator/add','POST',data);
         console.log(res);
       setLoading({...loading,addOperator : false});
+        if(res?.status == 200){
+          toast.success(<p className='danaRegular'>{res?.data?.message}</p>)
+        } else {
+          toast.error(<p className='danaRegular'>{res?.data?.message}</p>)
 
+        }
         
       };
 
