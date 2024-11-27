@@ -24,19 +24,40 @@
     justify-content: right;
     direction: rtl;
 }
+.planCard .priceParent h1{font-size: 32px;}
 .planCard .buyBtn{
+    direction: rtl;
+    position: relative;
     width: 100%;
     font-family: 'danaBold';
     color: #3C096C;
     background: #fff;
     border: 3px solid #3C096C;
-    padding: 1vw 2vw;
+    padding: 18px 21px;
     font-size: 17px;
     cursor: pointer;
     transition: 0.3s all;
     border-radius: 18px;
     box-shadow: 0px 0px 17px #00000021;
 }
+.planCard .buyBtn .icon{
+    top: 16px;
+    position: absolute;
+    left: 15%;
+}
 
+.planCard .propertyList{direction: rtl;text-align: right;padding-right: 0px;}
+.planCard .propertyList li{list-style: none;padding-right: 0px;margin-bottom: 7px;}
+.planCard .propertyList li .icon{
+    background: #ececec;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+}
+.planCard .propertyList li .icon.has{background: #e6e3ff;}
+.planCard .propertyList li .text{margin-right: 10px;font-size: 14px;}
 .planCard .buyBtn:hover{background: #f0ecff;}
 

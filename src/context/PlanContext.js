@@ -30,9 +30,30 @@ const PlanContext = ({children}) => {
       
     };
 
+    const setFreePlan = async (id) => {
+      const data = {
+        'id' : id
+      }
+      setLoading({...loading,setPlans : id});
+      const res = await requestData('/user/setPlan','POST',data);
+      console.log(res);
+      if(res.status == 200) {
+        toast.success(res.data.message)
+
+      }else {
+        toast.error(res.data.message)
+      }
+      setLoading({...loading,setPlans : false});
+
+      
+    };
+
+
+
   return (
     <PlanCtx.Provider value={{
-            getPlans,plansState
+            getPlans,plansState,
+            setFreePlan
         }}>
       {children}
     </PlanCtx.Provider>

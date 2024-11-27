@@ -23,7 +23,8 @@ const ViewContext = ({children}) => {
       login:false,
       register : false,
       addOperator : false,
-      plans : false
+      plans : false,
+      setPlans : false
     });
 
 
