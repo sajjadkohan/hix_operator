@@ -6,7 +6,37 @@
     background: #feef9e1f;
     cursor: pointer;
     transition: 0.3s all;
+    font-family: 'danaRegular';
+    text-align: right;
 }
-.planCard:hover{
-    transform: translateY(10px);
+
+.planCard.active{
+    background: #FF6D00;
+    color : #fff;
+    text-shadow: 1px 2px 4px #00000038;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
 }
+
+.planCard.active .buyBtn{border: none;}
+
+.planCard .priceParent{
+    justify-content: right;
+    direction: rtl;
+}
+.planCard .buyBtn{
+    width: 100%;
+    font-family: 'danaBold';
+    color: #3C096C;
+    background: #fff;
+    border: 3px solid #3C096C;
+    padding: 1vw 2vw;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s all;
+    border-radius: 18px;
+    box-shadow: 0px 0px 17px #00000021;
+}
+
+.planCard .buyBtn:hover{background: #f0ecff;}
+

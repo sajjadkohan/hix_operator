@@ -22,7 +22,8 @@ const ViewContext = ({children}) => {
     const [loading,setLoading] = useState({
       login:false,
       register : false,
-      addOperator : false
+      addOperator : false,
+      plans : false
     });
 
 
