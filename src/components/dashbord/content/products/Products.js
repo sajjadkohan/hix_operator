@@ -12,7 +12,37 @@ import { ViewCtx } from '../../../../context/ViewContext';
 import AddProductModal from './modals/AddProductModal';
 import AddCategoryModal from './modals/AddCategoryModal';
 import AddFeatureModal from './modals/AddFeatureModal';
+import ModalLayout from '../../../../global/globalComponents/ModalLayout/ModalLayout';
+import ModalFormLayout from '../../../../global/globalComponents/ModalFormLayout/ModalFormLayout';
+import AddOperatorForm from '../chatSettings/operator/AdOperatorForm/AddOperatorForm';
+import { TbMailFilled } from 'react-icons/tb';
 
+const dataFormAddProduct = [
+    {
+        size : 12,
+        label : '',
+        positionIcon : 'start',
+        icon : <TbMailFilled size={30} />,
+        placeholder : 'نام محصول',
+        nameInput : 'product_name',
+    },
+    {
+        size : 12,
+        label : '',
+        positionIcon : 'start',
+        icon : <TbMailFilled size={30} />,
+        placeholder : 'تعداد',
+        nameInput : 'count',
+    },
+    {
+        size : 12,
+        label : '',
+        positionIcon : 'start',
+        icon : <TbMailFilled size={30} />,
+        placeholder : 'قیمت',
+        nameInput : 'price',
+    },
+]
 
 const Products = () => {
 
@@ -20,6 +50,10 @@ const Products = () => {
         handleOpenAddPro,handleCloseAddPro,
         handleOpenAddCat,handleCloseAdCat,
         handleOpenAddFea,handleCloseAdFea,
+
+        showAddProductModal,
+        showAddCategoryModal,
+        showAddFeatureModal,
     } = useContext(ViewCtx);
 
   return (
@@ -27,9 +61,60 @@ const Products = () => {
         <TitleContent value={'محصولات'} />
 
         <div className={styles.actionBar} style={{borderBottom : `1px solid #${themeColorLayer3}`}}>
-            <AddProductModal handleOpen={handleOpenAddPro} handleClose={handleCloseAddPro} />
-            <AddCategoryModal handleOpen={handleOpenAddCat} handleClose={handleCloseAdCat} />
-            <AddFeatureModal handleOpen={handleOpenAddFea} handleClose={handleCloseAdFea} />
+        <ModalLayout 
+        handleOpen={handleOpenAddPro} 
+        handleClose={handleCloseAddPro} 
+        hasOpen={showAddProductModal} 
+        children={
+        <div>
+            <ModalFormLayout children={
+                <>pro
+                <div style={{direction: 'rtl'}}><AddOperatorForm/></div>
+                </>
+            } 
+            />
+        </div>
+        }
+        />
+
+        <ModalLayout 
+        handleOpen={handleOpenAddCat} 
+        handleClose={handleCloseAdCat} 
+        hasOpen={showAddCategoryModal} 
+        children={
+        <div>
+            <ModalFormLayout children={
+                <>
+                <div style={{direction: 'rtl'}}>
+                <AddCategoryModal />
+                </div>
+                </>
+            } 
+            />
+        </div>
+        }
+        />
+
+        <ModalLayout 
+        handleOpen={handleOpenAddFea} 
+        handleClose={handleCloseAdFea} 
+        hasOpen={showAddFeatureModal} 
+        children={
+        <div>
+            <ModalFormLayout children={
+                <>fea
+                <div style={{direction: 'rtl'}}><AddOperatorForm/></div>
+                </>
+            } 
+            />
+        </div>
+        }
+        />
+
+            {/* <AddProductModal handleOpen={handleOpenAddPro} handleClose={handleCloseAddPro} /> */}
+            {/* <AddCategoryModal handleOpen={handleOpenAddCat} handleClose={handleCloseAdCat} /> */}
+            {/* <AddFeatureModal handleOpen={handleOpenAddFea} handleClose={handleCloseAdFea} /> */}
+
             <Button onClick={handleOpenAddPro} className=''>
                 <span>افزودن محصول</span>
                 <span className={styles.icon}><RiAddCircleFill size={25} /></span>
