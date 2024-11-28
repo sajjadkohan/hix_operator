@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './Login.module.css';
 import LoginComponent from './LoginComponent/LoginComponent';
 import Grid from '@mui/material/Grid2';
 import { ViewCtx } from '../../context/ViewContext';
+import { AuthCtx } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginLayout = () => {
 
   const {hasLogin} = React.useContext(ViewCtx);
+  const {user} = React.useContext(AuthCtx);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(user);
+    user?.userName&&navigate('/dashbord',{replace : true})
+    
+  },[user]);
 
   return (
     <div className={styles.loginLayout}>

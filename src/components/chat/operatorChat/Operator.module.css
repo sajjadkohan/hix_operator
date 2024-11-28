@@ -6,27 +6,39 @@
     display: block;
     overflow-x: hidden;
     overflow-y: scroll;
+    box-shadow: 0px 0px 12px #9797971b;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
 }
 
 /*chatLayout*/
-.chatLayout{
-    position: relative;
-  height: 540px;
-  display: block;
-  overflow-x: hidden;
-  overflow-y: scroll;
+
+.chatLayout {
+  border-radius: 20px;
+  width: 100%;
+  height: 561px;
+  /* position: fixed;
+  right: 5vw;
+  bottom: 4vw;
+  z-index: 99; */
+  /* background: #f6f6f7; */
+  box-shadow: 0px 0px 12px #9797971b;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+  transition: 0.3s all;
+  font-family: 'danaRegular';
 }
 
 
 /*body*/
-.chatLayout .chatPage .body{height: 76%;}
+.chatLayout .body{height: 90%;}
 
-.chatLayout .chatPage .body .dateStart{
+.chatLayout .body .dateStart{
     padding: 15px;
     position: relative;
     display: flex;align-items: center;justify-content: center;
   }
-  .chatLayout .chatPage .body .dateStart::before {
+  .chatLayout .body .dateStart::before {
     content: '';
     border-top: 1px solid #dcdcdc;
     width: 30%;
@@ -36,7 +48,7 @@
     z-index: 0;
   }
   
-  .chatLayout .chatPage .body .dateStart::after {
+  .chatLayout .body .dateStart::after {
     content: '';
     border-top: 1px solid #dcdcdc;
     width: 28%;
@@ -45,9 +57,9 @@
     left: 2%;
     z-index: 0;
   }
-  .chatLayout .chatPage .body .dateStart span{font-size: 12px;color: #a4a4a4;}
+  .chatLayout .body .dateStart span{font-size: 12px;color: #a4a4a4;}
   
-  .chatLayout .chatPage .body .chatBase{
+  .chatLayout .body .chatBase{
     overflow: scroll;
     height: 100%;
     overflow-x: hidden;
@@ -132,17 +144,57 @@
   .msgParent .leftMsgPack .statusMsg:last-child{display: block;}
 
   .msgParent .rightMsgPack .statusMsg:last-child{display: block;}
-  
+
+  /*footer*/
+  /*footer*/
+.chatLayout .footer{
+    height: 8%;
+  background: white;
+  box-shadow: 0px 0px 8px #00000014;
+  padding: 5px;
+  display: flex;justify-content: space-between;align-items: center;
+  direction: rtl;
+  position: relative;
+  font-family: 'danaRegular';
+}
+.footer form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.chatLayout .footer .right{width: 10%;cursor: pointer;}
+.chatLayout .footer .center{width: 70%;}
+.chatLayout .footer .center input{width: 100%;border: none;height: 100%;  font-family: 'danaRegular';font-size: 17px;}
+.chatLayout .footer .center input:focus{outline: none;}
+.chatLayout .footer .left{width: 20%;display: flex;justify-content: flex-end;align-items: center;position: relative;}
+.chatLayout .footer .left .icon{position: relative;display: flex;align-items: center;justify-content: center;}
+.chatLayout .footer .left button{cursor: pointer;}
+.chatLayout .footer .left > span .fileInput{position: absolute;width: 45%;height: 100%;left: 0px;top:0px;opacity: 0;cursor: pointer;}
+.chatLayout .footer .right a:hover svg{fill: #d09303;}
+.chatLayout .footer .left .emoji{border: none;background: none;}
+.chatLayout .footer .left .emoji:hover svg{fill: #d09303;}
+.chatLayout .footer .left .addFile{display: flex;align-items: center;justify-content: center;}
+.chatLayout .footer .left .addFile a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+  /*footer*/
   
   @media (max-width:767px) {
-    .chatParent .chatLayout .chatPage{
+    .chatParent .chatLayout{
       width: 91%;
       height: 96vh;
   
       bottom: 1vw;
   
     }
-  .chatLayout .chatPage .body{height: 74%;}
-  .chatLayout .chatPage .footer {height: 10%;}
+  .chatLayout .body{height: 74%;}
+  .chatLayout .footer {height: 10%;}
   
   }

@@ -42,7 +42,7 @@ const Dashbord = () => {
         <Grid container spacing={0}>
             <Grid size={2}>
                 left
-                <button onClick={async() => await logout()}>logout</button>
+                <button onClick={async() => await logout()&&navigate('/login',{replace : true})}>logout</button>
             </Grid>
             <Grid className={'plr2'} size={8}>
                 <Outlet />
