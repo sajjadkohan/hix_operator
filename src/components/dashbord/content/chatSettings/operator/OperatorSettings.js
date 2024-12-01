@@ -55,7 +55,7 @@ const OperatorSettings = () => {
             </div>
             }
             />
-            <AddCategoryModal handleOpen={handleOpenAddCat} handleClose={handleCloseAdCat} />
+            {/* <AddCategoryModal handleOpen={handleOpenAddCat} handleClose={handleCloseAdCat} /> */}
             <AddFeatureModal handleOpen={handleOpenAddFea} handleClose={handleCloseAdFea} />
             <Button onClick={() => setOpenAdOperator(true)} className=''>
                 <span>افزودن اپراتور</span>

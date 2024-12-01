@@ -45,6 +45,8 @@ code {
   padding-right: 2.4vw!important;
 }
 
+.textCenter{text-align: center;}
+
 
 /*flex*/
 .dFlex{display: flex;}

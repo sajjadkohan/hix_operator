@@ -1,6 +1,8 @@
 const themeColorLayer3 = 'ffe1cc';
-const BASE_URL="http://localhost:3000";
-const CHAT_BASE_URL = "http://localhost:3000"
+// const BASE_URL="http://localhost:3000";
+const BASE_URL="https://hixnew.liara.run";
+const CHAT_BASE_URL = "https://hixnew.liara.run";
+// const CHAT_BASE_URL = "http://localhost:3000";
 
 export {
     themeColorLayer3,

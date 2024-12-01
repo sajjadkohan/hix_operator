@@ -11,9 +11,9 @@ import { NavLink } from 'react-router-dom'
 const Sidebar = () => {
   return (
     <div style={{borderLeft : `1px solid #${themeColorLayer3}`}} className={`plr danaRegular ${styles.sidebar}`}>
-      <AcionListParent>
+      {/* <AcionListParent> */}
         <Head/>
-      </AcionListParent>
+      {/* </AcionListParent> */}
       <ActionList/>
       <AcionListParent className={styles.upgradeParent}>
         <NavLink to={'/addPlan'} className={styles.upgrade}>
