@@ -23,7 +23,7 @@ const LoginComponent = () => {
   const [dataState, setDataState] = React.useState({
     'userName' : '',
     'password' : '',
-    'is_operator' : hasoperator
+    'isOperator' : hasoperator
   });
   
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -74,7 +74,7 @@ const LoginComponent = () => {
     const data = {
       userName : dataState.userName,
       password : dataState.password,
-      is_operator : dataState.is_operator
+      isOperator : hasoperator
     };
 
     if(hasLogin){
@@ -407,7 +407,7 @@ const LoginComponent = () => {
 
         </Grid>
         <Grid onClick={() => setHasOperator(!hasoperator)} spacing={2} className={'dFlex algCenter'} size={12}>
-          <span className={`${styles.checkBox} ${hasoperator&&styles.active}`}></span>
+          <span className={`${styles.checkBox} ${hasoperator?styles.active:""}`}></span>
           <p className={`danaRegular mr10 textMuted ${styles.textCheckBox}`}>ورود به عنوان اپراتور</p>
         </Grid>
       </Grid>

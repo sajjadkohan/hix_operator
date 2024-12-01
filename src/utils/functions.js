@@ -1,10 +1,11 @@
 import toast from "react-hot-toast";
+import { BASE_URL } from "./constanst";
 
 const requestData = async(api,method,data) => {
     try {
         let res = null;
         method !== 'GET'? 
-        res = await fetch(`https://hixnew.liara.run${api}`,{
+        res = await fetch(`${BASE_URL}${api}`,{
         method:method?method:'POST',
         // mode: "cors",
         // cache: "no-cache",
@@ -13,7 +14,7 @@ const requestData = async(api,method,data) => {
         body:JSON.stringify(data)
       }) 
       :
-      res = await fetch(`https://hixnew.liara.run${api}`,{
+      res = await fetch(`${BASE_URL}${api}`,{
         method:method?method:'POST',
         // mode: "cors",
         // cache: "no-cache",

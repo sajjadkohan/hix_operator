@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './UserItem.module.css'
+import avatar1 from '../../../../images/chat/avatars/a1.jpg'
+import userIcon from '../../../svgs/userIcon.svg';
+import { ChatContext } from '../../../../context/ChatContext';
+
 
 const UserItem = ({dataUser}) => {
+  const { userSelect } = useContext(ChatContext)
+
   return (
-    <div className={`${styles.userItem} ${dataUser.active&&styles.active} ${dataUser.disable&&styles.disable}`}>
+    <div className={`${styles.userItem} ${dataUser.id === userSelect ? styles.active : ""} ${dataUser.disable&&styles.disable}`}>
       {
         dataUser.disable&&
         <div className={styles.disableParent}>
@@ -15,7 +21,7 @@ const UserItem = ({dataUser}) => {
         </span>
       </div>
       }
-      <img alt='avatar' className={styles.avatar} src={dataUser.avatar} />
+      <img alt='avatar' className={styles.avatar} src={userIcon} />
       <h3 className='danaRegular'>{dataUser.name}</h3>
       <div className={styles.badgeParent}>
         <span className={styles.badge}>3</span>

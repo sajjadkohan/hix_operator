@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './Operator.module.css';
 import UserItem from './UserItem.js/UserItem';
 import avatar1 from '../../../images/chat/avatars/a1.jpg'
 import avatar2 from '../../../images/chat/avatars/a2.jpg'
 import avatar3 from '../../../images/chat/avatars/a3.jpg'
+import { ChatContext } from '../../../context/ChatContext';
 
 const userArr = [
   {
@@ -155,12 +156,18 @@ const userArr = [
   },
 ]
 
-const UsersList = () => {
+const UsersList = ({socket}) => {
+  const { users , loadMessages } = useContext(ChatContext)
+  console.log(users)
   return (
     <div className={styles.userList}>
-      {userArr.map((item,index) => {
+      {users.map((item,index) => {
         return (
-          <div onClick={() => console.log('test')}> <UserItem dataUser={item} /></div>
+          <div 
+          key={index} 
+          onClick={() => loadMessages(socket,item.cookieId,item.id)}> 
+            <UserItem dataUser={item} />
+          </div>
          
         )
       })}
