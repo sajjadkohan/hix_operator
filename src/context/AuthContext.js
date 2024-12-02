@@ -27,7 +27,7 @@ const AuthContext = ({children}) => {
         console.log(res);
         if(res.status == 200){
             setUser(false);
-            return res.data.data
+            return !!res.data.data
         } else {
             // navigate('/login',{replace : true});
             return false
@@ -47,7 +47,8 @@ const AuthContext = ({children}) => {
     <AuthCtx.Provider value={{
         isLogin,
         user,
-        logout
+        logout,
+        setUser
     }}>
       {children}
     </AuthCtx.Provider>

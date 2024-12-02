@@ -31,7 +31,7 @@ const Dashbord = () => {
         if(play){
     
             if(!user?.userName){
-                // navigate('/login',{replace : true}); 
+                navigate('/login',{replace : true}); 
             }
 
         }

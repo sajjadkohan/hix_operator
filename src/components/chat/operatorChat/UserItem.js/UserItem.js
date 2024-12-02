@@ -7,7 +7,7 @@ import { ChatContext } from '../../../../context/ChatContext';
 
 const UserItem = ({dataUser}) => {
   const { userSelect } = useContext(ChatContext)
-  // console.log(dataUser)
+  console.log(dataUser)
 
   return (
     <div className={`${styles.userItem} ${dataUser.id === userSelect?.sid ? styles.active : ""} ${dataUser.disable&&styles.disable}`}>
@@ -26,20 +26,21 @@ const UserItem = ({dataUser}) => {
       <div className={styles.left}>
         <h3 className='danaRegular'>{dataUser.name}</h3>
         <div className={styles.lastMsg}>
-        <p>من این محصول را میخواهم اما نمیتوانم انرا در سایت پیدا کنم لطفا به من کمک کنید</p>
+          {
+
+          dataUser.lastMessage &&
+            <p>{dataUser.lastMessage} </p>
+          }
         </div>
       </div>
       
       <div className={styles.right}>
         <div className={styles.badgeParent}>
-          <span className={styles.badge}>3</span>
+          {!dataUser.lastMessageSeen && <span className={styles.badge}></span> }
           <span className={styles.date}>27/08/1403</span>
         </div>
       </div>
-      {
-        dataUser.lastMessage && 
-      <p style={{margin: 0,marginLeft: 0,color: "#ccc",marginLeft: "14px"}}>{dataUser.lastMessage}</p>
-      }
+
       
     </div>
   )

@@ -12,12 +12,14 @@ import { ViewCtx } from '../../../context/ViewContext';
 import toast from 'react-hot-toast';
 import { useNavigate} from 'react-router-dom';
 import { requestData } from '../../../utils/functions';
+import { AuthCtx } from '../../../context/AuthContext';
 
 
 
 const LoginComponent = () => {
   
   const {hasLogin,setHasLogin,loading,setLoading,hasoperator,setHasOperator} = useContext(ViewCtx);
+  const { setUser }= useContext(AuthCtx)
   
   const [showPassword, setShowPassword] = React.useState(false);
   const [dataState, setDataState] = React.useState({
@@ -35,8 +37,6 @@ const LoginComponent = () => {
   const handleMouseUpPassword = (event) => {
     event.preventDefault();
   };
-
-
 
   const createAcount = async() => {
     setHasLogin(false);
@@ -82,12 +82,13 @@ const LoginComponent = () => {
       setLoading({...loading,login : true});
 
         const res = await requestData('/user/login','POST',data);
-        console.log(res);
+        
         if(!res.data.success){
           toast.error(res.data.message);
         } else {
           toast.success(res.data.message);
           if(res.status == 200){
+            setUser(res.data.data)
             navigate('/dashbord');
           }
 
