@@ -14,7 +14,7 @@ const dataFormAddProduct = [
       positionIcon : 'start',
       icon : <MdDriveFileRenameOutline size={30} />,
       placeholder : 'نام دسته بندی',
-      nameInput : 'product_name',
+      nameInput : 'cat_name',
   },
   {
       size : 12,
@@ -22,7 +22,7 @@ const dataFormAddProduct = [
       positionIcon : 'start',
       icon : <TbAlphabetLatin size={30} />,
       placeholder : 'نام لاتین',
-      nameInput : 'count',
+      nameInput : 'en_name',
   },
 ]
 const AddCategoryModal = () => {
@@ -30,11 +30,8 @@ const AddCategoryModal = () => {
     const {showAddCategoryModal,setShowAddCategoryModal,loading} = useContext(ViewCtx);
 
     const [dataState, setDataState] = React.useState({
-      'userName' : '',
-      'password' : '',
-      'confirmPassword':'',
-      "firstName": "",
-      "lastName":"",
+      'en_name' : '',
+      'cat_name' : '',
     });
 
     const changHandler = (e) => {

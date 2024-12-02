@@ -23,10 +23,18 @@ const UserItem = ({dataUser}) => {
       </div>
       }
       <img alt='avatar' className={styles.avatar} src={userIcon} />
-      <h3 className='danaRegular'>{dataUser.name}</h3>
-      <div className={styles.badgeParent}>
-        <span className={styles.badge}>3</span>
-        <span className={styles.date}>27/08/1403</span>
+      <div className={styles.left}>
+        <h3 className='danaRegular'>{dataUser.name}</h3>
+        <div className={styles.lastMsg}>
+        <p>من این محصول را میخواهم اما نمیتوانم انرا در سایت پیدا کنم لطفا به من کمک کنید</p>
+        </div>
+      </div>
+      
+      <div className={styles.right}>
+        <div className={styles.badgeParent}>
+          <span className={styles.badge}>3</span>
+          <span className={styles.date}>27/08/1403</span>
+        </div>
       </div>
       {
         dataUser.lastMessage && 

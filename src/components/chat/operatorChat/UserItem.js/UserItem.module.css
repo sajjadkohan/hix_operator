@@ -16,7 +16,9 @@
     font-size: 16px;
     max-width: 50%;
     width: auto;
-    text-overflow: ellipsis;}
+    text-overflow: ellipsis;
+    margin: 0px 0px 0px 10px;
+  }
 .userItem:hover{
     background-color: rgb(255, 243, 229);
   outline: 1px solid #ffe1c2;
@@ -58,3 +60,28 @@
 background-color: rgb(255, 209, 60);color: black;padding: 3px;
 }
 .userItem .date{position: relative;right: 10px;color: #c3c3c3;}
+
+.userItem .lastMsg{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  padding: 5px 10px;
+}
+.userItem .lastMsg p{
+  width: 100%;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  margin: 0px;
+  overflow: hidden;
+  font-family: 'danaRegular';
+  color: #8e8e8e;
+  white-space: nowrap;
+  text-align: left;
+  direction: rtl;
+  max-width: 160px;
+}
+.userItem .avatar{width: 10%;}
+.userItem .left{width: 55%;overflow: hidden;}
+.userItem .right{width: 35%;}
