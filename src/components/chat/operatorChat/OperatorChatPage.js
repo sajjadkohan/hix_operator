@@ -50,8 +50,8 @@ const OperatorChatPage = () => {
           error ?
             <p>{error}</p> :
             <Grid spacing={1} container size={12}>
-              <Grid spacing={1} item size={5}><UsersList socket={socket} /></Grid>
-              <Grid spacing={1} item size={7}><ChatLayout socket={socket} /></Grid>
+              <Grid item='true' size={5}><UsersList socket={socket} /></Grid>
+              <Grid item='true' size={7}><ChatLayout socket={socket} /></Grid>
             </Grid>
       }
     </Content>

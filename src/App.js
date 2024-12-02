@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route, NavLink} from 'react-router-dom'
 import Dashbord from './pages/Dashbord/Dashbord';
 import DashbordContext from './context/DashbordContext';
 import Products from './components/dashbord/content/products/Products';
@@ -22,7 +22,7 @@ function App() {
       <DashbordContext>
         <BrowserRouter>
         <Routes>
-          <Route path='/' element={<h1>home page</h1>} />
+          <Route path='/' element={<h1>home page | go to <NavLink to={'/dashbord'}>/dashbord</NavLink></h1>} />
           <Route path='/login' element={<LoginLayout />} />
           <Route path='/addPlan' element={<AddPlan/>} />
           <Route path='/dashbord' element={<Dashbord/>}>

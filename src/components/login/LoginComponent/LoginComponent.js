@@ -138,7 +138,7 @@ const LoginComponent = () => {
         {
           !hasLogin&&
           <>
-        <Grid item size={6}>
+        <Grid item='true' size={6}>
         <TextField
           label=""
           slotProps={{
@@ -178,7 +178,7 @@ const LoginComponent = () => {
           }}
         />
         </Grid>
-        <Grid item size={6}>
+        <Grid item='true' size={6}>
         <TextField
           label=""
           slotProps={{
@@ -214,7 +214,7 @@ const LoginComponent = () => {
         </Grid>
           </>
         }
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <TextField
           label=""
           slotProps={{
@@ -251,7 +251,7 @@ const LoginComponent = () => {
           }}
         />
         </Grid>
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <TextField
           label=""
           type={showPassword ? 'text' : 'password'}
@@ -302,7 +302,7 @@ const LoginComponent = () => {
         </Grid>
         {
           !hasLogin&&
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <TextField
           label=""
           type={showPassword ? 'text' : 'password'}
@@ -351,7 +351,7 @@ const LoginComponent = () => {
         </Grid>
         }
         <Grid container spacing={2} size={12}>
-        <Grid item size={6}>
+        <Grid item='true' size={6}>
         <Button variant="contained"
         onClick={async() => await createAcount()}
         sx={{
@@ -376,7 +376,7 @@ const LoginComponent = () => {
         }
         </Button>
         </Grid>
-        <Grid item size={6}>
+        <Grid item='true' size={6}>
         <Button variant="outlined"
         onClick={() => loginAcount()}
         sx={{

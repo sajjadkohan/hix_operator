@@ -66,7 +66,7 @@ return (
         {
           dataFormAddProduct.length&&dataFormAddProduct.map((item,index) => {
             return(
-              <Grid item size={item.size}>
+              <Grid item='true' size={item.size}>
               <TextField
                 label=""
                 name={item.nameInput}
@@ -191,7 +191,7 @@ return (
 
 
       <Grid container spacing={2} size={12}>
-      <Grid item size={12}>
+      <Grid item='true' size={12}>
       <Button variant="contained"
       onClick={async() => await addOperatorFn(dataState)}
       sx={{

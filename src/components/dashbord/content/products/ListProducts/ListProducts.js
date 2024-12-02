@@ -46,13 +46,13 @@ const ListProducts = ({title}) => {
     <div className={styles.listProducts}>
       <TitleList title={title} lastUpdate={'5 دقیقه قبل'} />
       <Grid className={`${styles.head} danaRegular`} spacing={1} container size={12}>
-        <Grid item size={0.5}></Grid>
-        <Grid item size={2.5}>محصول</Grid>
-        <Grid item size={2}>قیمت</Grid>
-        <Grid item size={2}>دسته بندی</Grid>
-        <Grid item size={2}>وضعیت انبار</Grid>
-        <Grid item size={2}>نمودار فروش</Grid>
-        <Grid item size={1}>جزییات</Grid>
+        <Grid item='true' size={0.5}></Grid>
+        <Grid item='true' size={2.5}>محصول</Grid>
+        <Grid item='true' size={2}>قیمت</Grid>
+        <Grid item='true' size={2}>دسته بندی</Grid>
+        <Grid item='true' size={2}>وضعیت انبار</Grid>
+        <Grid item='true' size={2}>نمودار فروش</Grid>
+        <Grid item='true' size={1}>جزییات</Grid>
       </Grid>
       
       <div className={styles.ListParent}>

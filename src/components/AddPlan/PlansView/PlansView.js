@@ -72,7 +72,7 @@ const PlansView = () => {
     {
         plansState?.length? plansState.map((item,index) => {
             return(
-                <Grid key={index} item size={4}>
+                <Grid key={index} item='true' size={4}>
                         <PlanCard active={index == 1?true:false} data={item} />
                     </Grid>
             )
@@ -86,9 +86,9 @@ const PlansView = () => {
             <div className=''>ابتدا وارد شوید</div>
             :
             <Grid container size={12} spacing={4}>
-                <Grid item size={4}><Skeleton variant="rounded" width={310} height={418} /></Grid>
-                <Grid item size={4}><Skeleton variant="rounded" width={310} height={418} /></Grid>
-                <Grid item size={4}><Skeleton variant="rounded" width={310} height={418} /></Grid>
+                <Grid item='true' size={4}><Skeleton variant="rounded" width={310} height={418} /></Grid>
+                <Grid item='true' size={4}><Skeleton variant="rounded" width={310} height={418} /></Grid>
+                <Grid item='true' size={4}><Skeleton variant="rounded" width={310} height={418} /></Grid>
             </Grid>
             }
         </div>
