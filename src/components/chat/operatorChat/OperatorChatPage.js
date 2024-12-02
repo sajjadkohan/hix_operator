@@ -24,6 +24,7 @@ const OperatorChatPage = () => {
     return () => {
       socket.off('connect', handleConnect);
       socket.off('disconnect', handleDisconnect);
+      socket.off('updateUserList', (data) => getUsersList(data));
       socket.off('newMessageFromUser', (data) => createMessage(data));  // حذف listener پیام‌ها
     };
   }, []);  
