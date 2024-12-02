@@ -77,6 +77,7 @@ export const ChatProvider = ({children}) => {
 
     // Get Users List
     const getUsersList = (data) => {
+        console.log("ssssss")
         setUsers(data)
     }
 
