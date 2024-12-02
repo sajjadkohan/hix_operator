@@ -7,9 +7,10 @@ import { ChatContext } from '../../../../context/ChatContext';
 
 const UserItem = ({dataUser}) => {
   const { userSelect } = useContext(ChatContext)
+  // console.log(dataUser)
 
   return (
-    <div className={`${styles.userItem} ${dataUser.id === userSelect ? styles.active : ""} ${dataUser.disable&&styles.disable}`}>
+    <div className={`${styles.userItem} ${dataUser.id === userSelect?.sid ? styles.active : ""} ${dataUser.disable&&styles.disable}`}>
       {
         dataUser.disable&&
         <div className={styles.disableParent}>
@@ -27,6 +28,11 @@ const UserItem = ({dataUser}) => {
         <span className={styles.badge}>3</span>
         <span className={styles.date}>27/08/1403</span>
       </div>
+      {
+        dataUser.lastMessage && 
+      <p style={{margin: 0,marginLeft: 0,color: "#ccc",marginLeft: "14px"}}>{dataUser.lastMessage}</p>
+      }
+      
     </div>
   )
 }

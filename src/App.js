@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast';
 import OperatorSettings from './components/dashbord/content/chatSettings/operator/OperatorSettings';
 import  { AuthCtx } from './context/AuthContext';
 import AddPlan from './pages/AddPlan/AddPlan';
+import AllContent from './components/chat/AllContent';
 function App() {
 
   const {isLogin} = useContext(AuthCtx);
@@ -27,7 +28,7 @@ function App() {
           <Route path='/dashbord' element={<Dashbord/>}>
             <Route path='home' element={<h1>dashbord</h1>}/>
             <Route path='reports' element={<h1>reports</h1>}/>
-            <Route path='chat' element={<OperatorChatPage />}/>
+            <Route path='chat' element={<AllContent />}/>
             <Route path='products' element={<Products/>}/>
             <Route path='commands' element={<h1>commands</h1>}/>
             <Route path='profile' element={<h1>profile</h1>}/>

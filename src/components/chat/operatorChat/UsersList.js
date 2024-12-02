@@ -159,6 +159,7 @@ const userArr = [
 const UsersList = ({socket}) => {
   const { users , loadMessages } = useContext(ChatContext)
   console.log(users)
+
   return (
     <div className={styles.userList}>
       {users.map((item,index) => {

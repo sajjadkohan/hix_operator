@@ -9,6 +9,7 @@
     border-radius: 12px;
     padding: 0px 10px;
     position: relative;
+    flex-wrap: wrap;
 }
 .userItem .avatar{width: 35px;height: 35px;border-radius: 100%;}
 .userItem h3{font-weight: 200;margin-left: 10px;color: #454545;overflow: hidden;

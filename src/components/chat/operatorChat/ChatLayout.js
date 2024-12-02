@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './Operator.module.css'
 import { ChatContext } from '../../../context/ChatContext'
 import TextType from './MessageTypes/TextType';
-const ChatLayout = () => {
-    const { messages , userSelect , messageLoading } = useContext(ChatContext);
-    console.log(messages)
+const ChatLayout = ({socket}) => {
+    const { messages , userSelect , messageLoading ,
+         sendMessageToClient , textMessage,setTextMessage } = useContext(ChatContext);
+    
+
   return (
     <div className={styles.chatLayout}>
         <div className={styles.body}>
@@ -191,8 +193,16 @@ const ChatLayout = () => {
                     </a>
                 </div>
                 <div className={styles.center}>
-                    <input className="inputText danaFont" type="text" placeholder="پیامی بنویسید . . ." />
+                    <input 
+                    value={textMessage}
+                    onChange={(e) => setTextMessage(e.target.value)}
+                    className="inputText danaFont" 
+                    type="text" 
+                    placeholder="پیامی بنویسید . . ." />
                 </div>
+                <button
+                onClick={(e) => sendMessageToClient(e,socket,textMessage)}
+                >send</button>
                 <div className={styles.left}>
                     <button className={styles.emoji}>
                         <svg fill="#bababa" height="22" viewBox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg"><path d="M12,2C6.5,2,2,6.5,2,12s4.5,10,10,10c5.5,0,10-4.5,10-10S17.5,2,12,2z M12,21c-4.9,0-9-4.1-9-9c0-5,4.1-9,9-9s9,4.3,9,9 C21,16.7,16.8,21,12,21z M15.5,11c0.8,0,1.5-0.7,1.5-1.5S16.3,8,15.5,8S14,8.7,14,9.5S14.7,11,15.5,11z M8.5,11 c0.8,0,1.5-0.7,1.5-1.5S9.3,8,8.5,8S7,8.7,7,9.5S7.7,11,8.5,11z M12,17.5c2.3,0,4.3-1.5,5.1-3.5H6.9C7.7,16,9.7,17.5,12,17.5z"></path></svg>
