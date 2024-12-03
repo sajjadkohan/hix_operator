@@ -7,7 +7,7 @@ import { ChatContext } from '../../../../context/ChatContext';
 
 const UserItem = ({dataUser}) => {
   const { userSelect } = useContext(ChatContext)
-  console.log(dataUser)
+  // console.log(dataUser)
 
   return (
     <div className={`${styles.userItem} ${dataUser.id === userSelect?.sid ? styles.active : ""} ${dataUser.disable&&styles.disable}`}>

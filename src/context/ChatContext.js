@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthCtx } from "./AuthContext";
 
@@ -9,6 +9,7 @@ export const ChatProvider = ({children}) => {
     const [loading,setLoading] = useState(false);
     const [messageLoading,setMessageLoading] = useState(false);
     const [messages,setMessages] = useState([]);
+    const [changeValueChat,setChangeValueChat] = useState(1);
     const { user } = useContext(AuthCtx);
     const [textMessage,setTextMessage] = useState("");
 
@@ -68,7 +69,8 @@ export const ChatProvider = ({children}) => {
         socket.emit("sendMessageToUser",sendMessage,(data) => {
             if(data.success){
                 createMessage(sendMessage,"operator")
-                setTextMessage("")
+                setTextMessage("");
+                return true
             }else{
                 alert(data.message)
             }
@@ -77,7 +79,8 @@ export const ChatProvider = ({children}) => {
 
     // Get Users List
     const getUsersList = (data) => {
-        console.log("ssssss")
+        console.log("ssssss");
+        // setChangeValueChat(changeValueChat+1);
         setUsers(data)
     }
 
@@ -100,7 +103,8 @@ export const ChatProvider = ({children}) => {
             loadMessages,messages,
             messageLoading,setMessageLoading,
             createMessage,sendMessageToClient,textMessage,setTextMessage,
-            getUsersList,handleConnect,handleDisconnect
+            getUsersList,handleConnect,handleDisconnect,
+            changeValueChat,setChangeValueChat,
             }}>
             {children}
         </ChatContext.Provider>

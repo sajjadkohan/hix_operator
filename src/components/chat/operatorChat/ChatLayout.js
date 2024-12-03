@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import styles from './Operator.module.css'
 import { ChatContext } from '../../../context/ChatContext'
 import TextType from './MessageTypes/TextType';
@@ -7,8 +7,11 @@ import { MdOutlineEmojiEmotions , MdOutlineAttachFile } from "react-icons/md";
 
 const ChatLayout = ({socket}) => {
     const { messages , userSelect , messageLoading ,
-        sendMessageToClient , textMessage,setTextMessage } = useContext(ChatContext);
-    console.log(messages);
+        sendMessageToClient , textMessage,setTextMessage
+        ,changeValueChat,setChangeValueChat,users
+    } = useContext(ChatContext);
+    // console.log(messages);
+    const chatBaseRef = useRef(null);
 
     const [dataState,setDataState] = React.useState({
         'textValue' : ''
@@ -21,10 +24,23 @@ const ChatLayout = ({socket}) => {
         })
     }
 
+
+    useEffect(() => {
+   
+
+            if (chatBaseRef.current) {
+                chatBaseRef.current.scrollTo({
+                  top: chatBaseRef.current.scrollHeight,
+                  behavior: 'smooth',  // اسکرول نرم
+                });
+              }
+
+    },[messages]);
+
   return (
     <div className={styles.chatLayout}>
         <div className={styles.body}>
-            <div className={styles.chatBase}>
+            <div ref={chatBaseRef} className={styles.chatBase}>
                 <div className={styles.dateStart}>
                     <span>چهارشنبه 16 آبان 1403</span>
                 </div>
@@ -200,7 +216,13 @@ const ChatLayout = ({socket}) => {
     {
         !messageLoading && userSelect && 
         <div className={styles.footer}>
-            <form onSubmit={(e) => sendMessageToClient(e,socket,textMessage)}>
+            <form onSubmit={(e) => {
+                // e.preventDefault();
+                sendMessageToClient(e,socket,textMessage)
+
+                // chatBaseRef.current.scrollTop = chatBaseRef.current.scrollHeight;
+                
+            }}>
                 <div className={styles.right}>
                     <a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#bababa"><path d="M12 15c1.66 0 2.99-1.34 2.99-3L15 6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 15 6.7 12H5c0 3.42 2.72 6.23 6 6.72V22h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
@@ -221,7 +243,11 @@ const ChatLayout = ({socket}) => {
                         <span className={styles.addFile}>
                         <span className={`${styles.icon} dFlexallCenter`}>
                             <button 
-                            onClick={(e) => sendMessageToClient(e,socket,textMessage)}
+                            onClick={(e) => {
+                                // sendMessageToClient(e,socket,textMessage)
+                // console.log(chatBaseRef.current,chatBaseRef.current.scrollTop);
+
+                            }}
                             className={styles.sendBtn}>
                                 <IoSendSharp className={styles.sendIcon} size={30} />
                             </button>
