@@ -3,16 +3,18 @@ import styles from './UserItem.module.css'
 import avatar1 from '../../../../images/chat/avatars/a1.jpg'
 import userIcon from '../../../svgs/userIcon.svg';
 import { ChatContext } from '../../../../context/ChatContext';
+import { AuthCtx } from '../../../../context/AuthContext';
 
 
 const UserItem = ({dataUser}) => {
   const { userSelect } = useContext(ChatContext)
+  const { user } = useContext(AuthCtx)
   console.log(dataUser)
 
   return (
-    <div className={`${styles.userItem} ${dataUser.id === userSelect?.sid ? styles.active : ""} ${dataUser.disable&&styles.disable}`}>
+    <div className={`${styles.userItem} ${dataUser.id === userSelect?.sid ? styles.active : ""} ${(dataUser.targetOperator && dataUser.targetOperator !== user.socketId ) &&styles.disable}`}>
       {
-        dataUser.disable&&
+        (dataUser.targetOperator && dataUser.targetOperator !== user.socketId )  &&
         <div className={styles.disableParent}>
         <span className={styles.icon}>
         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
