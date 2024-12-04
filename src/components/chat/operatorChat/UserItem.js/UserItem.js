@@ -7,7 +7,8 @@ import { AuthCtx } from '../../../../context/AuthContext';
 
 
 const UserItem = ({dataUser}) => {
-  const { userSelect } = useContext(ChatContext)
+  const { userSelect } = useContext(ChatContext);
+  const { user } = useContext(AuthCtx);
   // console.log(dataUser)
 
   return (
