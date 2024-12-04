@@ -64,6 +64,7 @@
     height: 100%;
     overflow-x: hidden;
     box-shadow: 0px 0px 50px #ababab0d inset;
+    scroll-behavior: smooth;
   }
   .chatBase .leftMsgPack,.chatBase .rightMsgPack{
     padding: 5px;

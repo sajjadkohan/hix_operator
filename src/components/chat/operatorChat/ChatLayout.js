@@ -11,7 +11,7 @@ const ChatLayout = ({socket}) => {
         ,changeValueChat,setChangeValueChat,users
     } = useContext(ChatContext);
     // console.log(messages);
-    const chatBaseRef = useRef(null);
+    const messagesContainerRef = useRef(null);
 
     const [dataState,setDataState] = React.useState({
         'textValue' : ''
@@ -27,12 +27,16 @@ const ChatLayout = ({socket}) => {
 
     useEffect(() => {
    
-
-            if (chatBaseRef.current) {
-                chatBaseRef.current.scrollTo({
-                  top: chatBaseRef.current.scrollHeight,
-                  behavior: 'smooth',  // اسکرول نرم
-                });
+        
+        if (messagesContainerRef.current) {
+                console.log(messagesContainerRef.current.scrollHeight);
+                // messagesContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+                // messagesContainerRef.current.scrollTo({
+                //   top: messagesContainerRef.current.scrollHeight,
+                  
+                //   behavior: 'smooth',  // اسکرول نرم
+                // });
               }
 
     },[messages]);
@@ -40,7 +44,7 @@ const ChatLayout = ({socket}) => {
   return (
     <div className={styles.chatLayout}>
         <div className={styles.body}>
-            <div ref={chatBaseRef} className={styles.chatBase}>
+            <div ref={messagesContainerRef} className={styles.chatBase}>
                 <div className={styles.dateStart}>
                     <span>چهارشنبه 16 آبان 1403</span>
                 </div>
@@ -220,7 +224,7 @@ const ChatLayout = ({socket}) => {
                 // e.preventDefault();
                 sendMessageToClient(e,socket,textMessage)
 
-                // chatBaseRef.current.scrollTop = chatBaseRef.current.scrollHeight;
+                // messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
                 
             }}>
                 <div className={styles.right}>
@@ -245,7 +249,7 @@ const ChatLayout = ({socket}) => {
                             <button 
                             onClick={(e) => {
                                 // sendMessageToClient(e,socket,textMessage)
-                // console.log(chatBaseRef.current,chatBaseRef.current.scrollTop);
+                // console.log(messagesContainerRef.current,messagesContainerRef.current.scrollTop);
 
                             }}
                             className={styles.sendBtn}>

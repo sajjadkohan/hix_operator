@@ -79,7 +79,7 @@ export const ChatProvider = ({children}) => {
 
     // Get Users List
     const getUsersList = (data) => {
-        console.log("ssssss");
+        // console.log("ssssss");
         // setChangeValueChat(changeValueChat+1);
         setUsers(data)
     }
