@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { TitleContent } from '../../../../global/globalComponents/globalMuiComponent/globalMuiComponents'
 import styles from './Products.module.css';
 import { themeColorLayer3 } from '../../../../utils/constanst';
@@ -55,6 +55,7 @@ const Products = () => {
         showAddCategoryModal,
         showAddFeatureModal,
     } = useContext(ViewCtx);
+
 
   return (
     <div>

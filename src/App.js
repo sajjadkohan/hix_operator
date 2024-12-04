@@ -1,19 +1,17 @@
-import { useContext, useEffect } from 'react';
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import { useState } from 'react';
+import {BrowserRouter,Routes,Route,  Link} from 'react-router-dom'
 import Dashbord from './pages/Dashbord/Dashbord';
 import DashbordContext from './context/DashbordContext';
 import Products from './components/dashbord/content/products/Products';
 import LoginLayout from './components/login/LoginLayout';
 import ViewContext from './context/ViewContext';
-import OperatorChatPage from './components/chat/operatorChat/OperatorChatPage';
 import { Toaster } from 'react-hot-toast';
 import OperatorSettings from './components/dashbord/content/chatSettings/operator/OperatorSettings';
-import  { AuthCtx } from './context/AuthContext';
+
 import AddPlan from './pages/AddPlan/AddPlan';
 import AllContent from './components/chat/AllContent';
 function App() {
 
-  const {isLogin} = useContext(AuthCtx);
 
   return (
     <div className="App">
@@ -22,7 +20,7 @@ function App() {
       <DashbordContext>
         <BrowserRouter>
         <Routes>
-          <Route path='/' element={<h1>home page</h1>} />
+          <Route path='/' element={<h1>home page | go to <Link to={'/dashbord'}>/dashbord</Link></h1>} />
           <Route path='/login' element={<LoginLayout />} />
           <Route path='/addPlan' element={<AddPlan/>} />
           <Route path='/dashbord' element={<Dashbord/>}>

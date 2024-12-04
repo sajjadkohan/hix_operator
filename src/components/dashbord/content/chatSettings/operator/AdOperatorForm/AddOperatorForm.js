@@ -57,7 +57,7 @@ const AddOperatorForm = () => {
     <div>
         <Grid container spacing={3}>
         
-        <Grid item size={6}>
+        <Grid item='true' size={6}>
         <TextField
           label=""
           name="firstName"
@@ -99,7 +99,7 @@ const AddOperatorForm = () => {
           }}
         />
         </Grid>
-        <Grid item size={6}>
+        <Grid item='true' size={6}>
         <TextField
           label=""
           name="lastName"
@@ -137,7 +137,7 @@ const AddOperatorForm = () => {
         </Grid>
 
         
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <TextField
           label=""
           slotProps={{
@@ -175,7 +175,7 @@ const AddOperatorForm = () => {
         />
         </Grid>
 
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <TextField
           label=""
           type={showPassword ? 'text' : 'password'}
@@ -225,7 +225,7 @@ const AddOperatorForm = () => {
         />
         </Grid>
         
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <TextField
           label=""
           name="confirmPassword"
@@ -277,7 +277,7 @@ const AddOperatorForm = () => {
         
 
         <Grid container spacing={2} size={12}>
-        <Grid item size={12}>
+        <Grid item='true' size={12}>
         <Button variant="contained"
         onClick={async() => await addOperatorFn(dataState)}
         sx={{

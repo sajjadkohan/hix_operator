@@ -21,7 +21,7 @@ const LoginLayout = () => {
 
   return (
     <div className={styles.loginLayout}>
-      <Grid item size={4}>
+      <Grid item='true' size={4}>
         <p className='danaRegular textMuted fn18'>برای شروع </p>
         {hasLogin?
         <h1 className='danaBold color1976d2'> وارد حساب خود کنید </h1>
@@ -31,7 +31,7 @@ const LoginLayout = () => {
       }
       </Grid>
     <Grid container size={12}>
-        <Grid item size={4.5}>
+        <Grid item='true' size={4.5}>
         <LoginComponent />
         </Grid>
     </Grid>

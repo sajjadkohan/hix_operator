@@ -64,6 +64,7 @@
     height: 100%;
     overflow-x: hidden;
     box-shadow: 0px 0px 50px #ababab0d inset;
+    scroll-behavior: smooth;
   }
   .chatBase .leftMsgPack,.chatBase .rightMsgPack{
     padding: 5px;
@@ -169,7 +170,7 @@
 .chatLayout .footer .center input:focus{outline: none;}
 .chatLayout .footer .left{width: 20%;display: flex;justify-content: flex-end;align-items: center;position: relative;}
 .chatLayout .footer .left .icon{position: relative;display: flex;align-items: center;justify-content: center;}
-.chatLayout .footer .left button{cursor: pointer;}
+.chatLayout .footer .left button{cursor: pointer;color: #767676;}
 .chatLayout .footer .left > span .fileInput{position: absolute;width: 45%;height: 100%;left: 0px;top:0px;opacity: 0;cursor: pointer;}
 .chatLayout .footer .right a:hover svg{fill: #d09303;}
 .chatLayout .footer .left .emoji{border: none;background: none;}
@@ -183,6 +184,17 @@
   justify-content: center;
   cursor: pointer;
 }
+.chatLayout .fileIcon{color: #767676;}
+.chatLayout .fileIcon:hover{color :#d09303;}
+.sendBtn{border: none;background: none;}
+.sendBtn .sendIcon{
+  color: #767676;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transition: 0.3s all;
+}
+.sendBtn .sendIcon:hover{color: #d09303;}
 
   /*footer*/
   
