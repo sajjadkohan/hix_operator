@@ -66,65 +66,9 @@ const ChatLayout = ({socket}) => {
 
       
 
-                    <div className={styles.leftMsgPack}>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>سلام وقت بخیر</span>
-                        </div>
-                        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
 
-                    </div>
 
-                    <div className={styles.rightMsgPack}>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>سلام وقت بخیر</span>
-                        </div>
-                        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
-                    </div>
-
-                    <div className={styles.leftMsgPack}>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>درباره محصول شماره 1 چنتا سوال داشتم</span>
-                        </div>
-                        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
-
-                        <div className={styles.msg}>
-                            <span className={styles.text}>قیمتش چقدره ؟</span>
-                        </div>
-                        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
-
-                    </div>
-
-                    <div className={styles.rightMsgPack}>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>این محصول امریکایی هست و قیمتش 2 میلیون تومان هست</span>
-                        </div>
-                        <span className={`${styles.statusMsg}`}>04:20</span>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>جنسش بسیار عالی و کاملا مقاومه و دارای گارانتی میباشد</span>
-                        </div>
-                        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>سلام وقت بخیر</span>
-                        </div>
-                        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
-                    </div>
-
-                    <div className={styles.leftMsgPack}>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>سلام وقت بخیر</span>
-                        </div>
-                        <span className={`${styles.statusMsg}`}>04:20</span>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>سلام وقت بخیر</span>
-                        </div>
-                        <span className={`${styles.statusMsg}`}>04:20</span>
-                        <div className={styles.msg}>
-                            <span className={styles.text}>سلام وقت بخیر</span>
-                        </div>
-                        <span className={`${styles.statusMsg}`}>04:20</span>
-                    </div>
-
-                    <div className={styles.rightMsgPack}>
+                    {/* <div className={styles.rightMsgPack}>
                         <div className={styles.msg}>
                             <span className={styles.text}>سلام وقت بخیر</span>
                         </div>
@@ -211,21 +155,46 @@ const ChatLayout = ({socket}) => {
                         <div className={styles.msg}>
                             <span className={styles.text}>سلام وقت بخیر</span>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* /image style/ */}
-                    <div className={styles.rightMsgImg}>
+                    {/* <div className={styles.rightMsgImg}>
                         <img src={image1} />
                         <p className={styles.desc}>توضیحات درباره این عکس</p>
-                    </div>
+                    </div> */}
                     {/* /image style/ */}
 
                     {/* /image style/ */}
-                    <div className={styles.leftMsgImg}>
+                    {/* <div className={styles.leftMsgImg}>
                         <img src={image} />
                         <p className={styles.desc}>توضیحات درباره این عکس</p>
-                    </div>
+                    </div> */}
                     {/* /image style/ */}
+
+                    {/* /video style/ */}
+                    {/* <div className={styles.leftMsgImg}>
+                    <video
+                        width="300"
+                        controls
+                        autoPlay
+                        loop
+                        muted
+                        preload="auto"
+                    >
+                        <source
+                        src="https://www.w3schools.com/html/movie.mp4"
+                        type="video/mp4"
+                        />
+                        <source
+                        src="https://www.w3schools.com/html/movie.ogg"
+                        type="video/ogg"
+                        />
+                        مرورگر شما از تگ ویدیو پشتیبانی نمی‌کند.
+                    </video>
+                        <p className={styles.desc}>توضیحات درباره این عکس</p>
+                    </div> */}
+                    {/* /video style/ */}
+                    
 
                 </div>
 
