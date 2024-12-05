@@ -29,7 +29,7 @@ const ChatLayout = ({socket}) => {
    
         
         if (messagesContainerRef.current) {
-                console.log(messagesContainerRef.current.scrollHeight);
+                // console.log(messagesContainerRef.current.scrollHeight);
                 // messagesContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
                 messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
                 // messagesContainerRef.current.scrollTo({

@@ -28,14 +28,14 @@ const Dashbord = () => {
         console.log(user);
         
         setPlay(true);
-        if(play){
+        // if(play){
     
-            if(!user?.userName){
-                navigate('/login',{replace : true}); 
-            }
-
+            
+        // }
+        if(!user?.userName){
+            navigate('/login',{replace : true}); 
         }
-      },[user]);
+    },[user]);
 
   return (
     <div className={styles.dashbord}>
