@@ -1,53 +1,148 @@
 import React, { useContext } from 'react'
-import Backdrop from '@mui/material/Backdrop';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
-import Typography from '@mui/material/Typography';
+
 import { ViewCtx } from '../../../../../context/ViewContext';
+import Grid from '@mui/material/Grid2/Grid2';
+import { Button, InputAdornment, TextField } from '@mui/material';
+import { MdDriveFileRenameOutline } from "react-icons/md";
+import { TbAlphabetLatin } from "react-icons/tb";
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '1px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-const AddProductModal = ({handleOpen,handleClose}) => {
+const dataFormAddProduct = [
+  {
+      size : 12,
+      label : '',
+      positionIcon : 'start',
+      icon : <MdDriveFileRenameOutline size={30} />,
+      placeholder : 'نام محصول',
+      nameInput : 'pro_name',
+  },
+  {
+      size : 12,
+      label : '',
+      positionIcon : 'start',
+      icon : <TbAlphabetLatin size={30} />,
+      placeholder : 'نام لاتین',
+      nameInput : 'en_name',
+  },
+]
+const AddProductModal = () => {
 
-    const {showAddProductModal,setShowAddProductModal} = useContext(ViewCtx);
+    const {showAddCategoryModal,setShowAddCategoryModal,loading} = useContext(ViewCtx);
 
+    const [dataState, setDataState] = React.useState({
+      'en_name' : '',
+      'pro_name' : '',
+    });
 
-  return (
-    <Modal
-    aria-labelledby="transition-modal-title"
-    aria-describedby="transition-modal-description"
-    open={showAddProductModal}
-    onClose={handleClose}
-    closeAfterTransition
-    slots={{ backdrop: Backdrop }}
-    slotProps={{
-      backdrop: {
-        timeout: 500,
-      },
-    }}
-  >
-    <Fade in={showAddProductModal}>
-      <Box sx={style}>
-        <Typography id="transition-modal-title" variant="h6" component="h2">
-          Text in a modalddd
-        </Typography>
-        <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
-      </Box>
-    </Fade>
-</Modal>
-  )
+    const changHandler = (e) => {
+      console.log(e.name,e.value);
+      setDataState({...dataState,
+        [e.name] : e.value
+      });
+      console.log(dataState);
+      
+      
+    }
+
+    const addOperatorFn = async (data) => {
+    // setLoading({...loading,addOperator : true});
+
+    //   const res = await requestData('/operator/add','POST',data);
+    //   console.log(res);
+    // setLoading({...loading,addOperator : false});
+    //   if(res?.status == 200){
+    //     toast.success(<p className='danaRegular'>{res?.data?.message}</p>)
+    //   } else {
+    //     toast.error(<p className='danaRegular'>{res?.data?.message}</p>)
+
+    //   }
+      
+    };
+
+return (
+  <div>
+      <Grid container spacing={3}>
+
+        {
+          dataFormAddProduct.length&&dataFormAddProduct.map((item,index) => {
+            return(
+              <Grid item='true' size={item.size}>
+              <TextField
+                label=""
+                name={item.nameInput}
+                onChange={(e) => changHandler(e.target)}
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position={item?.positionIcon?item.positionIcon:'start'}>
+                        {item.icon}
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+                variant="outlined"
+                placeholder={item.placeholder}
+                sx={{
+                  width : '100%',
+                  // Root class for the input field
+                  "& .MuiOutlinedInput-root": {
+                    color: "#000",
+                    fontFamily: "danaRegular",
+                    fontSize : '20px',
+                    background : '#f7f9ff96',
+                    borderRadius : '20px',
+        
+                    // Class for the border around the input field
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      border : 'none',
+                    },
+                    "&.Mui-focused fieldset": {
+                      border: '1px solid #ffae45', // رنگ حاشیه در حالت فوکوس
+                    },
+                  },
+                  "& .MuiInputBase-input::placeholder": {
+                    // color: "#000",   
+                    fontSize : '21px',
+                    // fontFamily : 'danaBold'
+                  },
+                }}
+              />
+              </Grid>
+            )
+          })
+        }
+      
+
+      <Grid container spacing={2} size={12}>
+      <Grid item='true' size={12}>
+      <Button variant="contained"
+      onClick={async() => await addOperatorFn(dataState)}
+      sx={{
+        padding: '12px 20px', // فاصله داخلی
+        borderRadius: '18px', // گرد کردن لبه‌ها
+        transition: 'background-color 0.3s ease', // انیمیشن برای تغییر رنگ
+        color: '#fff', // رنگ متن
+        borderColor: '#454545', // رنگ حاشیه
+        width : '100%',
+        fontFamily : 'danaBold',
+        fontSize : '18px',
+        '&:hover': {
+          backgroundColor: '#2aacfa', // رنگ پس‌زمینه هنگام هاور
+          color: '#fff', // رنگ متن هنگام هاور
+        },
+      }}
+      >
+        {loading.addOperator?
+      'loading . . .'
+      :
+      'افزودن'  
+      }
+      </Button>
+      </Grid>
+      </Grid>
+    </Grid>
+  </div>
+)
 }
+
 
 export default AddProductModal

@@ -290,7 +290,7 @@ const AddOperatorForm = () => {
           fontFamily : 'danaBold',
           fontSize : '18px',
           '&:hover': {
-            backgroundColor: '#ccc', // رنگ پس‌زمینه هنگام هاور
+            backgroundColor: '#2aacfa', // رنگ پس‌زمینه هنگام هاور
             color: '#fff', // رنگ متن هنگام هاور
           },
         }}

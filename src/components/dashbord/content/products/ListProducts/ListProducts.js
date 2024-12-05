@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import TitleList from './TitleList'
 import styles from './ListProducts.module.css'
 import Grid  from '@mui/material/Grid2';
 import ProductItem from './ProductItem';
+import { ChatContext } from '../../../../../context/ChatContext';
+import { AuthCtx } from '../../../../../context/AuthContext';
 
 const ListProducts = ({title}) => {
   const productsArr = [
@@ -42,6 +44,16 @@ const ListProducts = ({title}) => {
     details : 'details. . .'
   },
 ];
+  const {getOperators} = useContext(ChatContext);
+  const {user} = useContext(AuthCtx);
+
+  useEffect(() => {
+    const getOperatorsFn = async () => {
+      await getOperators();
+    };
+    user?.userName&&getOperatorsFn();
+  },[user]);
+
   return (
     <div className={styles.listProducts}>
       <TitleList title={title} lastUpdate={'5 دقیقه قبل'} />
