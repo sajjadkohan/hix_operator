@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { requestData } from '../utils/functions';
 import toast from 'react-hot-toast';
 
@@ -9,18 +9,26 @@ const AuthContext = ({children}) => {
     const [user,setUser] = useState(false);
 
 
+    const [loadingLogin,setLoadingLogin] = useState(false);
+
 
     const isLogin = async () => {
+        setLoadingLogin(true);
         const res = await requestData('/user/checkLogin','GET','');
         // console.log(res);
         if(res?.status == 200){
             setUser(res?.data?.data);
+            setLoadingLogin(false);
+
             return res?.data?.data
         } else {
+            console.log('ts');
+            
             // navigate('/login',{replace : true});
             toast.error(res?.data?.message);
+            // setLoadingLogin(true);
             
-            setUser({userName : ''})
+            setUser(false);
             return false
         }
     }
@@ -51,7 +59,8 @@ const AuthContext = ({children}) => {
         isLogin,
         user,
         logout,
-        setUser
+        setUser,
+        loadingLogin
     }}>
       {children}
     </AuthCtx.Provider>

@@ -8,7 +8,7 @@ import { AuthCtx } from '../../context/AuthContext';
 
 const Dashbord = () => {
 
-    const {isLogin,user,logout} = useContext(AuthCtx);
+    const {isLogin,user,logout,loadingLogin} = useContext(AuthCtx);
     const[play,setPlay] = useState(false);
     // const {products} = useContext(DashBordCtx);
 
@@ -25,16 +25,16 @@ const Dashbord = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(user);
         
         setPlay(true);
         // if(play){
+            console.log(loadingLogin,user);
     
+            if(!loadingLogin&&!user){
+                navigate('/login',{replace : true}); 
+            }
             
         // }
-        if(!user?.userName){
-            navigate('/login',{replace : true}); 
-        }
     },[user]);
 
   return (

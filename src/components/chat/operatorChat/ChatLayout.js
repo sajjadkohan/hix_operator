@@ -4,7 +4,8 @@ import { ChatContext } from '../../../context/ChatContext'
 import TextType from './MessageTypes/TextType';
 import { IoSendSharp } from "react-icons/io5";
 import { MdOutlineEmojiEmotions , MdOutlineAttachFile } from "react-icons/md";
-
+import image from '../../../images/logo/Hix-192.png';
+import image1 from '../../../images/background/8271049_55412.jpg';
 const ChatLayout = ({socket}) => {
     const { messages , userSelect , messageLoading ,
         sendMessageToClient , textMessage,setTextMessage
@@ -27,16 +28,16 @@ const ChatLayout = ({socket}) => {
 
     useEffect(() => {
    
+        // console.log(messagesContainerRef.current.scrollTop,':test:',messagesContainerRef.current.scrollHeight);
         
         if (messagesContainerRef.current) {
-                // console.log(messagesContainerRef.current.scrollHeight);
                 // messagesContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
                 messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-                // messagesContainerRef.current.scrollTo({
-                //   top: messagesContainerRef.current.scrollHeight,
+                messagesContainerRef.current.scrollTo({
+                  top: messagesContainerRef.current.scrollHeight,
                   
-                //   behavior: 'smooth',  // اسکرول نرم
-                // });
+                  behavior: 'smooth',  // اسکرول نرم
+                });
               }
 
     },[messages]);
@@ -65,7 +66,7 @@ const ChatLayout = ({socket}) => {
 
       
 
-                    {/* <div className={styles.leftMsgPack}>
+                    <div className={styles.leftMsgPack}>
                         <div className={styles.msg}>
                             <span className={styles.text}>سلام وقت بخیر</span>
                         </div>
@@ -210,7 +211,21 @@ const ChatLayout = ({socket}) => {
                         <div className={styles.msg}>
                             <span className={styles.text}>سلام وقت بخیر</span>
                         </div>
-                    </div> */}
+                    </div>
+
+                    {/* /image style/ */}
+                    <div className={styles.rightMsgImg}>
+                        <img src={image1} />
+                        <p className={styles.desc}>توضیحات درباره این عکس</p>
+                    </div>
+                    {/* /image style/ */}
+
+                    {/* /image style/ */}
+                    <div className={styles.leftMsgImg}>
+                        <img src={image} />
+                        <p className={styles.desc}>توضیحات درباره این عکس</p>
+                    </div>
+                    {/* /image style/ */}
 
                 </div>
 
