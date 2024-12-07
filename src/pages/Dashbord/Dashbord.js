@@ -30,7 +30,7 @@ const Dashbord = () => {
         // if(play){
             console.log(loadingLogin,user);
     
-            if(!loadingLogin&&!user){
+            if(!user){
                 navigate('/login',{replace : true}); 
             }
             
