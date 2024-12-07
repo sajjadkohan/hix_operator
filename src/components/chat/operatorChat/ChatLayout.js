@@ -8,7 +8,7 @@ import { MdOutlineEmojiEmotions , MdOutlineAttachFile } from "react-icons/md";
 const ChatLayout = ({socket}) => {
     const { messages , userSelect , messageLoading ,
         sendMessageToClient , textMessage,setTextMessage
-        ,changeValueChat,setChangeValueChat,users
+        ,changeValueChat,setChangeValueChat,users,isTyping
     } = useContext(ChatContext);
     // console.log(messages);
     const messagesContainerRef = useRef(null);
@@ -47,6 +47,7 @@ const ChatLayout = ({socket}) => {
             <div ref={messagesContainerRef} className={styles.chatBase}>
                 <div className={styles.dateStart}>
                     <span>چهارشنبه 16 آبان 1403</span>
+                    <span>{isTyping?"tiping ...":""}</span>
                 </div>
                 
                 <div className={styles.msgParent}>
