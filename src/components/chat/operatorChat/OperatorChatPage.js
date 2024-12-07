@@ -12,27 +12,47 @@ import music2 from "../../../assets/sounds/message2.mp3"
 
 const OperatorChatPage = () => {
   const [loading, setLoading] = useState(true);
+  const [connected, setConnected] = useState(socket.connected);
   const [error, setError] = useState(null);
   const { user , setUser } = useContext(AuthCtx);
-  const { createMessage , getUsersList , handleConnect , handleDisconnect ,changeValueChat,setChangeValueChat } = useContext(ChatContext);
+  const { createMessage , getUsersList ,
+    changeValueChat,setChangeValueChat , handleIsTyping} = useContext(ChatContext);
   const audioRef = useRef(null);
   const audioRef1 = useRef(null)
 
-
+  console.log(user)
   useEffect(() => {
-    socket.on('connect', handleConnect);
-    socket.on('disconnect', handleDisconnect);
-    join();
+    // Connect Operator
+    socket.on('connect', () => {
+      setConnected(true)
+    });
+
+    if(connected){
+      join()
+    }
+
+    // Disconnect Operator
+    socket.on('disconnect', () => {
+      setConnected(false)
+      localStorage.removeItem("selectedUser")
+    });
+
+    // Join Operator
+    // join();
+
+    // Update User List In Sidebar
     socket.on('updateUserList', (data) => {
       getUsersList(data);
       setChangeValueChat(!changeValueChat);
     });
+
+    // Handle New Message From Client
     socket.on('newMessageFromUser', (data) => {
       createMessage(data)
     });
 
+    // Play Sound On New Message From Client
     socket.on('messageSound',(data) => {
-      // Play Sound Message
       if(data.targetOperator === socket.id){
         audioRef1.current.play();
       }else{
@@ -41,13 +61,21 @@ const OperatorChatPage = () => {
 
     })
 
+    // Handle Is typing Client
+    socket.on('isTyping',(data) => handleIsTyping(data))
+
 
     return () => {
-      socket.off('connect', handleConnect);
-      socket.off('disconnect', handleDisconnect);
+      socket.off('connect', () => setConnected(false));
+      socket.off('disconnect', () => {
+        localStorage.removeItem("selectedUser")
+        setConnected(false)
+      });
       socket.off('updateUserList', (data) => getUsersList(data));
       socket.off('newMessageFromUser', (data) => createMessage(data));  // حذف listener پیام‌ها
       socket.off('messageSound',() => {})
+      socket.off('isTyping',(data) => handleIsTyping(data))
+
     };
   }, []);  
 
@@ -55,7 +83,7 @@ const OperatorChatPage = () => {
   const join = async () => {
     setLoading(true);
     // console.log("****",user)
-    socket.emit('join', { apiKey: user?.apikey, isOperator: true }, (res) => {
+    socket.emit('join', { apiKey: user?.apikey, isOperator: true },  (res) =>  {
       if (!res.success) {
         setError(res.message);
       }else{

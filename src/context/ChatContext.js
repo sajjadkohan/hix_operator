@@ -13,7 +13,8 @@ export const ChatProvider = ({children}) => {
     const [changeValueChat,setChangeValueChat] = useState(1);
     const { user } = useContext(AuthCtx);
     const [textMessage,setTextMessage] = useState("");
-
+    const [isTyping,setIsTyping] = useState(false);
+   
 
     // Load Last Messages
     const loadMessages = (socket,cookieId,socketId) => {
@@ -25,14 +26,12 @@ export const ChatProvider = ({children}) => {
                     cid:cookieId
                 });
                 setMessages(data.data)
+                localStorage.setItem("selectedUser",JSON.stringify({sid:socketId,cid:cookieId}))
             }else{
                 toast.error(data.message)
             }
         })
         setMessageLoading(false)
-
-        // console.log(cookieId)
-        // console.log(socketId)
     }
 
     // Create Message By Type
@@ -80,24 +79,33 @@ export const ChatProvider = ({children}) => {
 
     // Get Users List
     const getUsersList = (data) => {
-        // console.log("ssssss");
-        // setChangeValueChat(changeValueChat+1);
         setUsers(data)
     }
 
-      // Connect Operator
+    // Connect Operator
     const handleConnect = () => {
-        // setIsConnected(true);
         console.log("Connected to the socket");
     };
 
     // Disconnect Operator
     const handleDisconnect = () => {
-        // setIsConnected(false);
         console.log("Disconnected from the socket");
     };
 
-    const getOperators = async () => {
+    const handleIsTyping = (data) => {
+        const uSelect = localStorage.getItem("selectedUser");
+        if(uSelect){
+            if(data.isTyping && data.socketID === JSON.parse(uSelect).sid){
+                setIsTyping(true)
+            }else{
+                setIsTyping(false) 
+            }
+        }else{
+            setIsTyping(false)
+        }
+    }
+    
+     const getOperators = async () => {
         const res = await requestData('/user/getoperators','POST',{});
         console.log(res);
         if(res?.status == 200){
@@ -121,7 +129,7 @@ export const ChatProvider = ({children}) => {
             createMessage,sendMessageToClient,textMessage,setTextMessage,
             getUsersList,handleConnect,handleDisconnect,
             changeValueChat,setChangeValueChat,
-            getOperators,
+            getOperators,handleIsTyping,isTyping
             }}>
             {children}
         </ChatContext.Provider>
