@@ -14,7 +14,7 @@ const LoginLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     user?.userName&&navigate('/dashbord',{replace : true})
     
   },[user]);

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './Dashbord.module.css'
-// import { DashBordCtx } from '../../context/DashbordContext';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid2';
 import Sidebar from '../../components/dashbord/Sidebar/Sidebar';
@@ -10,7 +9,7 @@ const Dashbord = () => {
 
     const {isLogin,user,logout,loadingLogin} = useContext(AuthCtx);
     const[play,setPlay] = useState(false);
-    // const {products} = useContext(DashBordCtx);
+
 
     // const Item = styled('div')(({ theme }) => ({
     //     backgroundColor: '#fff',
@@ -28,7 +27,7 @@ const Dashbord = () => {
         
         setPlay(true);
         // if(play){
-            console.log(loadingLogin,user);
+            // console.log(loadingLogin,user);
     
             if(!user){
                 navigate('/login',{replace : true}); 

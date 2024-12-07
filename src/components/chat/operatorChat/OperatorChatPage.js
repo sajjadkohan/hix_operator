@@ -20,7 +20,7 @@ const OperatorChatPage = () => {
   const audioRef = useRef(null);
   const audioRef1 = useRef(null)
 
-  console.log(user)
+  // console.log(user)
   useEffect(() => {
     // Connect Operator
     socket.on('connect', () => {
@@ -54,9 +54,9 @@ const OperatorChatPage = () => {
     // Play Sound On New Message From Client
     socket.on('messageSound',(data) => {
       if(data.targetOperator === socket.id){
-        audioRef1.current.play();
+        audioRef1?.current?.play();
       }else{
-        audioRef.current.play();
+        audioRef?.current?.play();
       }
 
     })
