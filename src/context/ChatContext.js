@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthCtx } from "./AuthContext";
+import { requestData } from "../utils/functions";
 
 export const ChatContext = createContext();
 export const ChatProvider = ({children}) => {
@@ -103,6 +104,21 @@ export const ChatProvider = ({children}) => {
             setIsTyping(false)
         }
     }
+    
+     const getOperators = async () => {
+        const res = await requestData('/user/getoperators','POST',{});
+        console.log(res);
+        if(res?.status == 200){
+            // setUser(res?.data?.data);
+            // return res?.data?.data
+        } else {
+            // navigate('/login',{replace : true});
+            // toast.error(res?.data?.message);
+            
+            // setUser({userName : ''})
+            return false
+        }
+    }
 
     return(
         <ChatContext.Provider value={{
@@ -112,7 +128,8 @@ export const ChatProvider = ({children}) => {
             messageLoading,setMessageLoading,
             createMessage,sendMessageToClient,textMessage,setTextMessage,
             getUsersList,handleConnect,handleDisconnect,
-            changeValueChat,setChangeValueChat,handleIsTyping,isTyping
+            changeValueChat,setChangeValueChat,
+            getOperators,handleIsTyping,isTyping
             }}>
             {children}
         </ChatContext.Provider>

@@ -146,6 +146,22 @@
 
   .msgParent .rightMsgPack .statusMsg:last-child{display: block;}
 
+  .msgParent .rightMsgImg{padding: 15px;max-width: 300px;}
+  .msgParent .rightMsgImg img{
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px #0000000f;
+  }
+  .rightMsgImg .desc{margin-top: 5px;text-align: right;color: #767676;}
+
+  .msgParent .leftMsgImg{padding: 15px;max-width: 300px;float: right;}
+  .msgParent .leftMsgImg img{
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px #0000000f;
+  }
+  .leftMsgImg .desc{margin-top: 5px;text-align: right;color: #767676;}
+
   /*footer*/
   /*footer*/
 .chatLayout .footer{
