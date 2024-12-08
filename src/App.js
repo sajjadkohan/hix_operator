@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {BrowserRouter,Routes,Route,  Link} from 'react-router-dom'
 import Dashbord from './pages/Dashbord/Dashbord';
-import DashbordContext from './context/DashbordContext';
 import Products from './components/dashbord/content/products/Products';
 import LoginLayout from './components/login/LoginLayout';
 import ViewContext from './context/ViewContext';
@@ -10,14 +9,15 @@ import OperatorSettings from './components/dashbord/content/chatSettings/operato
 
 import AddPlan from './pages/AddPlan/AddPlan';
 import AllContent from './components/chat/AllContent';
+import DashbordPrivider from './context/DashbordContext';
+import { AuthCtx } from './context/AuthContext';
 function App() {
-
 
   return (
     <div className="App">
       <div><Toaster/></div>
       <ViewContext>
-      <DashbordContext>
+      <DashbordPrivider>
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<h1>home page | go to <Link to={'/dashbord'}>/dashbord</Link></h1>} />
@@ -37,7 +37,7 @@ function App() {
           </Route>
         </Routes>
         </BrowserRouter>
-      </DashbordContext>
+      </DashbordPrivider>
       </ViewContext>
       {/* <script>
 {        window.addEventListener("load",(function()

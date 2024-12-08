@@ -16,6 +16,8 @@ import ModalLayout from '../../../../global/globalComponents/ModalLayout/ModalLa
 import ModalFormLayout from '../../../../global/globalComponents/ModalFormLayout/ModalFormLayout';
 import AddOperatorForm from '../chatSettings/operator/AdOperatorForm/AddOperatorForm';
 import { TbMailFilled } from 'react-icons/tb';
+import { DashbordContext } from '../../../../context/DashbordContext';
+import { AuthCtx } from '../../../../context/AuthContext';
 
 const dataFormAddProduct = [
     {
@@ -56,6 +58,14 @@ const Products = () => {
         showAddFeatureModal,
     } = useContext(ViewCtx);
 
+        const {products,getProductByMtId,addSingleProduct} = useContext(DashbordContext);
+        const {user} = useContext(AuthCtx);
+        useEffect(() => {
+            const getPtoduct = async() => {
+                await getProductByMtId(user?._id)
+            };
+            user&&getPtoduct()
+        },[user]);
 
   return (
     <div>
