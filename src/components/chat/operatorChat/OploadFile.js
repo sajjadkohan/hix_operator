@@ -7,8 +7,6 @@ import toast from 'react-hot-toast';
 const OploadFile = ({socket,fileLoading,setFileLoading}) => {
     const [file,setFile] = useState(null);
     const { userSelect , createMessage } = useContext(ChatContext)
-    console.log(file);
-    console.log(userSelect)
 
     const handleUpload = async () => {
         // if (!file) {
@@ -34,7 +32,7 @@ const OploadFile = ({socket,fileLoading,setFileLoading}) => {
                   console.log("xxxx",data)
                   if(data.success){
                     createMessage({
-                        type: "image",
+                        type: file.type,
                         content: "",
                         link:null,
                         fullLink:data.fileName

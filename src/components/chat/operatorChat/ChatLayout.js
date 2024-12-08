@@ -10,6 +10,8 @@ import IsTyping from './UserItem.js/IsTyping/IsTyping';
 import ImageType from './MessageTypes/ImageType';
 import VideoType from './MessageTypes/VideoType';
 import IsTypingType from './MessageTypes/IsTypingType';
+import DocumentType from './MessageTypes/DocumentType';
+import ZipType from './MessageTypes/ZipType';
 import OploadFile from './OploadFile';
 import MessageLoading from './Loading/MessageLoading';
 const ChatLayout = ({socket}) => {
@@ -63,9 +65,15 @@ const ChatLayout = ({socket}) => {
                                 {
                                     item.type === "text"?
                                     <TextType key={index} data={item} />:
-                                    item.type === "image"?
+                                    item.type === "image/jpeg"?
                                     <ImageType data={item} />:
-                                    "no"
+                                    item.type === "video/mp4"?
+                                    <VideoType data={item} />:
+                                    item.type === "application/pdf"?
+                                    <DocumentType data={item} />:
+                                    item.type === "application/x-zip-compressed"?
+                                    <ZipType data={item} />:
+                                    "not supported"
                                 }
                             </div>
                         

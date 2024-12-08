@@ -5,7 +5,6 @@ import { BASEURLIMAGE } from '../../../../utils/constanst';
 
 
 const ImageType = ({data}) => {
-  console.log("+++",data)
   return (
     <div className={`${data.sender === "operator" ?styles.rightMsgImg:styles.leftMsgImg} ${data.sender === "operator" ?styles.right:styles.left}`}>
       <div className={styles.content}>
