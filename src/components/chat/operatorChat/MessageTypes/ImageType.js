@@ -5,11 +5,11 @@ import { BASEURLIMAGE } from '../../../../utils/constanst';
 
 
 const ImageType = ({data}) => {
-
+  console.log("+++",data)
   return (
     <div className={`${data.sender === "operator" ?styles.rightMsgImg:styles.leftMsgImg} ${data.sender === "operator" ?styles.right:styles.left}`}>
       <div className={styles.content}>
-            <img src={`${BASEURLIMAGE}${data.link}`} />
+            <img src={data.fullLink?data.fullLink:`${BASEURLIMAGE}${data.link}`} />
             <p className={styles.desc}>توضیحات درباره این عکس</p>
         <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
       </div>

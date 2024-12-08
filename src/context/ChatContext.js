@@ -42,7 +42,8 @@ export const ChatProvider = ({children}) => {
                 type: message.type,
                 sender: sender?sender:"guest",
                 content: message.message,
-                link:message.link?message.link:""
+                link:message.link?message.link:"",
+                fullLink:message.fullLink?message.fullLink:""
              }
         ]);
         // switch (message.type) {
