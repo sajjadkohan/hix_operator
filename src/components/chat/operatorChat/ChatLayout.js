@@ -29,7 +29,6 @@ const ChatLayout = ({socket}) => {
         })
     }
 
-
     useEffect(() => {
    
         // console.log(messagesContainerRef.current.scrollTop,':test:',messagesContainerRef.current.scrollHeight);
@@ -52,7 +51,7 @@ const ChatLayout = ({socket}) => {
             <div ref={messagesContainerRef} className={styles.chatBase}>
                 <div className={styles.dateStart}>
                     <span>چهارشنبه 16 آبان 1403</span>
-                    <span>{isTyping?"tiping ...":""}</span>
+                    
                 </div>
                 
                 <div className={styles.msgParent}>
@@ -65,9 +64,20 @@ const ChatLayout = ({socket}) => {
                     !userSelect?
                     <p>لطفا یک چت را انتخاب کنید</p>:
                         messages.map((item,index) => 
-                            <TextType key={index} data={item} />
+                            <div key={index}>
+                                {
+                                    item.type === "text"?
+                                    <TextType key={index} data={item} />:
+                                    item.type === "image"?
+                                    <ImageType data={item} />:
+                                    "no"
+                                }
+                            </div>
+                        
                         )
                     }
+
+                    {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
 
                         {/* 
                         <ImageType data={{sender : 'operator'}} />

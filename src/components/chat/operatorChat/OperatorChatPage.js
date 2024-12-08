@@ -20,7 +20,6 @@ const OperatorChatPage = () => {
   const audioRef = useRef(null);
   const audioRef1 = useRef(null)
 
-  console.log(user)
   useEffect(() => {
     // Connect Operator
     socket.on('connect', () => {
@@ -37,9 +36,6 @@ const OperatorChatPage = () => {
       localStorage.removeItem("selectedUser")
     });
 
-    // Join Operator
-    // join();
-
     // Update User List In Sidebar
     socket.on('updateUserList', (data) => {
       getUsersList(data);
@@ -47,8 +43,9 @@ const OperatorChatPage = () => {
     });
 
     // Handle New Message From Client
-    socket.on('newMessageFromUser', (data) => {
-      createMessage(data)
+    socket.on('newMessageFromUser', async (data) => {
+      await createMessage(data)
+      
     });
 
     // Play Sound On New Message From Client
@@ -72,7 +69,7 @@ const OperatorChatPage = () => {
         setConnected(false)
       });
       socket.off('updateUserList', (data) => getUsersList(data));
-      socket.off('newMessageFromUser', (data) => createMessage(data));  // حذف listener پیام‌ها
+      socket.off('newMessageFromUser', (data) => {});  // حذف listener پیام‌ها
       socket.off('messageSound',() => {})
       socket.off('isTyping',(data) => handleIsTyping(data))
 
