@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styles from './Operator.module.css'
 import { ChatContext } from '../../../context/ChatContext'
 import TextType from './MessageTypes/TextType';
@@ -10,24 +10,20 @@ import IsTyping from './UserItem.js/IsTyping/IsTyping';
 import ImageType from './MessageTypes/ImageType';
 import VideoType from './MessageTypes/VideoType';
 import IsTypingType from './MessageTypes/IsTypingType';
+import DocumentType from './MessageTypes/DocumentType';
+import ZipType from './MessageTypes/ZipType';
+import OploadFile from './OploadFile';
+import MessageLoading from './Loading/MessageLoading';
 const ChatLayout = ({socket}) => {
+
     const { messages , userSelect , messageLoading ,
         sendMessageToClient , textMessage,setTextMessage
         ,changeValueChat,setChangeValueChat,users,isTyping
     } = useContext(ChatContext);
-    // console.log(messages);
     const messagesContainerRef = useRef(null);
 
-    const [dataState,setDataState] = React.useState({
-        'textValue' : ''
-    });
+    const [fileLoading,setFileLoading] = useState(false)
 
-    const changeHandler = (e) => {
-        setDataState({
-            ...dataState,
-            [e.target.name] : e.target.value
-        })
-    }
 
 
     useEffect(() => {
@@ -52,7 +48,7 @@ const ChatLayout = ({socket}) => {
             <div ref={messagesContainerRef} className={styles.chatBase}>
                 <div className={styles.dateStart}>
                     <span>چهارشنبه 16 آبان 1403</span>
-                    <span>{isTyping?"tiping ...":""}</span>
+                    
                 </div>
                 
                 <div className={styles.msgParent}>
@@ -65,9 +61,27 @@ const ChatLayout = ({socket}) => {
                     !userSelect?
                     <p>لطفا یک چت را انتخاب کنید</p>:
                         messages.map((item,index) => 
-                            <TextType key={index} data={item} />
+                            <div key={index}>
+                                {
+                                    item.type === "text"?
+                                    <TextType key={index} data={item} />:
+                                    item.type === "image/jpeg"?
+                                    <ImageType data={item} />:
+                                    item.type === "video/mp4"?
+                                    <VideoType data={item} />:
+                                    item.type === "application/pdf"?
+                                    <DocumentType data={item} />:
+                                    item.type === "application/x-zip-compressed"?
+                                    <ZipType data={item} />:
+                                    "not supported"
+                                }
+                            </div>
+                        
                         )
                     }
+
+                    {fileLoading && <MessageLoading />}
+                    {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
 
                         {/* 
                         <ImageType data={{sender : 'operator'}} />
@@ -138,7 +152,10 @@ const ChatLayout = ({socket}) => {
                     <MdOutlineAttachFile className={styles.fileIcon} size={25} />
                         {/* <svg fill="#999999" height="23" viewBox="0 0 24 24" width="23" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"></path></svg> */}
                         </span>
-                        <input className={styles.fileInput} type="file"/>
+                        <OploadFile 
+                        fileLoading={fileLoading}
+                        setFileLoading={setFileLoading}
+                        socket={socket} />
                     </span>
                     }
                     {/* <span className={styles.addFile}>

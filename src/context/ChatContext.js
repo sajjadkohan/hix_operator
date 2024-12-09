@@ -36,18 +36,38 @@ export const ChatProvider = ({children}) => {
     }
 
     // Create Message By Type
-    const createMessage = (message,sender) => {
-        switch (message.type) {
-            case "text":
-                setMessages(prevMessages => [
-                    ...prevMessages,
-                    { type: message.type, sender: sender?sender:"guest", content: message.message }
-                ]);
-                break;
-        
-            default:
-                break;
-        }
+    const createMessage = async (message,sender) => {
+        setMessages(prevMessages => [
+            ...prevMessages,
+            { 
+                type: message.type,
+                sender: sender?sender:"guest",
+                content: message.message,
+                link:message.link?message.link:"",
+                fullLink:message.fullLink?message.fullLink:""
+             }
+        ]);
+        // switch (message.type) {
+        //     case "text":
+        //         setMessages(prevMessages => [
+        //             ...prevMessages,
+        //             { type: message.type, sender: sender?sender:"guest", content: message.message }
+        //         ]);
+        //         break;
+        //     case "image":
+        //         setMessages(prevMessages => [
+        //             ...prevMessages,
+        //             { 
+        //                 type: message.type,
+        //                 sender: sender?sender:"guest",
+        //                 content: message.message,
+        //                 link:message.link
+        //              }
+        //         ]);
+        //         break
+        //     default:
+        //         break;
+        // }
         // setMessages([...messages,{}])
     }
 
