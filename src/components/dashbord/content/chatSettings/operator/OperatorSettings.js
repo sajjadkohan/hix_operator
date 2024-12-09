@@ -19,6 +19,7 @@ import AddFeatureModal from '../../products/modals/AddFeatureModal';
 import ModalLayout from '../../../../../global/globalComponents/ModalLayout/ModalLayout';
 import ModalFormLayout from '../../../../../global/globalComponents/ModalFormLayout/ModalFormLayout';
 import AddOperatorForm from './AdOperatorForm/AddOperatorForm';
+import OperatorList from './OperatorsList/OperatorsList';
 
 
 const OperatorSettings = () => {
@@ -63,7 +64,7 @@ const OperatorSettings = () => {
             </Button>
         </div>
         <div className={styles.content}>
-            <ListProducts title={'لیست اپراتور ها'} />
+            <OperatorList title={'لیست اپراتور ها'} />
         </div>
     </div>
   )

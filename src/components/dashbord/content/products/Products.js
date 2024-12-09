@@ -79,7 +79,7 @@ const Products = () => {
         children={
         <div>
             <ModalFormLayout children={
-                <>pro
+                <>
                 <div style={{direction: 'rtl'}}><AddProductModal/></div>
                 </>
             } 

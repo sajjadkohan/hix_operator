@@ -47,12 +47,12 @@ const ListProducts = ({title}) => {
   const {getOperators} = useContext(ChatContext);
   const {user} = useContext(AuthCtx);
 
-  useEffect(() => {
-    const getOperatorsFn = async () => {
-      await getOperators();
-    };
-    user?.userName&&getOperatorsFn();
-  },[user]);
+  // useEffect(() => {
+  //   const getOperatorsFn = async () => {
+  //     await getOperators();
+  //   };
+  //   user?.userName&&getOperatorsFn();
+  // },[user]);
 
   return (
     <div className={styles.listProducts}>
