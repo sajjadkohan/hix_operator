@@ -11,3 +11,5 @@ export {
     CHAT_BASE_URL,
     BASEURLIMAGE
 };
+
+// test
