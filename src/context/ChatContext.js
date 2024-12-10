@@ -14,6 +14,7 @@ export const ChatProvider = ({children}) => {
     const { user } = useContext(AuthCtx);
     const [textMessage,setTextMessage] = useState("");
     const [isTyping,setIsTyping] = useState(false);
+    const [operatorsList,setOperatorsList] = useState(false);
    
 
     // Load Last Messages
@@ -126,9 +127,10 @@ export const ChatProvider = ({children}) => {
     }
     
      const getOperators = async () => {
-        const res = await requestData('/user/getoperators','POST',{});
+        const res = await requestData('/user/getoperators','GET',{});
         console.log(res);
         if(res?.status == 200){
+            setOperatorsList(res?.data?.data);
             // setUser(res?.data?.data);
             // return res?.data?.data
         } else {
@@ -149,7 +151,8 @@ export const ChatProvider = ({children}) => {
             createMessage,sendMessageToClient,textMessage,setTextMessage,
             getUsersList,handleConnect,handleDisconnect,
             changeValueChat,setChangeValueChat,
-            getOperators,handleIsTyping,isTyping
+            getOperators,handleIsTyping,isTyping,
+            operatorsList
             }}>
             {children}
         </ChatContext.Provider>

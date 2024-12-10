@@ -5,6 +5,17 @@ import Grid from '@mui/material/Grid2/Grid2';
 import { Button, InputAdornment, TextField } from '@mui/material';
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { TbAlphabetLatin } from "react-icons/tb";
+import { DashbordContext } from '../../../../../context/DashbordContext';
+
+const data = {
+  'title' : '',
+  'category' : '',
+  'price' : '',
+  'slug' : '',
+  'description' : '',
+  'image' : ''
+
+}
 
 const dataFormAddProduct = [
   {
@@ -13,24 +24,62 @@ const dataFormAddProduct = [
       positionIcon : 'start',
       icon : <MdDriveFileRenameOutline size={30} />,
       placeholder : 'نام محصول',
-      nameInput : 'pro_name',
+      nameInput : 'title',
   },
   {
       size : 12,
       label : '',
       positionIcon : 'start',
       icon : <TbAlphabetLatin size={30} />,
-      placeholder : 'نام لاتین',
-      nameInput : 'en_name',
+      placeholder : 'نام دسته بندی',
+      nameInput : 'category',
+  },
+  {
+    size : 12,
+    label : '',
+    positionIcon : 'start',
+    icon : <TbAlphabetLatin size={30} />,
+    placeholder : 'قیمت',
+    nameInput : 'price',
+  },  
+  {
+    size : 12,
+    label : '',
+    positionIcon : 'start',
+    icon : <TbAlphabetLatin size={30} />,
+    placeholder : 'نام لاتین',
+    nameInput : 'slug',
+  },  
+  {
+    size : 12,
+    label : '',
+    positionIcon : 'start',
+    icon : <TbAlphabetLatin size={30} />,
+    placeholder : 'توضیخات کوتاه',
+    nameInput : 'description',
+  },
+  {
+    size : 12,
+    label : '',
+    positionIcon : 'start',
+    icon : <TbAlphabetLatin size={30} />,
+    placeholder : 'عکس',
+    nameInput : 'image',
   },
 ]
 const AddProductModal = () => {
 
     const {showAddCategoryModal,setShowAddCategoryModal,loading} = useContext(ViewCtx);
+    const {addSingleProduct} = useContext(DashbordContext);
+
 
     const [dataState, setDataState] = React.useState({
-      'en_name' : '',
-      'pro_name' : '',
+      'title' : '',
+      'category' : '',
+      'price' : '',
+      'slug' : '',
+      'description' : '',
+      'image' : ''
     });
 
     const changHandler = (e) => {
@@ -41,6 +90,11 @@ const AddProductModal = () => {
       console.log(dataState);
       
       
+    }
+
+    const addProduct = async (e,data) => {
+      e.preventDefault();
+      await addSingleProduct(data);
     }
 
     const addOperatorFn = async (data) => {
@@ -60,6 +114,7 @@ const AddProductModal = () => {
 
 return (
   <div>
+        <form onSubmit={async (e) => await addProduct(e,dataState)}>
       <Grid container spacing={3}>
 
         {
@@ -114,32 +169,35 @@ return (
 
       <Grid container spacing={2} size={12}>
       <Grid item='true' size={12}>
-      <Button variant="contained"
-      onClick={async() => await addOperatorFn(dataState)}
-      sx={{
-        padding: '12px 20px', // فاصله داخلی
-        borderRadius: '18px', // گرد کردن لبه‌ها
-        transition: 'background-color 0.3s ease', // انیمیشن برای تغییر رنگ
-        color: '#fff', // رنگ متن
-        borderColor: '#454545', // رنگ حاشیه
-        width : '100%',
-        fontFamily : 'danaBold',
-        fontSize : '18px',
-        '&:hover': {
-          backgroundColor: '#2aacfa', // رنگ پس‌زمینه هنگام هاور
-          color: '#fff', // رنگ متن هنگام هاور
-        },
-      }}
-      >
-        {loading.addOperator?
-      'loading . . .'
-      :
-      'افزودن'  
-      }
-      </Button>
+        
+        <button onClick={async (e) => await addProduct(e,dataState)} >send data</button>
+        <Button variant="contained"
+        onClick={async (e) => await addProduct(e,dataState)}
+        sx={{
+          padding: '12px 20px', // فاصله داخلی
+          borderRadius: '18px', // گرد کردن لبه‌ها
+          transition: 'background-color 0.3s ease', // انیمیشن برای تغییر رنگ
+          color: '#fff', // رنگ متن
+          borderColor: '#454545', // رنگ حاشیه
+          width : '100%',
+          fontFamily : 'danaBold',
+          fontSize : '18px',
+          '&:hover': {
+            backgroundColor: '#2aacfa', // رنگ پس‌زمینه هنگام هاور
+            color: '#fff', // رنگ متن هنگام هاور
+          },
+        }}
+        >
+          {loading.addOperator?
+        'loading . . .'
+        :
+        'افزودن'  
+        }
+        </Button>
       </Grid>
       </Grid>
     </Grid>
+        </form>
   </div>
 )
 }
