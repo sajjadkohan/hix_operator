@@ -37,6 +37,7 @@ export const ChatProvider = ({children}) => {
 
     // Create Message By Type
     const createMessage = async (message,sender) => {
+        console.log(message)
         setMessages(prevMessages => [
             ...prevMessages,
             { 
@@ -44,7 +45,8 @@ export const ChatProvider = ({children}) => {
                 sender: sender?sender:"guest",
                 content: message.message,
                 link:message.link?message.link:"",
-                fullLink:message.fullLink?message.fullLink:""
+                fullLink:message.fullLink?message.fullLink:"",
+                fullTime:message.fullTime
              }
         ]);
         // switch (message.type) {

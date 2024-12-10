@@ -10,7 +10,7 @@ const ImageType = ({data}) => {
       <div className={styles.content}>
             <img src={data.fullLink?data.fullLink:`${BASEURLIMAGE}${data.link}`} />
             <p className={styles.desc}>توضیحات درباره این عکس</p>
-        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
+        <span className={`${styles.statusMsg} ${styles.active}`}>{`${data?.fullTime?.hour}:${data?.fullTime?.minute} ${data?.fullTime?.ampm}`}</span>
       </div>
     </div>
   )

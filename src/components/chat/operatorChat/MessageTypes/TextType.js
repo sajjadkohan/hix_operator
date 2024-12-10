@@ -7,7 +7,7 @@ const TextType = ({data}) => {
         <div className={styles.msg}>
             <span className={styles.text}>{data.content}</span>
         </div>
-        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
+        <span className={`${styles.statusMsg} ${styles.active}`}>{`${data?.fullTime?.hour}:${data?.fullTime?.minute} ${data?.fullTime?.ampm}`}</span>
     </div>
   )
 }
