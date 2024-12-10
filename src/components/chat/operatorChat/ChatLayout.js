@@ -76,12 +76,16 @@ const ChatLayout = ({socket}) => {
                                     "not supported"
                                 }
                             </div>
+
+
                         
                         )
                     }
 
                     {fileLoading && <MessageLoading />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
+                    <DocumentType data={{sender:"user",content : 'document'}} />
+                    <DocumentType data={{sender:"operator",content : 'document.pdf'}} />
 
                         {/* 
                         <ImageType data={{sender : 'operator'}} />

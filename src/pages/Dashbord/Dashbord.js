@@ -39,14 +39,14 @@ const Dashbord = () => {
   return (
     <div className={styles.dashbord}>
         <Grid container spacing={0}>
-            <Grid size={2}>
+            <Grid size={1.8}>
                 left
                 <button onClick={async() => await logout()&&navigate('/login',{replace : true})}>logout</button>
             </Grid>
             <Grid className={'plr2'} size={8}>
                 <Outlet />
             </Grid>
-            <Grid size={2}>
+            <Grid size={2.2}>
                 <Sidebar/>
             </Grid>
         </Grid>
