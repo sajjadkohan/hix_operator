@@ -24,7 +24,7 @@ const VideoType = ({data}) => {
             مرورگر شما از تگ ویدیو پشتیبانی نمی‌کند.
         </video>
             <p className={styles.desc}>توضیحات درباره این عکس</p>
-        <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
+        <span className={`${styles.statusMsg} ${styles.active}`}>{`${data?.fullTime?.hour}:${data?.fullTime?.minute} ${data?.fullTime?.ampm}`}</span>
         </div>
     </div>
   )
