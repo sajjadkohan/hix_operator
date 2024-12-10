@@ -88,7 +88,7 @@ export const ChatProvider = ({children}) => {
         
         socket.emit("sendMessageToUser",sendMessage,(data) => {
             if(data.success){
-                createMessage(sendMessage,"operator")
+                createMessage(data.message,"operator")
                 setTextMessage("");
                 return true
             }else{
