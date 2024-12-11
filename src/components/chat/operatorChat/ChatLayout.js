@@ -84,8 +84,13 @@ const ChatLayout = ({socket}) => {
 
                     {fileLoading && <MessageLoading />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
-                    <DocumentType data={{sender:"user",content : 'document'}} />
+                    {/* <DocumentType data={{sender:"user",content : 'document'}} />
                     <DocumentType data={{sender:"operator",content : 'document.pdf'}} />
+                    <ZipType data={{sender:"user",content : 'document'}} />
+                    <ZipType data={{sender:"operator",content : 'document.pdf'}} /> */}
+
+                    <MessageLoading data={{sender:"user",content : 'loading message'}} />
+                    <MessageLoading data={{sender:"operator",content : 'loading message'}} />
 
                         {/* 
                         <ImageType data={{sender : 'operator'}} />
