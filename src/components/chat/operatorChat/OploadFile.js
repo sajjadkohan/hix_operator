@@ -29,13 +29,14 @@ const OploadFile = ({socket,fileLoading,setFileLoading}) => {
                 };
             
                 socket.emit('operatorSendFile', fileData, async (data) => {
-                  console.log("xxxx",data)
                   if(data.success){
                     createMessage({
                         type: file.type,
                         content: "",
                         link:null,
-                        fullLink:data.fileName
+                        fullLink:data.fullLink,
+                        fileName:data.fileName,
+                        fullTime:data.fullTime
                     },"operator")
                   }else{
                     toast.error(data.message)
