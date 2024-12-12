@@ -58,14 +58,14 @@ const Products = () => {
         showAddFeatureModal,
     } = useContext(ViewCtx);
 
-        const {products,getProductByMtId,addSingleProduct} = useContext(DashbordContext);
+        const {products,getProductByMtId,reloadList} = useContext(DashbordContext);
         const {user} = useContext(AuthCtx);
         useEffect(() => {
             const getPtoduct = async() => {
                 await getProductByMtId(user?._id)
             };
             user&&getPtoduct()
-        },[user]);
+        },[user,reloadList]);
 
   return (
     <div>
@@ -140,7 +140,7 @@ const Products = () => {
             </Button>
         </div>
         <div className={styles.content}>
-            <ListProducts title={'لیست محصولات'} />
+            <ListProducts productList={products} title={'لیست محصولات'} />
         </div>
     </div>
   )

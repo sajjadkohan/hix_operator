@@ -6,7 +6,7 @@ import ProductItem from './ProductItem';
 import { ChatContext } from '../../../../../context/ChatContext';
 import { AuthCtx } from '../../../../../context/AuthContext';
 
-const ListProducts = ({title}) => {
+const ListProducts = ({title,productList}) => {
   const productsArr = [
     {
     name : 'محصول 1',
@@ -54,6 +54,11 @@ const ListProducts = ({title}) => {
   //   user?.userName&&getOperatorsFn();
   // },[user]);
 
+  useEffect(() => {
+    console.log(productList);
+    
+  },[productList]);
+
   return (
     <div className={styles.listProducts}>
       <TitleList title={title} lastUpdate={'5 دقیقه قبل'} />
@@ -62,18 +67,21 @@ const ListProducts = ({title}) => {
         <Grid item='true' size={2.5}>محصول</Grid>
         <Grid item='true' size={2}>قیمت</Grid>
         <Grid item='true' size={2}>دسته بندی</Grid>
-        <Grid item='true' size={2}>وضعیت انبار</Grid>
+        <Grid item='true' size={2}>نام لاتین</Grid>
+        {/* <Grid item='true' size={2}>وضعیت انبار</Grid> */}
         <Grid item='true' size={2}>نمودار فروش</Grid>
         <Grid item='true' size={1}>جزییات</Grid>
       </Grid>
       
       <div className={styles.ListParent}>
         {
-          productsArr.map((item,index) => {
+          productList?.length?productList.map((item,index) => {
             return(
               <div key={index}><ProductItem data={item} /></div>
             )
-          })
+          }) :
+
+          <h1>loading . . .</h1>
         }
       </div>
 

@@ -40,7 +40,7 @@ const ChatLayout = ({socket}) => {
                 });
               }
 
-    },[messages]);
+    },[messages,isTyping,fileLoading]);
 
   return (
     <div className={styles.chatLayout}>
@@ -89,8 +89,8 @@ const ChatLayout = ({socket}) => {
                     <ZipType data={{sender:"user",content : 'document'}} />
                     <ZipType data={{sender:"operator",content : 'document.pdf'}} /> */}
 
-                    <MessageLoading data={{sender:"user",content : 'loading message'}} />
-                    <MessageLoading data={{sender:"operator",content : 'loading message'}} />
+                    {/* <MessageLoading data={{sender:"user",content : 'loading message'}} />
+                    <MessageLoading data={{sender:"operator",content : 'loading message'}} /> */}
 
                         {/* 
                         <ImageType data={{sender : 'operator'}} />

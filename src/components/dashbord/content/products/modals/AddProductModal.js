@@ -6,6 +6,10 @@ import { Button, InputAdornment, TextField } from '@mui/material';
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { TbAlphabetLatin } from "react-icons/tb";
 import { DashbordContext } from '../../../../../context/DashbordContext';
+import { TbCategory } from "react-icons/tb";
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import { LuImage } from "react-icons/lu";
+
 
 const data = {
   'title' : '',
@@ -19,7 +23,7 @@ const data = {
 
 const dataFormAddProduct = [
   {
-      size : 12,
+      size : 6,
       label : '',
       positionIcon : 'start',
       icon : <MdDriveFileRenameOutline size={30} />,
@@ -27,23 +31,23 @@ const dataFormAddProduct = [
       nameInput : 'title',
   },
   {
-      size : 12,
+      size : 6,
       label : '',
       positionIcon : 'start',
-      icon : <TbAlphabetLatin size={30} />,
+      icon : <TbCategory size={30} />,
       placeholder : 'نام دسته بندی',
       nameInput : 'category',
   },
   {
-    size : 12,
+    size : 6,
     label : '',
     positionIcon : 'start',
-    icon : <TbAlphabetLatin size={30} />,
+    icon : <AiOutlineDollarCircle size={30} />,
     placeholder : 'قیمت',
     nameInput : 'price',
   },  
   {
-    size : 12,
+    size : 6,
     label : '',
     positionIcon : 'start',
     icon : <TbAlphabetLatin size={30} />,
@@ -55,14 +59,14 @@ const dataFormAddProduct = [
     label : '',
     positionIcon : 'start',
     icon : <TbAlphabetLatin size={30} />,
-    placeholder : 'توضیخات کوتاه',
+    placeholder : 'توضیحات کوتاه',
     nameInput : 'description',
   },
   {
     size : 12,
     label : '',
     positionIcon : 'start',
-    icon : <TbAlphabetLatin size={30} />,
+    icon : <LuImage size={30} />,
     placeholder : 'عکس',
     nameInput : 'image',
   },
@@ -170,7 +174,7 @@ return (
       <Grid container spacing={2} size={12}>
       <Grid item='true' size={12}>
         
-        <button onClick={async (e) => await addProduct(e,dataState)} >send data</button>
+        {/* <button onClick={async (e) => await addProduct(e,dataState)} >send data</button> */}
         <Button variant="contained"
         onClick={async (e) => await addProduct(e,dataState)}
         sx={{

@@ -12,10 +12,11 @@ const MessageLoading = ({data}) => {
           <span className={styles.fileName}>{data.content}</span>
             <span className={styles.icon}>
               <span className={styles.loadingParent}>
-                <span className={styles.closeBtn}><IoClose size={20} /></span>
-              <CircularProgress color="secondary" />
+                {/* <span className={styles.closeBtn}><IoClose size={20} /></span> */}
+                <span className={styles.loadingIcon}><CircularProgress color="info" size={33} /></span>
+                
               </span>
-            <IoDocumentTextOutline size={25} />
+            <IoDocumentTextOutline color='rgba(157, 157, 157, 0)' size={30} />
             </span>
             <span className={styles.text}></span>
         </div>

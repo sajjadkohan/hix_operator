@@ -1,17 +1,20 @@
 import React, { createContext, useState } from 'react'
 import { requestData } from '../utils/functions';
+import toast from 'react-hot-toast';
 export const DashbordContext = createContext();
 
 const DashbordPrivider = ({children}) => {
 
 
-    const [products,setProducts] = useState([10]);
+    const [products,setProducts] = useState(false);
+    const [reloadList,setReloadList] = useState(false);
 
 
     const getProductByMtId = async (mtId) => {
       // Get products by merchantid
       const res = await requestData('/product/getByMerchantId','POST',{merchantId : mtId});
       console.log(res);
+      res?.data?.data&&setProducts(res?.data?.data);
       if(res?.status == 200){
           // setUser(res?.data?.data);
           // return res?.data?.data
@@ -43,8 +46,10 @@ const addSingleProduct = async (dataRequest) => {
       'image' : ''
 
     }
-  const res = await requestData('/product/addsingleproduct','POST',data);
+  const res = await requestData('/product/addsingleproduct','POST',dataRequest);
   console.log(res);
+  toast.success(res?.data?.message);
+  res?.data?.success&&setReloadList(!reloadList);
   if(res?.status == 200){
       // setUser(res?.data?.data);
       // return res?.data?.data
@@ -61,7 +66,8 @@ const addSingleProduct = async (dataRequest) => {
     <DashbordContext.Provider value={{
             products,setProducts,
             getProductByMtId,
-            addSingleProduct
+            addSingleProduct,
+            reloadList
         }}>
       {children}
     </DashbordContext.Provider>

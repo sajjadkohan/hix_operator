@@ -104,6 +104,12 @@
     align-items: center;
     justify-content: space-between;
   }
+  .chatBase .messageLoading .loadingParent .loadingIcon{
+    position: absolute;
+    left : 0px;
+    top:0px;
+    right : 0px;
+  }
   .chatBase .messageLoading .loadingParent{position: absolute;}
   .chatBase .leftMsgPack.messageLoading .msg .icon{margin-left: 10px;position: relative;}
   .chatBase .rightMsgPack.messageLoading .msg .icon{margin-right: 10px;position: relative;}
