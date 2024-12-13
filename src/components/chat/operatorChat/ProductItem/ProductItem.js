@@ -11,7 +11,13 @@ const ProductItem = ({data}) => {
 
     const selectItem = (dataItem) => {
         // console.log(dataItem);
-        setSelectedProduct([...seletedProduct,dataItem]);
+        if(seletedProduct.find(itm => itm._id === dataItem._id)){
+            const selected = seletedProduct.filter(itm => itm._id !== dataItem._id);
+            setSelectedProduct(selected);
+        } else {
+
+            setSelectedProduct([...seletedProduct,dataItem]);
+        }
         console.log(seletedProduct);
         
         
@@ -19,9 +25,10 @@ const ProductItem = ({data}) => {
 
   return (
     <div className={styles.productItem}>
-        <div onClick={() => selectItem(data)} className={styles.check}>
+        <div onClick={() => selectItem(data)} className={`${styles.check} ${seletedProduct.find(itm => itm._id === data._id)? styles.active : ''}`}>
             <span className={styles.icon}>
-            <FaCheck />
+            {seletedProduct.find(itm => itm._id === data._id)? <FaCheck /> : ''}
+            
             </span>
         </div>
         <div className={styles.imageParent}>

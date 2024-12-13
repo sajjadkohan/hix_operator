@@ -42,7 +42,8 @@ const ChatLayout = ({socket}) => {
 
     const { messages , userSelect , messageLoading ,
         sendMessageToClient , textMessage,setTextMessage
-        ,changeValueChat,setChangeValueChat,users,isTyping
+        ,changeValueChat,setChangeValueChat,users,isTyping,
+        seletedProduct,setSelectedProduct
     } = useContext(ChatContext);
     const messagesContainerRef = useRef(null);
     const {getProductByMtId,products} = useContext(DashbordContext);
@@ -56,10 +57,12 @@ const ChatLayout = ({socket}) => {
 
         const handleOpen = () => {
             setOpen(true);
-            console.log(products);
         }
 
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        setSelectedProduct([])
+    };
 
     useEffect(() => {
         const getProduct = async() => {
@@ -100,7 +103,6 @@ const ChatLayout = ({socket}) => {
             
             {
                 products&&products.map((item,index) => {
-                    console.log(item);
                     
                     return(
                         <Grid item key={index} size={3} sx={3}> 
@@ -110,6 +112,7 @@ const ChatLayout = ({socket}) => {
                 })
             }
             </Grid>
+            <button onClick={() => console.log(seletedProduct)}>send product</button>
         </Box>
       </Modal>
         <div className={styles.body}>

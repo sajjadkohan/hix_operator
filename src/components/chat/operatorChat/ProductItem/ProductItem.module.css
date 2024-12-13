@@ -18,6 +18,10 @@
     align-items: center;
     cursor: pointer;
 }
+.productItem .check.active{
+    background-color: #3f88fa;
+    color: white;
+}
 .imageParent{width: 100%;}
 .imageParent img{
     width: 100%;
