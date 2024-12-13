@@ -6,6 +6,7 @@ import { requestData } from "../utils/functions";
 export const ChatContext = createContext();
 export const ChatProvider = ({children}) => {
     const [users,setUsers] = useState([]);
+    const [seletedProduct,setSelectedProduct] = useState([]);
     const [userSelect,setSelectUser] = useState(null);
     const [loading,setLoading] = useState(false);
     const [messageLoading,setMessageLoading] = useState(false);
@@ -154,6 +155,7 @@ export const ChatProvider = ({children}) => {
             getUsersList,handleConnect,handleDisconnect,
             changeValueChat,setChangeValueChat,
             getOperators,handleIsTyping,isTyping,
+            seletedProduct,setSelectedProduct,
             operatorsList
             }}>
             {children}

@@ -14,6 +14,30 @@ import DocumentType from './MessageTypes/DocumentType';
 import ZipType from './MessageTypes/ZipType';
 import OploadFile from './OploadFile';
 import MessageLoading from './Loading/MessageLoading';
+import { AiOutlineProduct } from "react-icons/ai";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { DashbordContext } from '../../../context/DashbordContext';
+import { AuthCtx } from '../../../context/AuthContext';
+import ProductItem from './ProductItem/ProductItem';
+import Grid from '@mui/material/Grid2';
+
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 1000,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    height : '800px'
+  };
+
 const ChatLayout = ({socket}) => {
 
     const { messages , userSelect , messageLoading ,
@@ -21,10 +45,30 @@ const ChatLayout = ({socket}) => {
         ,changeValueChat,setChangeValueChat,users,isTyping
     } = useContext(ChatContext);
     const messagesContainerRef = useRef(null);
+    const {getProductByMtId,products} = useContext(DashbordContext);
+    const {user} = useContext(AuthCtx);
+    
 
-    const [fileLoading,setFileLoading] = useState(false)
+    const [fileLoading,setFileLoading] = useState(false);
 
 
+    const [open, setOpen] = React.useState(false);
+
+        const handleOpen = () => {
+            setOpen(true);
+            console.log(products);
+        }
+
+    const handleClose = () => setOpen(false);
+
+    useEffect(() => {
+        const getProduct = async() => {
+        await getProductByMtId(user?._id)
+        };
+
+        open&&getProduct()
+
+    },[open]);
 
     useEffect(() => {
    
@@ -44,6 +88,30 @@ const ChatLayout = ({socket}) => {
 
   return (
     <div className={styles.chatLayout}>
+         <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style} overflow={'scroll'}>
+            <Grid container spacing={2} size={12} >
+
+            
+            {
+                products&&products.map((item,index) => {
+                    console.log(item);
+                    
+                    return(
+                        <Grid item key={index} size={3} sx={3}> 
+                            <ProductItem data={item} >{item.title}</ProductItem>
+                        </Grid>
+                    )
+                })
+            }
+            </Grid>
+        </Box>
+      </Modal>
         <div className={styles.body}>
             <div ref={messagesContainerRef} className={styles.chatBase}>
                 <div className={styles.dateStart}>
@@ -116,6 +184,9 @@ const ChatLayout = ({socket}) => {
     {
         !messageLoading && userSelect && 
         <div className={styles.footer}>
+                <button onClick={() => handleOpen()} className={styles.sendProduct}>
+                    <AiOutlineProduct color={'#767676'} size={30} />
+                </button>
             <form onSubmit={(e) => {
                 // e.preventDefault();
                 sendMessageToClient(e,socket,textMessage)
@@ -138,6 +209,7 @@ const ChatLayout = ({socket}) => {
                     <button className={styles.emoji}>
                     <MdOutlineEmojiEmotions size={30} />
                     </button>
+
                     {
                         textMessage?
                         <span className={styles.addFile}>
