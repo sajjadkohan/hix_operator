@@ -153,7 +153,7 @@ const ChatLayout = ({socket}) => {
                         )
                     }
 
-                    {fileLoading && <MessageLoading />}
+                    {fileLoading && <MessageLoading data={{sender : 'operator',content : 'image.jpeg'}} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
                     {/* <DocumentType data={{sender:"user",content : 'document'}} />
                     <DocumentType data={{sender:"operator",content : 'document.pdf'}} />
