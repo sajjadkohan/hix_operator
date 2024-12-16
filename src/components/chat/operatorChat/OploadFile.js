@@ -4,7 +4,7 @@ import { ChatContext } from '../../../context/ChatContext';
 import toast from 'react-hot-toast';
 
 
-const OploadFile = ({socket,fileLoading,setFileLoading}) => {
+const OploadFile = ({socket,setFileLoading}) => {
     const [file,setFile] = useState(null);
     const { userSelect , createMessage } = useContext(ChatContext)
 
@@ -15,7 +15,7 @@ const OploadFile = ({socket,fileLoading,setFileLoading}) => {
         // }
 
         if(file){
-            setFileLoading(true)
+            
             // خواندن فایل به صورت base64 برای ارسال از طریق سوکت
             const reader = new FileReader();
     
@@ -27,7 +27,7 @@ const OploadFile = ({socket,fileLoading,setFileLoading}) => {
                   type: file.type,
                   data: event.target.result.split(',')[1]  // جدا کردن base64 از URI
                 };
-            
+                setFileLoading(file.name)
                 socket.emit('operatorSendFile', fileData, async (data) => {
                   if(data.success){
                     createMessage({

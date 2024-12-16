@@ -8,13 +8,15 @@ const ZipType = ({data}) => {
     <div className={`${styles.documentType} ${data.sender === "operator" ?styles.rightMsgPack:styles.leftMsgPack} ${data.sender === "operator" ?styles.right:styles.left}`}>
     <div className={styles.msg}>
         <div className={styles.text}>
-        <span className={styles.textDocument}>{data.content}</span>
+        <span className={styles.textDocument}>{data.fileName}</span>
         <span className={styles.icon}>
         <PiFileZip size={25} />
         </span>
           </div>
     </div>
-    <span className={`${styles.statusMsg} ${styles.active}`}>04:20</span>
+    <span className={`${styles.statusMsg} ${styles.active}`}>
+    {`${data?.fullTime?.hour}:${data?.fullTime?.minute} ${data?.fullTime?.ampm}`}
+    </span>
 </div>
   )
 }

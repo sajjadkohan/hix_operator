@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../Operator.module.css';
+import { BASEURLIMAGE } from '../../../../utils/constanst';
 
 const VideoType = ({data}) => {
   return (
@@ -14,11 +15,11 @@ const VideoType = ({data}) => {
             preload="auto"
         >
             <source
-            src="https://www.w3schools.com/html/movie.mp4"
+            src={data.fullLink?data.fullLink:`${BASEURLIMAGE}${data.link}`}
             type="video/mp4"
             />
             <source
-            src="https://www.w3schools.com/html/movie.ogg"
+            src={data.fullLink?data.fullLink:`${BASEURLIMAGE}${data.link}`}
             type="video/ogg"
             />
             مرورگر شما از تگ ویدیو پشتیبانی نمی‌کند.

@@ -14,6 +14,7 @@ import DocumentType from './MessageTypes/DocumentType';
 import ZipType from './MessageTypes/ZipType';
 import OploadFile from './OploadFile';
 import MessageLoading from './Loading/MessageLoading';
+import TimeDetailsType from './MessageTypes/TimeDetailsType';
 const ChatLayout = ({socket}) => {
 
     const { messages , userSelect , messageLoading ,
@@ -23,8 +24,11 @@ const ChatLayout = ({socket}) => {
     const messagesContainerRef = useRef(null);
 
     const [fileLoading,setFileLoading] = useState(false)
-
-
+    let dating = {
+        day:0,
+        year:0,
+        month:0
+    };
 
     useEffect(() => {
    
@@ -46,11 +50,7 @@ const ChatLayout = ({socket}) => {
     <div className={styles.chatLayout}>
         <div className={styles.body}>
             <div ref={messagesContainerRef} className={styles.chatBase}>
-                <div className={styles.dateStart}>
-                    <span>چهارشنبه 16 آبان 1403</span>
-                    
-                </div>
-                
+ 
                 <div className={styles.msgParent}>
 
                     {
@@ -60,29 +60,46 @@ const ChatLayout = ({socket}) => {
                     <p>پیامی وجود ندارد</p>:
                     !userSelect?
                     <p>لطفا یک چت را انتخاب کنید</p>:
-                        messages.map((item,index) => 
-                            <div key={index}>
-                                {
-                                    item.type === "text"?
-                                    <TextType key={index} data={item} />:
-                                    item.type === "image/jpeg"?
-                                    <ImageType data={item} />:
-                                    item.type === "video/mp4"?
-                                    <VideoType data={item} />:
-                                    item.type === "application/pdf"?
-                                    <DocumentType data={item} />:
-                                    item.type === "application/x-zip-compressed"?
-                                    <ZipType data={item} />:
-                                    "not supported"
-                                }
-                            </div>
+                        messages.map((item,index) => {
 
+                            let show = true;
+                            if(
+                                dating.year != item.fullTime.year ||
+                                dating.day != item.fullTime.day ||
+                                dating.month != item.fullTime.month 
+                            ){show = true}else
+                            {show = false}
 
-                        
+                            dating.year = item.fullTime.year;
+                            dating.day = item.fullTime.day;
+                            dating.month = item.fullTime.month
+                            
+                            
+                            return(
+                                <div key={index}>
+                                    {
+                                        show && <TimeDetailsType item={item} />
+                                    }
+                                    {
+                                        item.type === "text"?
+                                        <TextType key={index} data={item} />:
+                                        item.type === "image/jpeg"?
+                                        <ImageType data={item} />:
+                                        item.type === "video/mp4"?
+                                        <VideoType data={item} />:
+                                        item.type === "application/pdf"?
+                                        <DocumentType data={item} />:
+                                        item.type === "application/x-zip-compressed"?
+                                        <ZipType data={item} />:
+                                        "not supported"
+                                    }
+                                </div>
+                            )
+                        }
+                            
                         )
                     }
-
-                    {fileLoading && <MessageLoading />}
+                    {fileLoading && <MessageLoading data={fileLoading} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
                     {/* <DocumentType data={{sender:"user",content : 'document'}} />
                     <DocumentType data={{sender:"operator",content : 'document.pdf'}} /> */}
