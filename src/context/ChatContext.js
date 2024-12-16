@@ -47,31 +47,11 @@ export const ChatProvider = ({children}) => {
                 content: message.message,
                 link:message.link?message.link:"",
                 fullLink:message.fullLink?message.fullLink:"",
-                fullTime:message.fullTime
+                fullTime:message.fullTime,
+                fileName:message.fileName
              }
         ]);
-        // switch (message.type) {
-        //     case "text":
-        //         setMessages(prevMessages => [
-        //             ...prevMessages,
-        //             { type: message.type, sender: sender?sender:"guest", content: message.message }
-        //         ]);
-        //         break;
-        //     case "image":
-        //         setMessages(prevMessages => [
-        //             ...prevMessages,
-        //             { 
-        //                 type: message.type,
-        //                 sender: sender?sender:"guest",
-        //                 content: message.message,
-        //                 link:message.link
-        //              }
-        //         ]);
-        //         break
-        //     default:
-        //         break;
-        // }
-        // setMessages([...messages,{}])
+
     }
 
     // Send Message To Client 
@@ -103,7 +83,23 @@ export const ChatProvider = ({children}) => {
 
     // Get Users List
     const getUsersList = (data) => {
-        setUsers(data)
+
+        const selected = localStorage.getItem("selectedUser")
+
+        if(selected){
+            const {sid} = JSON.parse(selected)
+            const isUser = data.find(item => item.id === sid);
+            if(isUser){
+                setUsers(data)
+            }else{
+                localStorage.removeItem("selectedUser")
+                setSelectUser(null)
+                setUsers(data)  
+            }
+        }else{
+            setUsers(data)
+        }
+        
     }
 
     // Connect Operator

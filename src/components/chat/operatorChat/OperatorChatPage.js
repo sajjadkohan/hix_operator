@@ -16,13 +16,14 @@ const OperatorChatPage = () => {
   const [error, setError] = useState(null);
   const { user , setUser } = useContext(AuthCtx);
   const { createMessage , getUsersList ,
-    changeValueChat,setChangeValueChat , handleIsTyping} = useContext(ChatContext);
+    changeValueChat,setChangeValueChat , handleIsTyping , setSelectUser} = useContext(ChatContext);
   const audioRef = useRef(null);
   const audioRef1 = useRef(null)
 
   // console.log(user)
   useEffect(() => {
     // Connect Operator
+
     socket.on('connect', () => {
       setConnected(true)
     });
@@ -34,6 +35,7 @@ const OperatorChatPage = () => {
     // Disconnect Operator
     socket.on('disconnect', () => {
       setConnected(false)
+      setSelectUser(false)
       localStorage.removeItem("selectedUser")
     });
 
@@ -46,7 +48,6 @@ const OperatorChatPage = () => {
     // Handle New Message From Client
     socket.on('newMessageFromUser', async (data) => {
       await createMessage(data)
-      
     });
 
     // Play Sound On New Message From Client
@@ -64,16 +65,13 @@ const OperatorChatPage = () => {
 
 
     return () => {
-      socket.off('connect', () => setConnected(false));
-      socket.off('disconnect', () => {
-        localStorage.removeItem("selectedUser")
-        setConnected(false)
-      });
-      socket.off('updateUserList', (data) => getUsersList(data));
-      socket.off('newMessageFromUser', (data) => {});  // حذف listener پیام‌ها
-      socket.off('messageSound',() => {})
-      socket.off('isTyping',(data) => handleIsTyping(data))
-
+      socket.emit("disconnectOperator")
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('updateUserList');
+      socket.off('newMessageFromUser');  // حذف listener پیام‌ها
+      socket.off('messageSound')
+      socket.off('isTyping')
     };
   }, []);  
 

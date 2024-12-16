@@ -34,7 +34,12 @@ const requestData = async(api,method,data) => {
     }
 
 
-  }
+}
+
+const checkTime = () => {
+
+} 
+
 
   export{
     requestData

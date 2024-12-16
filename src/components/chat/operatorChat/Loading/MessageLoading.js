@@ -6,10 +6,14 @@ import { IoClose } from "react-icons/io5";
 
 
 const MessageLoading = ({data}) => {
+  console.log(data)
+  
   return (
-    <div className={`${styles.messageLoading} ${data.sender === "operator" ?styles.rightMsgPack:styles.leftMsgPack} ${data.sender === "operator" ?styles.right:styles.left}`}>
+    <div className={`${styles.messageLoading} ${styles.rightMsgPack}`}>
         <div className={styles.msg}>
-          <span className={styles.fileName}>{data.content}</span>
+          <span className={styles.fileName}>
+            {data}
+            </span>
             <span className={styles.icon}>
               <span className={styles.loadingParent}>
                 {/* <span className={styles.closeBtn}><IoClose size={20} /></span> */}
