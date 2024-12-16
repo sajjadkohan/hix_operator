@@ -11,12 +11,13 @@ const ProductItem = ({data}) => {
         </Grid>
         <Grid className={styles.imageParent} item size={2.5}>
           <img className='ml10' src={image} />
-          <span>{data.name}</span>
+          <span>{data.title}</span>
           </Grid>
         <Grid item='true' size={2}><span className={`${styles.box} `}>{data.price}</span> </Grid>
         <Grid item='true' size={2}><span className={styles.box2}>{data.category}</span></Grid>
+        <Grid item='true' size={2}><span className={`${styles.box} `}>{data.slug}</span> </Grid>
         <Grid item='true' size={2}><span className={styles.box3}>{data.count}</span></Grid>
-        <Grid item='true' size={2}>نمودار فروش</Grid>
+        {/* <Grid item='true' size={2}>نمودار فروش</Grid> */}
         <Grid item='true' size={1}>
           <a className={styles.detailBtn}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
