@@ -38,7 +38,7 @@ export const ChatProvider = ({children}) => {
 
     // Create Message By Type
     const createMessage = async (message,sender) => {
-        console.log(message)
+
         setMessages(prevMessages => [
             ...prevMessages,
             { 
@@ -125,7 +125,7 @@ export const ChatProvider = ({children}) => {
         }
     }
     
-     const getOperators = async () => {
+    const getOperators = async () => {
         const res = await requestData('/user/getoperators','GET',{});
         console.log(res);
         if(res?.status == 200){
@@ -140,6 +140,7 @@ export const ChatProvider = ({children}) => {
             return false
         }
     }
+
 
     return(
         <ChatContext.Provider value={{

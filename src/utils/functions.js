@@ -40,7 +40,29 @@ const checkTime = () => {
 
 } 
 
+const groupMessageByTime = (messages) => {
+  let finallMessage = [];
+  let year;
+  let month;
+  let day;
+
+  messages.forEach(element => {
+    if(element.fullTime.year != year || element.fullTime.month != month || element.fullTime.day != day){
+      year = element.fullTime.year;
+      day = element.fullTime.day;
+      month = element.fullTime.month;
+      finallMessage.push({
+        type:"time",
+        fullTime:element.fullTime
+      })
+    }
+    finallMessage.push(element)
+  });
+  return finallMessage;
+  // console.log(finallMessage)
+}
+
 
   export{
-    requestData
+    requestData,groupMessageByTime
   }
