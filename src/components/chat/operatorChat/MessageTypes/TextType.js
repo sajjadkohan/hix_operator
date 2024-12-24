@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../Operator.module.css'
 
 const TextType = ({data}) => {
-  console.log(data);
+  // console.log(data);
   
   return (
     <div className={`${data.sender === "operator" ?styles.rightMsgPack:styles.leftMsgPack} ${data.sender === "operator" ?styles.right:styles.left}`}>

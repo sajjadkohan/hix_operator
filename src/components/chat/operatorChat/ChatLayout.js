@@ -156,14 +156,15 @@ const ChatLayout = ({socket}) => {
                                         item.type === "text"?
                                         <TextType key={index} data={item} />:
                                         item.type === "image/jpeg"?
-                                        <ImageType data={item} />:
+                                        <ImageType data={item} />
+                                        :
                                         item.type === "video/mp4"?
                                         <VideoType data={item} />:
                                         item.type === "application/pdf"?
                                         <DocumentType data={item} />:
                                         item.type === "application/x-zip-compressed"?
                                         <ZipType data={item} />:
-                                        "not supported"
+                                        <div className={styles.notSuport}>از این فرمت پشتیبانی نمیشود</div>
                                     }
                                 </div>
                             )
