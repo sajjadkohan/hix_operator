@@ -38,7 +38,6 @@ export const ChatProvider = ({children}) => {
 
     // Create Message By Type
     const createMessage = async (message,sender) => {
-
         setMessages(prevMessages => [
             ...prevMessages,
             { 
@@ -56,29 +55,61 @@ export const ChatProvider = ({children}) => {
 
     // Send Message To Client 
     const sendMessageToClient = (e,socket,message) => {
-
-        e.preventDefault();
-        let sendMessage = {
-            sid:userSelect.sid,
-            message,
-            content:message,
-            apiKey:user.apikey,
-            cookieId:userSelect.cid,
-            type:"text",
-            data: [],
-            link:"",
-            sender:"operator"
-        }
+        let sendMessage;
+        switch (message.type) {
+            case "text":
+                    e.preventDefault();
+                    sendMessage = {
+                        sid:userSelect.sid,
+                        message:message.message,
+                        content:message.message,
+                        apiKey:user.apikey,
+                        cookieId:userSelect.cid,
+                        type:message.type,
+                        data: [],
+                        link:"",
+                        sender:"operator"
+                    }
+                    
+                    socket.emit("sendMessageToUser",sendMessage,(data) => {
+                        if(data.success){
+                            createMessage(data.message,"operator")
+                            setTextMessage("");
+                            return true
+                        }else{
+                            alert(data.message)
+                        }
+                    })
+            case "slider":
+                sendMessage = {
+                    sid:userSelect.sid,
+                    message:"",
+                    content:"",
+                    apiKey:user.apikey,
+                    cookieId:userSelect.cid,
+                    type:message.type,
+                    data: message.data,
+                    link:"",
+                    sender:"operator"
+                }
+                
+                socket.emit("sendMessageToUser",sendMessage,(data) => {
+                    if(data.success){
+                        
+                        createMessage(data.message,"operator")
+                        // setTextMessage("");
+                        return true
+                    }else{
+                        alert(data.message)
+                    }
+                })
+                break;
         
-        socket.emit("sendMessageToUser",sendMessage,(data) => {
-            if(data.success){
-                createMessage(data.message,"operator")
-                setTextMessage("");
-                return true
-            }else{
-                alert(data.message)
-            }
-        })
+            default:
+                break;
+        }
+
+
     }
 
     // Get Users List

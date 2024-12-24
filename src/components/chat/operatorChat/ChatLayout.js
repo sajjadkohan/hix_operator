@@ -97,7 +97,9 @@ const ChatLayout = ({socket}) => {
 
   return (
     <div className={styles.chatLayout}>
-         <Modal
+
+      {/* Show Products Modal*/}  
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -118,9 +120,13 @@ const ChatLayout = ({socket}) => {
                 })
             }
             </Grid>
-            <button onClick={() => console.log(seletedProduct)}>send product</button>
+            <button onClick={() => {
+                sendMessageToClient(null,socket,{type:"slider",data:seletedProduct})
+                handleClose()
+            }}>send product</button>
         </Box>
       </Modal>
+
         <div className={styles.body}>
             <div ref={messagesContainerRef} className={styles.chatBase}>
  
@@ -160,9 +166,6 @@ const ChatLayout = ({socket}) => {
                     }
                     {fileLoading && <MessageLoading data={fileLoading} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
-
-                    
-
                 </div>
 
             </div>
@@ -176,7 +179,7 @@ const ChatLayout = ({socket}) => {
                 </button>
             <form onSubmit={(e) => {
                 // e.preventDefault();
-                sendMessageToClient(e,socket,textMessage)
+                sendMessageToClient(e,socket,{message:textMessage,type:"text"})
 
                 // messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
                 
