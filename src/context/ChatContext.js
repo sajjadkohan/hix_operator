@@ -80,6 +80,7 @@ export const ChatProvider = ({children}) => {
                             alert(data.message)
                         }
                     })
+                break    
             case "slider":
                 sendMessage = {
                     sid:userSelect.sid,
