@@ -111,6 +111,7 @@
     top:0px;
     right : 0px;
   }
+  .notSuport{padding: 15px;font-family: danaRegular;font-size: 13px;color: #7e7e7e;}
   .chatBase .messageLoading .loadingParent{position: absolute;}
   .chatBase .leftMsgPack.messageLoading .msg .icon{margin-left: 10px;position: relative;}
   .chatBase .rightMsgPack.messageLoading .msg .icon{margin-right: 10px;position: relative;}
@@ -294,7 +295,7 @@
 .chatLayout .footer .left{width: 20%;display: flex;justify-content: flex-end;align-items: center;position: relative;}
 .chatLayout .footer .left .icon{position: relative;display: flex;align-items: center;justify-content: center;}
 .chatLayout .footer .left button{cursor: pointer;color: #767676;}
-.chatLayout .footer .left > span .fileInput{position: absolute;width: 20%;height: 100%;left: 0px;top:0px;opacity: 0;cursor: pointer;}
+.chatLayout .footer .left > span .fileInput{position: absolute;width: 22px;height: 100%;left: 0px;top:0px;opacity: 0;cursor: pointer;}
 .chatLayout .footer .right a:hover svg{fill: #d09303;}
 .sendProduct{background: none;border: none;}
 .chatLayout .footer .left .emoji{border: none;background: none;}

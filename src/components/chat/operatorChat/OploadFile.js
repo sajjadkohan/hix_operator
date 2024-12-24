@@ -29,6 +29,8 @@ const OploadFile = ({socket,setFileLoading}) => {
                 };
                 setFileLoading(file.name)
                 socket.emit('operatorSendFile', fileData, async (data) => {
+                  console.log(data);
+                  
                   if(data.success){
                     createMessage({
                         type: file.type,

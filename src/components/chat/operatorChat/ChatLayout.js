@@ -145,7 +145,8 @@ const ChatLayout = ({socket}) => {
                                         item.type === "text"?
                                         <TextType key={index} data={item} />:
                                         item.type === "image/jpeg"?
-                                        <ImageType data={item} />:
+                                        <ImageType data={item} />
+                                        :
                                         item.type === "video/mp4"?
                                         <VideoType data={item} />:
                                         item.type === "application/pdf"?
@@ -162,7 +163,8 @@ const ChatLayout = ({socket}) => {
                             
                         )
                     }
-                    {fileLoading && <MessageLoading data={fileLoading} />}
+
+                    {fileLoading && <MessageLoading data={{sender : 'operator',content : 'image.jpeg'}} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
                 </div>
 

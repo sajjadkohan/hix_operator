@@ -28,13 +28,6 @@ const DashbordPrivider = ({children}) => {
     }
 
 
-// /product/addsingleproduct
-
-// Method:POST
-// Params:title-category-price-slug-description-image
-
-// First Login!
-
 const addSingleProduct = async (dataRequest) => {
     // Add Single Product
     const data = {
