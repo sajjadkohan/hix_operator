@@ -23,6 +23,46 @@ import ProductItem from './ProductItem/ProductItem';
 import Grid from '@mui/material/Grid2';
 import { groupMessageByTime } from '../../../utils/functions';
 import FooterWindow from './FooterWindow';
+import SliderType from './MessageTypes/SliderType/SliderType';
+
+const arraySliderData = [
+    {
+        'name' : ' حافظه 1 ترابایت دوربین 120 مگاپیکسل موبایل ایفون 13 پرومکس 2 سیم کارت',
+        'href' : '/mobile',
+        'price' : '2000',
+        'description' : 'این محصول جهت تست میباشد',
+        'image' : 'https://dkstatics-public.digikala.com/digikala-products/e97588f2b7de6aa5ca4dcc8d14a00d608bd11b99_1725971069.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90'
+    },
+    {
+        'name' : 'گوشی شیائومی دو سیم کارت 1 ترابایت',
+        'href' : '/mobile',
+        'price' : '4000',
+        'description' : 'این محصول جهت تست میباشد',
+        'image' : 'https://dkstatics-public.digikala.com/digikala-products/77d0403d66ade0701ead2fe874580f326fe3249c_1731416048.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90'
+
+    },    {
+        'name' : 'تلویزیون',
+        'href' : '/mobile',
+        'price' : '2000',
+        'description' : 'این محصول جهت تست میباشد',
+        'image' : 'https://dkstatics-public.digikala.com/digikala-products/e97588f2b7de6aa5ca4dcc8d14a00d608bd11b99_1725971069.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90'
+
+    },    {
+        'name' : 'گوشی موبایل ساده نوکیا',
+        'href' : '/mobile',
+        'price' : '2000',
+        'description' : 'این محصول جهت تست میباشد',
+        'image' : 'https://dkstatics-public.digikala.com/digikala-products/5b1666339d4dd86d3c717baecc80dd7aa7f5498d_1731416479.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90'
+
+    },    {
+        'name' : 'محصول',
+        'href' : '/mobile',
+        'price' : '2000',
+        'description' : 'این محصول جهت تست میباشد',
+        'image' : 'https://dkstatics-public.digikala.com/digikala-products/e97588f2b7de6aa5ca4dcc8d14a00d608bd11b99_1725971069.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90'
+
+    },
+]
 
 
 const style = {
@@ -166,6 +206,7 @@ const ChatLayout = ({socket}) => {
 
                     {fileLoading && <MessageLoading data={{sender : 'operator',content : 'image.jpeg'}} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
+                    <SliderType data={{sender : 'user',arrData : arraySliderData}} />
                 </div>
 
             </div>
