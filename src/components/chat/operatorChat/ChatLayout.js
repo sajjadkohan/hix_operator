@@ -24,6 +24,7 @@ import { DashbordContext } from '../../../context/DashbordContext';
 import { AuthCtx } from '../../../context/AuthContext';
 import ProductItem from './ProductItem/ProductItem';
 import Grid from '@mui/material/Grid2';
+import { groupMessageByTime } from '../../../utils/functions';
 
 
 const style = {
@@ -60,9 +61,9 @@ const ChatLayout = ({socket}) => {
 
     const [open, setOpen] = React.useState(false);
 
-        const handleOpen = () => {
-            setOpen(true);
-        }
+    const handleOpen = () => {
+        setOpen(true);
+    }
 
     const handleClose = () => {
         setOpen(false);
@@ -71,7 +72,7 @@ const ChatLayout = ({socket}) => {
 
     useEffect(() => {
         const getProduct = async() => {
-        await getProductByMtId(user?._id)
+        await getProductByMtId(user?.merchantId)
         };
 
         open&&getProduct()
@@ -96,7 +97,9 @@ const ChatLayout = ({socket}) => {
 
   return (
     <div className={styles.chatLayout}>
-         <Modal
+
+      {/* Show Products Modal*/}  
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -117,9 +120,13 @@ const ChatLayout = ({socket}) => {
                 })
             }
             </Grid>
-            <button onClick={() => console.log(seletedProduct)}>send product</button>
+            <button onClick={() => {
+                sendMessageToClient(null,socket,{type:"slider",data:seletedProduct})
+                handleClose()
+            }}>send product</button>
         </Box>
       </Modal>
+
         <div className={styles.body}>
             <div ref={messagesContainerRef} className={styles.chatBase}>
  
@@ -132,26 +139,10 @@ const ChatLayout = ({socket}) => {
                     <p>پیامی وجود ندارد</p>:
                     !userSelect?
                     <p>لطفا یک چت را انتخاب کنید</p>:
-                        messages.map((item,index) => {
-
-                            let show = true;
-                            if(
-                                dating.year != item.fullTime.year ||
-                                dating.day != item.fullTime.day ||
-                                dating.month != item.fullTime.month 
-                            ){show = true}else
-                            {show = false}
-
-                            dating.year = item.fullTime.year;
-                            dating.day = item.fullTime.day;
-                            dating.month = item.fullTime.month
-                            
-                            
+                        
+                        groupMessageByTime(messages).map((item,index) => {
                             return(
                                 <div key={index}>
-                                    {
-                                        show && <TimeDetailsType item={item} />
-                                    }
                                     {
                                         item.type === "text"?
                                         <TextType key={index} data={item} />:
@@ -164,7 +155,9 @@ const ChatLayout = ({socket}) => {
                                         <DocumentType data={item} />:
                                         item.type === "application/x-zip-compressed"?
                                         <ZipType data={item} />:
-                                        <div className={styles.notSuport}>از این فرمت پشتیبانی نمیشود</div>
+                                        item.type === "time"?
+                                        <TimeDetailsType item={item}/>:
+                                        "not supported"
                                     }
                                 </div>
                             )
@@ -175,30 +168,6 @@ const ChatLayout = ({socket}) => {
 
                     {fileLoading && <MessageLoading data={{sender : 'operator',content : 'image.jpeg'}} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
-                    {/* <DocumentType data={{sender:"user",content : 'document'}} />
-                    <DocumentType data={{sender:"operator",content : 'document.pdf'}} />
-                    <ZipType data={{sender:"user",content : 'document'}} />
-                    <ZipType data={{sender:"operator",content : 'document.pdf'}} /> */}
-
-                    {/* <MessageLoading data={{sender:"user",content : 'loading message'}} />
-                    <MessageLoading data={{sender:"operator",content : 'loading message'}} /> */}
-
-                        {/* 
-                        <ImageType data={{sender : 'operator'}} />
-                        <ImageType data={{sender : 'user'}} />
-
-                        <VideoType data={{sender : 'operator'}} />
-                        <VideoType data={{sender : 'user'}} />
-
-                        <IsTypingType data={{sender : 'operator'}} />
-                        <IsTypingType data={{sender : 'user'}} /> 
-                        */}
-
-
-
-                    
-                    
-
                 </div>
 
             </div>
@@ -212,7 +181,7 @@ const ChatLayout = ({socket}) => {
                 </button>
             <form onSubmit={(e) => {
                 // e.preventDefault();
-                sendMessageToClient(e,socket,textMessage)
+                sendMessageToClient(e,socket,{message:textMessage,type:"text"})
 
                 // messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
                 

@@ -60,9 +60,10 @@ const Products = () => {
 
         const {products,getProductByMtId,reloadList} = useContext(DashbordContext);
         const {user} = useContext(AuthCtx);
+        console.log("98989",user)
         useEffect(() => {
             const getPtoduct = async() => {
-                await getProductByMtId(user?._id)
+                await getProductByMtId(user.merchantId?user.merchantId:user._id)
             };
             user&&getPtoduct()
         },[user,reloadList]);
