@@ -195,6 +195,8 @@ const ChatLayout = ({socket}) => {
                                         <ZipType data={item} />:
                                         item.type === "time"?
                                         <TimeDetailsType item={item}/>:
+                                        item.type === "slider"?
+                                        <SliderType data={{sender : 'user',arrData : item.data}} />:
                                         "not supported"
                                     }
                                 </div>
@@ -206,7 +208,7 @@ const ChatLayout = ({socket}) => {
 
                     {fileLoading && <MessageLoading data={{sender : 'operator',content : 'image.jpeg'}} />}
                     {isTyping &&  <IsTypingType  data={{sender:"user"}}/>}
-                    <SliderType data={{sender : 'user',arrData : arraySliderData}} />
+                    
                 </div>
 
             </div>

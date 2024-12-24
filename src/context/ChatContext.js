@@ -47,7 +47,8 @@ export const ChatProvider = ({children}) => {
                 link:message.link?message.link:"",
                 fullLink:message.fullLink?message.fullLink:"",
                 fullTime:message.fullTime,
-                fileName:message.fileName
+                fileName:message.fileName,
+                data:message.type === "slider"?message.data:[]
              }
         ]);
 
@@ -55,6 +56,7 @@ export const ChatProvider = ({children}) => {
 
     // Send Message To Client 
     const sendMessageToClient = (e,socket,message) => {
+        // console.log(message)
         let sendMessage;
         switch (message.type) {
             case "text":
@@ -96,7 +98,6 @@ export const ChatProvider = ({children}) => {
                 
                 socket.emit("sendMessageToUser",sendMessage,(data) => {
                     if(data.success){
-                        
                         createMessage(data.message,"operator")
                         // setTextMessage("");
                         return true
