@@ -15,7 +15,7 @@ const ApiKey = () => {
                 `
                 <script 
                     id="HixChat" 
-                    src="script.js"
+                    src="https://hix.storage.c2.liara.space/files/script.js"
                     data-key="${user?.merchantId}"
                     >
                 </script>
