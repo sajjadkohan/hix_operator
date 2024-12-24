@@ -1,7 +1,7 @@
 .productItem{
     position: relative;
     border-radius: 18px;
-    padding: 15px;
+    /* padding: 15px; */
     border: 1px solid #ccc;
 }
 .productItem .check{
@@ -17,15 +17,25 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 1;
 }
 .productItem .check.active{
     background-color: #3f88fa;
     color: white;
 }
-.imageParent{width: 100%;}
+.imageParent{
+    width: 100%; /* پرنت تصویر به اندازه عرض خود کشیده می‌شود */
+    height: 0;
+    padding-top: 100%; /* نسبت عرض به ارتفاع (مثال: 4:3) */
+    position: relative;
+    overflow: hidden;
+}
 .imageParent img{
-    width: 100%;
-    height: auto;
-    max-height: 225px;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 90%;
     }
 .title{font-family: 'danaRegular';width: 100%;}

@@ -1,7 +1,23 @@
 .sliderType{position: relative;}
 .slideContent{padding: 5px 10px;}
-.slideContent .imageParent{}
-.slideContent .imageParent img{width: 100%;}
+.slideContent .imageParent{
+    width: 100%; /* پرنت تصویر به اندازه عرض خود کشیده می‌شود */
+    height: 0;
+    padding-top: 100%; /* نسبت عرض به ارتفاع (مثال: 4:3) */
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.119);
+}
+.slideContent .imageParent img{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 90%;
+}
+
 .textParent h2{
     text-align: right;
     color: #747474;
@@ -16,4 +32,11 @@
     overflow: hidden;
     direction: rtl;
 }
-.priceParent{display: flex;align-items: center;justify-content: space-between;direction: rtl;}
+.priceParent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    direction: rtl;
+    color: #595959;
+    font-size: 14px;
+}

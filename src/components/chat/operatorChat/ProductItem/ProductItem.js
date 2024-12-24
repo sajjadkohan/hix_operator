@@ -23,7 +23,9 @@ const ProductItem = ({data}) => {
         
     }
 
+    console.log(data);
   return (
+    
     <div className={styles.productItem}>
         <div onClick={() => selectItem(data)} className={`${styles.check} ${seletedProduct.find(itm => itm._id === data._id)? styles.active : ''}`}>
             <span className={styles.icon}>
@@ -33,7 +35,7 @@ const ProductItem = ({data}) => {
         </div>
         <div className={styles.imageParent}>
             {/* <img src={data.image?data.image:imageVector} /> */}
-            <img src={imageVector} />
+            <img src={data?.image?data.image : imageVector} />
         </div>
         <h2 className={styles.title}>{data.title}</h2>
         <p className=''>{data.category}</p>

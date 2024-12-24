@@ -11,6 +11,7 @@ import AddPlan from './pages/AddPlan/AddPlan';
 import AllContent from './components/chat/AllContent';
 import DashbordPrivider from './context/DashbordContext';
 import { AuthCtx } from './context/AuthContext';
+import ApiKey from './components/dashbord/content/ApiKey/ApiKey';
 function App() {
 
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path='reportsChat' element={<h1>reportsChat</h1>}/>
             <Route path='msgReady' element={<h1>msgReady</h1>}/>
             <Route path='settings' element={<h1>settings</h1>}/>
+            <Route path='apiKey' element={<ApiKey/>}/>
           </Route>
         </Routes>
         </BrowserRouter>

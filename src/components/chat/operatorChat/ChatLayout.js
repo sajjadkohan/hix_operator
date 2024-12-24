@@ -66,16 +66,16 @@ const arraySliderData = [
 
 
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 1000,
-    bgcolor: 'background.paper',
+    overflow: 'scroll',
+    position: 'relative',
+    top: '10%',
+    width: '1200px',
+    backgroundColor: '#fff',
     border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    height : '800px'
+    boxShadow: '0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)',
+    padding: '32px',
+    height: '80%',
+    margin: 'auto',
   };
 
 const ChatLayout = ({socket}) => {
