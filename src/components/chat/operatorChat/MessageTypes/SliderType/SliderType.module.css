@@ -1,4 +1,4 @@
-.sliderType{position: relative;}
+.sliderType{position: relative;padding: 0px 10px;}
 .slideContent{padding: 5px 10px;}
 .slideContent .imageParent{
     width: 100%; /* پرنت تصویر به اندازه عرض خود کشیده می‌شود */
@@ -16,6 +16,23 @@
     transform: translateX(-50%);
     width: 90%;
     height: 90%;
+}
+.navigation{width: 98%;justify-content: space-between;margin: auto;padding: 15px 0px;}
+.navigation button{
+    position: relative;
+  background: none;
+  border: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 10px #00000026;
+}
+.scrollC{
+    position: absolute;
+  bottom: 31px;
+  width: 100%;
+  padding: 0px 60px;
+  display: none;
 }
 
 .textParent h2{

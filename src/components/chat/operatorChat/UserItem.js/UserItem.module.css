@@ -14,7 +14,7 @@
 .userItem .avatar{width: 35px;height: 35px;border-radius: 100%;}
 .userItem h3{font-weight: 200;margin-left: 10px;color: #454545;overflow: hidden;
     font-size: 16px;
-    max-width: 50%;
+    /* max-width: 50%; */
     width: auto;
     text-overflow: ellipsis;
     margin: 0px 0px 0px 10px;

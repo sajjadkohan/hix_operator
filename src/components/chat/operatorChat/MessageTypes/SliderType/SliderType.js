@@ -3,7 +3,11 @@ import styles from './SliderType.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Scrollbar } from 'swiper/modules';
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
+
 
 const SliderType = ({data}) => {
     console.log(data);
@@ -12,12 +16,33 @@ const SliderType = ({data}) => {
     <div className={`${styles.sliderType} ${data?.sender === "guest" || data?.sender === "operator" ?styles.rightMsgImg:styles.leftMsgImg} ${data?.sender === "guest" || data?.sender === "operator" ?styles.right:styles.left}`}>
       <div className={styles.content}>
         <Swiper
-        navigation={true} modules={[Navigation]} 
+          scrollbar={{
+            hide: false,
+            el: ".swiper-scrollbar1",
+            draggable: true,
+          }}
+          navigation={{
+            prevEl: ".prev1",
+            nextEl: ".next1",
+          }}
+          modules={[Scrollbar, Navigation]}
         spaceBetween={5}
         slidesPerView={3.5}
         onSlideChange={() => console.log()}
         onSwiper={(swiper) => console.log()}
         >
+          <div className={styles.scrollC + " " + "scrollBarC"}>
+            <div className="swiper-scrollbar1">tedty</div>
+          </div>
+
+          <div className={styles.navigation + " " + "dFlex algCenter jstBtn"}>
+              <button className="prev1 flexAllCenter">
+              <FaChevronLeft />
+              </button>
+              <button className="next1 flexAllCenter">
+              <FaChevronRight />
+              </button>
+          </div>
         {
             data?.arrData.length&&
             data?.arrData.map((item,index) => {
