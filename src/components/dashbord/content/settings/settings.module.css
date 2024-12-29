@@ -1,0 +1,48 @@
+.items{
+    padding-top: 51px;
+    direction: rtl;
+}
+
+.item{
+    margin-bottom: 15px;
+}
+
+.item label{
+    min-width: 100px;
+    display: inline-block;
+}
+
+.item input{
+    padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+
+.item select{
+    padding: 10px 54px;
+  background: #eee;
+  border: none;
+  border-radius: 5px;
+}
+
+.btnChange{
+    background: #f05e22;
+  padding: 10px 15px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.fItems{
+    margin-bottom: 15px;
+}
+
+.fItems > *{
+    margin-left: 10px;
+}
+
+.fItemsList{
+    padding-top: 20px;
+}

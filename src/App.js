@@ -12,6 +12,7 @@ import AllContent from './components/chat/AllContent';
 import DashbordPrivider from './context/DashbordContext';
 import { AuthCtx } from './context/AuthContext';
 import ApiKey from './components/dashbord/content/ApiKey/ApiKey';
+import Settings from './components/dashbord/content/settings/Settings';
 function App() {
 
   return (
@@ -34,7 +35,7 @@ function App() {
             <Route path='managmentOperator' element={<OperatorSettings/>}/>
             <Route path='reportsChat' element={<h1>reportsChat</h1>}/>
             <Route path='msgReady' element={<h1>msgReady</h1>}/>
-            <Route path='settings' element={<h1>settings</h1>}/>
+            <Route path='settings' element={<Settings />}/>
             <Route path='apiKey' element={<ApiKey/>}/>
           </Route>
         </Routes>
