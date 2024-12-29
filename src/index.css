@@ -52,7 +52,7 @@ code {
 .dFlex{display: flex;}
 .algCenter{align-items: center;}
 .flexWrap{flex-wrap: wrap!important;}
-
+.flexAllCenter{display: flex!important;align-items: center!important;justify-content: center!important;}
 /*margin*/
 .mr1vw{margin-right: 1vw;}
 .ml1vw{margin-left: 1vw;}
@@ -111,3 +111,35 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 }
+
+.scrollBarC .swiper-scrollbar1.swiper-scrollbar-horizontal {
+  bottom: 0;
+  height: 40px;
+  width: 300px;
+}
+
+.scrollBarC > .swiper-scrollbar1.swiper-scrollbar-horizontal {position: relative;height: 1px;background: #cecece;}
+
+.scrollBarC .swiper-scrollbar.swiper-scrollbar-horizontal {
+  bottom: 0;
+  height: 40px;
+  width: 300px;
+}
+.scrollBarC .swiper-scrollbar-drag {
+  background: none;height: 40px;cursor: pointer;top: -20px;
+}
+.scrollBarC .swiper-scrollbar-drag:after {
+  content: "";
+  width: 30px;
+  height: 7px;
+  border-radius: 0%;
+  background: rgb(104, 104, 104);
+  position: absolute;
+  top: 17px;
+  left: 0%;
+  margin: auto;
+  cursor: pointer;
+}
+
+.scrollBarC > .swiper-scrollbar.swiper-scrollbar-horizontal {position: relative;height: 1px;background: #cecece;}
+
