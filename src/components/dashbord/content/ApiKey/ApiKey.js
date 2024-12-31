@@ -5,6 +5,14 @@ import CodeBlock from '../../../../global/CodeBlock/CodeBlock';
 const ApiKey = () => {
 
     const {user} = useContext(AuthCtx);
+    let code = `
+                <script 
+                    id="HixChat" 
+                    src="https://hixnew.storage.c2.liara.space/files/script.js"
+                    data-key="${user?.apiKey}"
+                    >
+                </script>
+                `
 // console.log(user);
 
   return (

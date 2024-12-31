@@ -1,1 +1,20 @@
 .apiKey{padding: 40px;}
+.script{
+    background: #5f5f5f;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid #eee;
+}
+
+.btn{
+    padding: 10px 49px;
+  margin-top: 10px;
+  font-family: Roboto;
+  border: none;
+  background: #fdf2dc;
+  color: orange;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
