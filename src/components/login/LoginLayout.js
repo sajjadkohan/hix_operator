@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import styles from './Login.module.css';
 import LoginComponent from './LoginComponent/LoginComponent';
 import Grid from '@mui/material/Grid2';
-import { ViewCtx } from '../../context/ViewContext';
+import { ViewContext } from '../../context/ViewContext';
 import { AuthCtx } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const LoginLayout = () => {
 
-  const {hasLogin} = React.useContext(ViewCtx);
+  const {hasLogin} = React.useContext(ViewContext);
   const {user} = React.useContext(AuthCtx);
 
   const navigate = useNavigate();

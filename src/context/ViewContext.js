@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react'
 
-export const ViewCtx = createContext();
+export const ViewContext = createContext();
 
-const ViewContext = ({children}) => {
+const ViewWrapper = ({children}) => {
 
     const [showAddProductModal,setShowAddProductModal] = useState(false);
     const handleOpenAddPro = () => setShowAddProductModal(true);
@@ -15,6 +15,11 @@ const ViewContext = ({children}) => {
     const [showAddFeatureModal,setShowAddFeatureModal] = useState(false);
     const handleOpenAddFea = () => setShowAddFeatureModal(true);
     const handleCloseAdFea = () => setShowAddFeatureModal(false);
+
+    
+    const [showAddMessageModal,setShowAddMessageModal] = useState(false);
+    const handleOpenAddMessage = () => setShowAddMessageModal(true);
+    const handleCloseAdMessage = () => setShowAddMessageModal(false);
 
     const [hasLogin,setHasLogin] = useState(true);
     const [hasoperator,setHasOperator] = useState(false);
@@ -31,7 +36,7 @@ const ViewContext = ({children}) => {
 
 
   return (
-    <ViewCtx.Provider value={{
+    <ViewContext.Provider value={{
         showAddProductModal,setShowAddProductModal,
         handleOpenAddPro,handleCloseAddPro,
         loading,setLoading,
@@ -43,11 +48,14 @@ const ViewContext = ({children}) => {
         handleOpenAddFea,handleCloseAdFea,
 
         hasLogin,setHasLogin,
-        hasoperator,setHasOperator
+        hasoperator,setHasOperator,
+
+        showAddMessageModal,setShowAddMessageModal,
+        handleOpenAddMessage,handleCloseAdMessage
     }}>
         {children}
-    </ViewCtx.Provider>
+    </ViewContext.Provider>
   )
 }
 
-export default ViewContext
+export default ViewWrapper

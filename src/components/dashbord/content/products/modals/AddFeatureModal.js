@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { ViewCtx } from '../../../../../context/ViewContext';
+import { ViewContext } from '../../../../../context/ViewContext';
 
 const style = {
   position: 'absolute',
@@ -19,7 +19,7 @@ const style = {
 };
 const AddFeatureModal = ({handleOpen,handleClose}) => {
 
-    const {showAddFeatureModal,setShowAddFeatureModal} = useContext(ViewCtx);
+    const {showAddFeatureModal,setShowAddFeatureModal} = useContext(ViewContext);
 
 
   return (

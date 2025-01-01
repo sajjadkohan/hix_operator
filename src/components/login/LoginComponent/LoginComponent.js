@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 
 import { MdVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
-import { ViewCtx } from '../../../context/ViewContext';
+import { ViewContext } from '../../../context/ViewContext';
 import toast from 'react-hot-toast';
 import { useNavigate} from 'react-router-dom';
 import { requestData } from '../../../utils/functions';
@@ -18,7 +18,7 @@ import { AuthCtx } from '../../../context/AuthContext';
 
 const LoginComponent = () => {
   
-  const {hasLogin,setHasLogin,loading,setLoading,hasoperator,setHasOperator} = useContext(ViewCtx);
+  const {hasLogin,setHasLogin,loading,setLoading,hasoperator,setHasOperator} = useContext(ViewContext);
   const { setUser }= useContext(AuthCtx)
   
   const [showPassword, setShowPassword] = React.useState(false);

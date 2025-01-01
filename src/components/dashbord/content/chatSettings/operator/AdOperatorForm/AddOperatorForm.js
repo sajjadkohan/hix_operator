@@ -4,7 +4,7 @@ import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
 import { HiUserCircle } from 'react-icons/hi';
 import { TbMailFilled } from 'react-icons/tb';
 
-import { ViewCtx } from '../../../../../../context/ViewContext';
+import { ViewContext } from '../../../../../../context/ViewContext';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { requestData } from '../../../../../../utils/functions';
 import toast from 'react-hot-toast';
@@ -18,7 +18,7 @@ const AddOperatorForm = () => {
     "firstName": "",
     "lastName":"",
   });
-    const {loading,setLoading} = useContext(ViewCtx);
+    const {loading,setLoading} = useContext(ViewContext);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {

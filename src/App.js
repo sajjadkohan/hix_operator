@@ -13,12 +13,14 @@ import DashbordPrivider from './context/DashbordContext';
 import { AuthCtx } from './context/AuthContext';
 import ApiKey from './components/dashbord/content/ApiKey/ApiKey';
 import Settings from './components/dashbord/content/settings/Settings';
+import MessageReady from './components/dashbord/content/ApiKey/MessageReady/MessageReady';
+import ViewWrapper from './context/ViewContext';
 function App() {
 
   return (
     <div className="App">
       <div><Toaster/></div>
-      <ViewContext>
+      <ViewWrapper>
       <DashbordPrivider>
         <BrowserRouter>
         <Routes>
@@ -34,14 +36,14 @@ function App() {
             <Route path='profile' element={<h1>profile</h1>}/>
             <Route path='managmentOperator' element={<OperatorSettings/>}/>
             <Route path='reportsChat' element={<h1>reportsChat</h1>}/>
-            <Route path='msgReady' element={<h1>msgReady</h1>}/>
+            <Route path='msgReady' element={<MessageReady />}/>
             <Route path='settings' element={<Settings />}/>
             <Route path='apiKey' element={<ApiKey/>}/>
           </Route>
         </Routes>
         </BrowserRouter>
       </DashbordPrivider>
-      </ViewContext>
+      </ViewWrapper>
       {/* <script>
 {        window.addEventListener("load",(function()
         {const t="673afc0b13162bc30a3eddc4";

@@ -1,0 +1,19 @@
+.messageReady{position: relative;}
+.messageReady .content{
+    padding-top: 60px;
+    text-align: right;
+    direction: rtl;
+}
+.meesageItems .items{
+    display: flex;
+}
+.items .itemBox{
+    border: 1px solid #cccccc47;
+    padding: 0px 10px;
+    border-radius: 9px;
+    margin-top: 7px;
+}
+.items .itemBox:nth-child(odd){
+    background: #f1f1f15c;
+}
+.itemBox .answer{color: #4f4f4f;}

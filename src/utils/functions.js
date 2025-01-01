@@ -41,7 +41,7 @@ const checkTime = () => {
 } 
 
 const groupMessageByTime = (messages) => {
-  console.log(messages)
+  // console.log(messages)
   let finallMessage = [];
   let year;
   let month;

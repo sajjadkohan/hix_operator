@@ -22,7 +22,7 @@ const Settings = () => {
         setLoading(true)
         const finall = await requestData("/option/getOptions","get");
         if(finall.data.success){
-            setOptions(finall.data.data.options)
+            setOptions(finall?.data?.data?.options)
         }else{
             setError(finall.data.message)
         }
@@ -92,7 +92,7 @@ const Settings = () => {
 
     useEffect(() => {
         getData()
-    }, [])
+    }, []);
     
 
   return (
@@ -110,7 +110,7 @@ const Settings = () => {
                         <label>زبان</label>
                         <select 
                         name='language'
-                        value={options.language}
+                        value={options?.language}
                         onChange={handleChange}
                         >
                             <option value="farsi">فارسی</option>
@@ -124,7 +124,7 @@ const Settings = () => {
                         <label>توضیحات</label>
                         <input 
                         name='description'
-                        value={options.description}
+                        value={options?.description}
                         onChange={handleChange}
                         />
                     </div>
@@ -134,7 +134,7 @@ const Settings = () => {
                         <label>نمایش فیلد های احراز هویت</label>
                         <input 
                         name='showform'
-                        checked={options.showform}
+                        checked={options?.showform}
                         onChange={handleChange}
                         type='checkbox'
                         />
@@ -142,7 +142,7 @@ const Settings = () => {
 
                     {/* Fiels for Show Form */}
                     {
-                        options.showform && 
+                        options?.showform && 
                         <div className={styles.item}>
                             <label>فیلد ها</label>
                             <div className={styles.fItemsList}>

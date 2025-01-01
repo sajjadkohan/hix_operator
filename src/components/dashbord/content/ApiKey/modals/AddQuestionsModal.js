@@ -9,81 +9,43 @@ import { DashbordContext } from '../../../../../context/DashbordContext';
 import { TbCategory } from "react-icons/tb";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { LuImage } from "react-icons/lu";
+import { RiQuestionAnswerLine } from "react-icons/ri";
+import { RiQuestionLine } from "react-icons/ri";
 
-
-const data = {
-  'title' : '',
-  'category' : '',
-  'price' : '',
-  'slug' : '',
-  'description' : '',
-  'image' : ''
-
-}
-
-const dataFormAddProduct = [
+const dataFormAddQuestions = [
   {
-      size : 6,
+      size : 12,
       label : '',
       positionIcon : 'start',
-      icon : <MdDriveFileRenameOutline size={30} />,
-      placeholder : 'نام محصول',
-      nameInput : 'title',
+      icon : <RiQuestionLine size={30} />,
+      placeholder : 'سوال شما چیست',
+      nameInput : 'question',
+      type : 'input'
   },
   {
-      size : 6,
+      size : 12,
       label : '',
       positionIcon : 'start',
-      icon : <TbCategory size={30} />,
-      placeholder : 'نام دسته بندی',
-      nameInput : 'category',
+      icon : <RiQuestionAnswerLine size={30} />,
+      placeholder : 'چه جوابی داده شود ؟',
+      nameInput : 'answer',
+      type : 'textArea'
   },
-  {
-    size : 6,
-    label : '',
-    positionIcon : 'start',
-    icon : <AiOutlineDollarCircle size={30} />,
-    placeholder : 'قیمت',
-    nameInput : 'price',
-  },  
-  {
-    size : 6,
-    label : '',
-    positionIcon : 'start',
-    icon : <TbAlphabetLatin size={30} />,
-    placeholder : 'نام لاتین',
-    nameInput : 'slug',
-  },  
-  {
-    size : 12,
-    label : '',
-    positionIcon : 'start',
-    icon : <TbAlphabetLatin size={30} />,
-    placeholder : 'توضیحات کوتاه',
-    nameInput : 'description',
-  },
-  {
-    size : 12,
-    label : '',
-    positionIcon : 'start',
-    icon : <LuImage size={30} />,
-    placeholder : 'عکس',
-    nameInput : 'image',
-  },
+
 ]
-const AddProductModal = () => {
+const AddQuestionsModal = () => {
 
-    const {showAddCategoryModal,setShowAddCategoryModal,loading} = useContext(ViewContext);
-    const {addSingleProduct} = useContext(DashbordContext);
+    const {loading,
+        showAddMessageModal,setShowAddMessageModal,
+        handleOpenAddMessage,handleCloseAdMessage
+    } = useContext(ViewContext);
+    const {addQuestions} = useContext(DashbordContext);
 
 
     const [dataState, setDataState] = React.useState({
-      'title' : '',
-      'category' : '',
-      'price' : '',
-      'slug' : '',
-      'description' : '',
-      'image' : ''
+      'question' : '',
+      'answer' : '',
+      'id' : '',
     });
 
     const changHandler = (e) => {
@@ -96,9 +58,9 @@ const AddProductModal = () => {
       
     }
 
-    const addProduct = async (e,data) => {
+    const addQuestionFn = async (e,data) => {
       e.preventDefault();
-      await addSingleProduct(data);
+      await addQuestions(data);
     }
 
     const addOperatorFn = async (data) => {
@@ -118,13 +80,14 @@ const AddProductModal = () => {
 
 return (
   <div>
-        <form onSubmit={async (e) => await addProduct(e,dataState)}>
+        <form onSubmit={async (e) => await addQuestionFn(e,dataState)}>
       <Grid container spacing={3}>
 
         {
-          dataFormAddProduct.length&&dataFormAddProduct.map((item,index) => {
+          dataFormAddQuestions.length&&dataFormAddQuestions.map((item,index) => {
             return(
               <Grid item='true' size={item.size}>
+                
               <TextField
                 label=""
                 name={item.nameInput}
@@ -174,9 +137,9 @@ return (
       <Grid container spacing={2} size={12}>
       <Grid item='true' size={12}>
         
-        {/* <button onClick={async (e) => await addProduct(e,dataState)} >send data</button> */}
+        {/* <button onClick={async (e) => await addQuestionFn(e,dataState)} >send data</button> */}
         <Button variant="contained"
-        onClick={async (e) => await addProduct(e,dataState)}
+        onClick={async (e) => await addQuestionFn(e,dataState)}
         sx={{
           padding: '12px 20px', // فاصله داخلی
           borderRadius: '18px', // گرد کردن لبه‌ها
@@ -207,4 +170,4 @@ return (
 }
 
 
-export default AddProductModal
+export default AddQuestionsModal

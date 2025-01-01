@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid2';
 import PlanCard from '../PlanCard/PlanCard';
 import { PlanCtx } from '../../../context/PlanContext';
 import { AuthCtx } from '../../../context/AuthContext';
-import { ViewCtx } from '../../../context/ViewContext';
+import { ViewContext } from '../../../context/ViewContext';
 import { Skeleton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,7 +42,7 @@ const PlansView = () => {
     const[play,setPlay] = useState(false);
     const {getPlans,plansState} = useContext(PlanCtx);
     const {user} = useContext(AuthCtx);
-    const {loading,setLoading} = useContext(ViewCtx);
+    const {loading,setLoading} = useContext(ViewContext);
     const navigate = useNavigate();
 
 

@@ -4,7 +4,7 @@
 //     headers:{
 //         "Content-Type":"application/json"
 //     },
-//     body:JSON.stringify({ question , answer })
+//     body:JSON.stringify({ question : '' , answer : '' })
 // })
 
 // -----------------------------------------------
@@ -20,7 +20,7 @@
 //     headers:{
 //         "Content-Type":"application/json"
 //     },
-//     body:JSON.stringify({ id , question , answer })
+//     body:JSON.stringify({ id : 12 , question : '' , answer : '' })
 // })
 
 // -----------------------------------------------
