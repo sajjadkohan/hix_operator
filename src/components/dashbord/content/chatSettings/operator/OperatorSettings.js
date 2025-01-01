@@ -12,7 +12,7 @@ import ListProducts from '../../products/ListProducts/ListProducts';
 // import AddProductModal from './modals/AddProductModal';
 // import AddCategoryModal from './modals/AddCategoryModal';
 // import AddFeatureModal from './modals/AddFeatureModal';
-import { ViewCtx } from '../../../../../context/ViewContext';
+import { ViewContext } from '../../../../../context/ViewContext';
 import AddProductModal from '../../products/modals/AddProductModal';
 import AddCategoryModal from '../../products/modals/AddCategoryModal';
 import AddFeatureModal from '../../products/modals/AddFeatureModal';
@@ -30,7 +30,7 @@ const OperatorSettings = () => {
         handleOpenAddPro,handleCloseAddPro,
         handleOpenAddCat,handleCloseAdCat,
         handleOpenAddFea,handleCloseAdFea,
-    } = useContext(ViewCtx);
+    } = useContext(ViewContext);
 
     const handleOpenOperator = () => {
         
@@ -40,7 +40,7 @@ const OperatorSettings = () => {
     <div>
         <TitleContent value={'مدیریت اپراتور'} />
 
-        <div className={styles.actionBar} style={{borderBottom : `1px solid #${themeColorLayer3}`}}>
+        <div className='actionBar' style={{borderBottom : `1px solid #${themeColorLayer3}`}}>
             <ModalLayout 
             handleOpen={() => setOpenAdOperator(true)} 
             handleClose={() => setOpenAdOperator(false)} 

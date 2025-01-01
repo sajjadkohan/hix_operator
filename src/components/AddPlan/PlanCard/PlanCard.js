@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import styles from './PlanCard.module.css'
 import ItemProperty from './ItemProperty';
 import { PlanCtx } from '../../../context/PlanContext';
-import { ViewCtx } from '../../../context/ViewContext';
+import { ViewContext } from '../../../context/ViewContext';
 import { CircularProgress } from '@mui/material';
 
 const PlanCard = ({data,active}) => {
 
   const {setFreePlan} = useContext(PlanCtx);
-  const {loading,setLoading} = useContext(ViewCtx);
+  const {loading,setLoading} = useContext(ViewContext);
 
 
 

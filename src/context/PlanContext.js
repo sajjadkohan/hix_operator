@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 import { requestData } from '../utils/functions';
-import { ViewCtx } from './ViewContext';
+import { ViewContext } from './ViewContext';
 import toast from 'react-hot-toast';
 export const PlanCtx = createContext();
 
@@ -8,7 +8,7 @@ const PlanContext = ({children}) => {
 
   const [plansState,setPlansState] = useState(false);
 
-  const {loading,setLoading} = useContext(ViewCtx);
+  const {loading,setLoading} = useContext(ViewContext);
 
     const getPlans = async () => {
       setLoading({...loading,plans : true});

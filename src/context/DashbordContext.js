@@ -8,6 +8,7 @@ const DashbordPrivider = ({children}) => {
 
     const [products,setProducts] = useState(false);
     const [reloadList,setReloadList] = useState(false);
+    const [questionList,setQuestionsList] = useState(false);
 
 
     const getProductByMtId = async (mtId) => {
@@ -53,14 +54,44 @@ const addSingleProduct = async (dataRequest) => {
       // setUser({userName : ''})
       return false
   }
-}
+};
+
+const addQuestions = async (dataRequest) => {
+  //const dataRequest = { question : '' , answer : '' }
+
+  const res = await requestData('/questions/add','POST',dataRequest);
+  console.log(res);
+  res?.data?.success&&setReloadList(!reloadList);
+  
+  // const res = await fetch('/questions/add',{
+//     method:"POST",
+//     headers:{
+//         "Content-Type":"application/json"
+//     },
+//     body:JSON.stringify({ question : '' , answer : '' })
+// })
+};
+
+const getQuestions = async (dataRequest) => {
+
+  const res = await requestData('/questions/get','GET');
+  console.log(res);
+  if(res?.status == 200){
+    setQuestionsList(res.data.data);
+  }
+
+};
+
+
+
 
   return (
     <DashbordContext.Provider value={{
             products,setProducts,
             getProductByMtId,
             addSingleProduct,
-            reloadList
+            reloadList,
+            addQuestions,getQuestions,questionList
         }}>
       {children}
     </DashbordContext.Provider>

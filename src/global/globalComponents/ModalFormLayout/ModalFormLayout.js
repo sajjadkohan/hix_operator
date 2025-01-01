@@ -5,7 +5,7 @@ import { HiUserCircle } from 'react-icons/hi';
 import { AuthCtx } from '../../../context/AuthContext';
 import { TbMailFilled } from 'react-icons/tb';
 import styles from './ModalFormLayout.module.css';
-import { ViewCtx } from '../../../context/ViewContext';
+import { ViewContext } from '../../../context/ViewContext';
 
 const ModalFormLayout = ({children,formDataDetail}) => {
 

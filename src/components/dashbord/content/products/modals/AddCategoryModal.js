@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ViewCtx } from '../../../../../context/ViewContext';
+import { ViewContext } from '../../../../../context/ViewContext';
 import Grid from '@mui/material/Grid2/Grid2';
 import { Button, InputAdornment, TextField } from '@mui/material';
 import { HiUserCircle } from 'react-icons/hi';
@@ -27,7 +27,7 @@ const dataFormAddProduct = [
 ]
 const AddCategoryModal = () => {
 
-    const {showAddCategoryModal,setShowAddCategoryModal,loading} = useContext(ViewCtx);
+    const {showAddCategoryModal,setShowAddCategoryModal,loading} = useContext(ViewContext);
 
     const [dataState, setDataState] = React.useState({
       'en_name' : '',

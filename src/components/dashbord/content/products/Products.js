@@ -6,9 +6,10 @@ import Button from '@mui/material/Button';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiFunctionAddFill } from "react-icons/ri";
 import { RiAddCircleFill } from "react-icons/ri";
-import ListProducts from './ListProducts/ListProducts';
+// import ListProducts from './ListProducts/ListProducts';
+import ListItems from '../../../../global/globalComponents/ListItems/ListItems';
 
-import { ViewCtx } from '../../../../context/ViewContext';
+import { ViewContext } from '../../../../context/ViewContext';
 import AddProductModal from './modals/AddProductModal';
 import AddCategoryModal from './modals/AddCategoryModal';
 import AddFeatureModal from './modals/AddFeatureModal';
@@ -18,6 +19,7 @@ import AddOperatorForm from '../chatSettings/operator/AdOperatorForm/AddOperator
 import { TbMailFilled } from 'react-icons/tb';
 import { DashbordContext } from '../../../../context/DashbordContext';
 import { AuthCtx } from '../../../../context/AuthContext';
+import ProductItem from './ListProducts/ProductItem';
 
 const dataFormAddProduct = [
     {
@@ -44,6 +46,61 @@ const dataFormAddProduct = [
         placeholder : 'قیمت',
         nameInput : 'price',
     },
+];
+const headRow = [
+    {
+        size : 0.5,
+        text : ''
+    },
+    {
+        size : 2.5,
+        text : 'محصول'
+    },
+    {
+        size : 2,
+        text : 'قیمت'
+    },
+    {
+        size : 2,
+        text : 'دسته بندی'
+    },
+    {
+        size : 2,
+        text : 'نام لاتین'
+    },
+
+    {
+        size : 3,
+        text : 'جزیات بیشتر'
+    },
+];
+
+const ItemDataRow = [
+    {
+        size : 0.5,
+        text : ''
+    },
+    {
+        size : 2.5,
+        text : 'محصول'
+    },
+    {
+        size : 2,
+        text : 'قیمت'
+    },
+    {
+        size : 2,
+        text : 'دسته بندی'
+    },
+    {
+        size : 2,
+        text : 'نام لاتین'
+    },
+
+    {
+        size : 3,
+        text : 'جزیات بیشتر'
+    },
 ]
 
 const Products = () => {
@@ -56,7 +113,7 @@ const Products = () => {
         showAddProductModal,
         showAddCategoryModal,
         showAddFeatureModal,
-    } = useContext(ViewCtx);
+    } = useContext(ViewContext);
 
         const {products,getProductByMtId,reloadList} = useContext(DashbordContext);
         const {user} = useContext(AuthCtx);
@@ -72,7 +129,7 @@ const Products = () => {
     <div>
         <TitleContent value={'محصولات'} />
 
-        <div className={styles.actionBar} style={{borderBottom : `1px solid #${themeColorLayer3}`}}>
+        <div className={'actionBar'} style={{borderBottom : `1px solid #${themeColorLayer3}`}}>
         <ModalLayout 
         handleOpen={handleOpenAddPro} 
         handleClose={handleCloseAddPro} 
@@ -129,19 +186,30 @@ const Products = () => {
 
             <Button onClick={handleOpenAddPro} className=''>
                 <span>افزودن محصول</span>
-                <span className={styles.icon}><RiAddCircleFill size={25} /></span>
+                <span className={'icon'}><RiAddCircleFill size={25} /></span>
             </Button>
             <Button onClick={handleOpenAddCat} className=''>
                 <span>افزودن دسته بندی</span>
-                <span className={styles.icon}><RiFunctionAddFill size={25} /></span>
+                <span className={'icon'}><RiFunctionAddFill size={25} /></span>
             </Button>
             <Button onClick={handleOpenAddFea} className=''>
                 <span>افزودن ویژگی</span>
-                <span className={styles.icon}><RiAddCircleFill size={25} /></span>
+                <span className={'icon'}><RiAddCircleFill size={25} /></span>
             </Button>
         </div>
         <div className={styles.content}>
-            <ListProducts productList={products} title={'لیست محصولات'} />
+            <ListItems productList={products} title={'لیست محصولات'} headRow={headRow} />
+            <div className={styles.ListParent}>
+            {
+                products?.length?products.map((item,index) => {
+                return(
+                    <div key={index}><ProductItem data={item} /></div>
+                )
+                }) :
+
+                <h1>loading . . .</h1>
+            }
+            </div>
         </div>
     </div>
   )
