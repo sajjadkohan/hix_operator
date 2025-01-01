@@ -10,6 +10,7 @@ const Settings = () => {
         description:"",
         showform:false,
         fields:[],
+        contentAi:""
     });
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState(null);
@@ -184,6 +185,18 @@ const Settings = () => {
                         </div>
 
                     }
+
+                    {/* Content Ai */}
+                    <div className={styles.item}>
+                        <label>توضیحات برای ربات</label>
+                        <textarea 
+                        className={styles.txar}
+                        name='contentAi'
+                        value={options.contentAi}
+                        onChange={handleChange}
+                        type='text'
+                        />
+                    </div>
 
 
                     <button type='submit' className={styles.btnChange}>ذخیره تغییرات</button>

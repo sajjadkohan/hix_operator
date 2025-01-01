@@ -46,3 +46,16 @@
 .fItemsList{
     padding-top: 20px;
 }
+
+.txar{
+    width: 567px;
+  height: 80px;
+  display: block;
+  margin-top: 10px;
+  min-width: 100%;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 191px;
+}

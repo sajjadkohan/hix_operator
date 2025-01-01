@@ -20,7 +20,7 @@ const ApiKey = () => {
     {
        user&& user?.Roles.find(item => item === 'USER')?
     <div className={styles.apiKey}>
-        key :<CodeBlock code={`${user.apiKey}`}/>
+        key :<CodeBlock code={`${user?.apiKey}`}/>
         {/* <div className={styles.showKey}></div> */}
         <br/>
         <div className={styles.script}>
@@ -29,7 +29,7 @@ const ApiKey = () => {
     <script 
         id="HixChat" 
         src="https://hix.storage.c2.liara.space/files/script.js"
-        data-key="${user.apiKey}"
+        data-key="${user?.apiKey}"
         >
     </script>
     `
