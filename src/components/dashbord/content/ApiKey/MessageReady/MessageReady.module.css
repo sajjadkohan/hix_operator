@@ -17,3 +17,4 @@
     background: #f1f1f15c;
 }
 .itemBox .answer{color: #4f4f4f;}
+.actionParent{display: flex;align-items: center;justify-content: space-between;}

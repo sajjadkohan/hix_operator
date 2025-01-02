@@ -56,7 +56,7 @@ code {
 /*margin*/
 .mr1vw{margin-right: 1vw;}
 .ml1vw{margin-left: 1vw;}
-.ml10{margin-left: 10px;}
+.ml10{margin-left: 10px!important;}
 .mr10{margin-right: 10px;}
 
 /*components*/

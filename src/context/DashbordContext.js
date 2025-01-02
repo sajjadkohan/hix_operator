@@ -10,6 +10,14 @@ const DashbordPrivider = ({children}) => {
     const [reloadList,setReloadList] = useState(false);
     const [questionList,setQuestionsList] = useState(false);
 
+    // questionState
+    const [questionState, setQuestionState] = React.useState({
+      'question' : '',
+      'answer' : '',
+      'id' : '',
+    });
+    // questionState
+
 
     const getProductByMtId = async (mtId) => {
       // Get products by merchantid
@@ -62,15 +70,41 @@ const addQuestions = async (dataRequest) => {
   const res = await requestData('/questions/add','POST',dataRequest);
   console.log(res);
   res?.data?.success&&setReloadList(!reloadList);
-  
-  // const res = await fetch('/questions/add',{
+};
+
+const deleteQuestions = async (id) => {
+
+  const res = await requestData('/questions/delete','POST',{id : id});
+  console.log(res);
+  res?.data?.success&&setReloadList(!reloadList);
+};
+
+const editQuestions = async (dataRequest) => {
+
+  const res = await requestData('/questions/update','POST',dataRequest);
+  console.log(res);
+  res?.data?.success&&setReloadList(!reloadList);
+};
+
+// Update question
+// const res = await fetch('/questions/update',{
 //     method:"POST",
 //     headers:{
 //         "Content-Type":"application/json"
 //     },
-//     body:JSON.stringify({ question : '' , answer : '' })
+//     body:JSON.stringify({ id : 12 , question : '' , answer : '' })
 // })
-};
+
+// -----------------------------------------------
+
+// Delete question
+// const res = await fetch('/questions/delete',{
+//     method:"POST",
+//     headers:{
+//         "Content-Type":"application/json"
+//     },
+//     body:JSON.stringify({ id })
+// })
 
 const getQuestions = async (dataRequest) => {
 
@@ -91,7 +125,9 @@ const getQuestions = async (dataRequest) => {
             getProductByMtId,
             addSingleProduct,
             reloadList,
-            addQuestions,getQuestions,questionList
+            addQuestions,getQuestions,questionList,deleteQuestions,editQuestions,
+            questionState, setQuestionState,
+            
         }}>
       {children}
     </DashbordContext.Provider>

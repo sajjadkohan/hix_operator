@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-
 import { ViewContext } from '../../../../../context/ViewContext';
 import Grid from '@mui/material/Grid2/Grid2';
 import { Button, InputAdornment, TextField } from '@mui/material';
@@ -33,27 +32,25 @@ const dataFormAddQuestions = [
   },
 
 ]
-const AddQuestionsModal = () => {
+const AddQuestionsModal = ({isEdit}) => {
 
     const {loading,
         showAddMessageModal,setShowAddMessageModal,
         handleOpenAddMessage,handleCloseAdMessage
     } = useContext(ViewContext);
-    const {addQuestions} = useContext(DashbordContext);
+    const {addQuestions,questionState, setQuestionState,editQuestions} = useContext(DashbordContext);
 
-
-    const [dataState, setDataState] = React.useState({
-      'question' : '',
-      'answer' : '',
-      'id' : '',
-    });
 
     const changHandler = (e) => {
-      console.log(e.name,e.value);
-      setDataState({...dataState,
-        [e.name] : e.value
-      });
-      console.log(dataState);
+      // console.log(e.name,e.value);
+      // if(isEdit){
+
+      // } else {
+        setQuestionState({...questionState,
+          [e.name] : e.value
+        });
+      // }
+      console.log(questionState);
       
       
     }
@@ -62,25 +59,16 @@ const AddQuestionsModal = () => {
       e.preventDefault();
       await addQuestions(data);
     }
+    
+    const editQuestionFn = async (e,data) => {
+      e.preventDefault();
+      await editQuestions(data)
+    }
 
-    const addOperatorFn = async (data) => {
-    // setLoading({...loading,addOperator : true});
-
-    //   const res = await requestData('/operator/add','POST',data);
-    //   console.log(res);
-    // setLoading({...loading,addOperator : false});
-    //   if(res?.status == 200){
-    //     toast.success(<p className='danaRegular'>{res?.data?.message}</p>)
-    //   } else {
-    //     toast.error(<p className='danaRegular'>{res?.data?.message}</p>)
-
-    //   }
-      
-    };
 
 return (
   <div>
-        <form onSubmit={async (e) => await addQuestionFn(e,dataState)}>
+        <form onSubmit={async (e) => isEdit? await editQuestionFn(e,questionState) : await addQuestionFn(e,questionState)}>
       <Grid container spacing={3}>
 
         {
@@ -90,6 +78,7 @@ return (
                 
               <TextField
                 label=""
+                value={questionState[item.nameInput]}
                 name={item.nameInput}
                 onChange={(e) => changHandler(e.target)}
                 slotProps={{
@@ -139,7 +128,7 @@ return (
         
         {/* <button onClick={async (e) => await addQuestionFn(e,dataState)} >send data</button> */}
         <Button variant="contained"
-        onClick={async (e) => await addQuestionFn(e,dataState)}
+        onClick={async (e) => isEdit? await editQuestionFn(e,questionState) : await addQuestionFn(e,questionState)}
         sx={{
           padding: '12px 20px', // فاصله داخلی
           borderRadius: '18px', // گرد کردن لبه‌ها
@@ -158,7 +147,7 @@ return (
           {loading.addOperator?
         'loading . . .'
         :
-        'افزودن'  
+        isEdit? 'ویرایش' : 'افزودن'  
         }
         </Button>
       </Grid>
